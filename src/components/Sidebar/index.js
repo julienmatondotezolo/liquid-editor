@@ -1,4 +1,5 @@
 import React from 'react';
+import Link from 'next/link'
 import styles from './Sidebar.module.scss'
 
 const Sidebar = () => {
@@ -6,9 +7,21 @@ const Sidebar = () => {
             <h3>Editor</h3>
             <h3>Scenario</h3>
             <ul>
-                <li>Scenario 1</li>
-                <li>Scenario 2</li>
-                <li>Add new scenario</li>
+                <li>
+                    <Link href="/">
+                        <a>Scenario 1</a>
+                    </Link>
+                </li>
+                <li>
+                    <Link href="/">
+                        <a>Scenario 2</a>
+                    </Link>
+                </li>
+                <li>
+                    <Link href="/">
+                        <a>Add new scenario</a>
+                    </Link>
+                </li>
             </ul>
         </div>;
 };

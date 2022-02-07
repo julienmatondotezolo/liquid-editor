@@ -18,7 +18,7 @@ const Header = () => {
                 <div className={styles.bar3}></div>
               </div>
 
-              <h3>Bothive Liquid editor {open ? "OPEN" : "CLOSED"}</h3>
+              <h3>Bothive Liquid editor</h3>
             </div>
           </div>
           {open ? <Sidebar /> : ''}
