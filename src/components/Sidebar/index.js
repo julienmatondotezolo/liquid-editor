@@ -1,6 +1,6 @@
 import React from "react";
 import Link from "next/link";
-import styles from "./Sidebar.module.scss";
+import styles from "./style.module.scss";
 
 const Sidebar = () => {
   return (
