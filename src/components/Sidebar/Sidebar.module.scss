@@ -1,0 +1,11 @@
+@import "../../assets/styles/colors.scss";
+
+.sidebar {
+    padding: 0 5%;
+    box-sizing: border-box;
+    float: left;
+    width: 400px;
+    height: calc(100vh - 65px);
+    color: #fff;
+    background: $brand-color--primary;
+}
