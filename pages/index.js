@@ -1,6 +1,7 @@
-import Head from 'next/head'
-import Image from 'next/image'
-import Header from '../src/components/Header/'
+import Head from "next/head";
+import Image from "next/image";
+import Header from "../src/components/header";
+import ImportButton from "../src/components/importButton";
 
 export default function Home() {
   return (
@@ -11,7 +12,8 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <Header/>
+      <Header />
+      <ImportButton />
     </div>
-  )
+  );
 }

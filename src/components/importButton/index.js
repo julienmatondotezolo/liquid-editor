@@ -1,7 +1,7 @@
-import React from 'react';
+import React from "react";
 
-const importButton = () => {
+const ImportButton = () => {
   return <p>import file</p>;
 };
 
-export default importButton;
+export default ImportButton;
