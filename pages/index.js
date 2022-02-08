@@ -6,7 +6,6 @@ import ImportButton from "../src/components/importButton";
 
 export default function Home() {
   const [file, setFile] = useState({});
-  console.log(file);
 
   return (
     <div>
