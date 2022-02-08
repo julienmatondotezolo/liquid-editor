@@ -1,0 +1,14 @@
+@import "../../assets/styles/colors.scss";
+
+.button {
+  display: flex;
+  position: relative;
+
+  input {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    cursor: pointer;
+  }
+}
