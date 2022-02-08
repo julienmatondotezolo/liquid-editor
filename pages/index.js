@@ -1,9 +1,13 @@
+import React, { useState } from "react";
 import Head from "next/head";
 import Image from "next/image";
 import Header from "../src/components/header";
 import ImportButton from "../src/components/importButton";
 
 export default function Home() {
+  const [file, setFile] = useState({});
+  console.log(file);
+
   return (
     <div>
       <Head>
@@ -13,7 +17,7 @@ export default function Home() {
       </Head>
 
       <Header />
-      <ImportButton />
+      <ImportButton setFile={setFile} />
     </div>
   );
 }
