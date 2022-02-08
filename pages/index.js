@@ -3,6 +3,7 @@ import Head from "next/head";
 import Image from "next/image";
 import Header from "../src/components/header";
 import ImportButton from "../src/components/importButton";
+import CodeMirror from "@uiw/react-codemirror";
 
 export default function Home() {
   const [file, setFile] = useState({});
@@ -28,6 +29,13 @@ export default function Home() {
 
       <Header />
       <ImportButton getFileData={getFileData} />
+
+      <CodeMirror
+        value={file ? file.content : "IMPORT HTML FILE"}
+        onChange={(value, viewUpdate) => {
+          console.log("value:", value);
+        }}
+      />
     </div>
   );
 }
