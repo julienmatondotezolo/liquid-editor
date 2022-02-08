@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import Head from "next/head";
 import Image from "next/image";
-import Header from "../src/components/header";
-import ImportButton from "../src/components/importButton";
 import CodeMirror from "@uiw/react-codemirror";
 import { htmlLanguage } from "@codemirror/lang-html";
+import Header from "../src/components/header";
+import ImportButton from "../src/components/importButton";
 
 export default function Home() {
   const [file, setFile] = useState({});
@@ -30,25 +30,8 @@ export default function Home() {
 
       <Header />
 
-      <p>Document name</p>
-      <p>
-        <strong>{file.name}</strong>
-      </p>
-
       <ImportButton getFileData={getFileData} />
-
-      <CodeMirror
-        value={file.content}
-        extensions={htmlLanguage}
-        onChange={(value, viewUpdate) => {
-          console.log("value:", value);
-        }}
-        options={{
-          placeholder: "Please enter the JavaScript code.",
-          tabSize: 2,
-          mode: "js",
-        }}
-      />
+      <CodeMirror value={file.content} extensions={htmlLanguage} />
     </div>
   );
 }
