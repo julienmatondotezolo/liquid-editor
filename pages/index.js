@@ -4,6 +4,7 @@ import Image from "next/image";
 import Header from "../src/components/header";
 import ImportButton from "../src/components/importButton";
 import CodeMirror from "@uiw/react-codemirror";
+import { htmlLanguage } from "@codemirror/lang-html";
 
 export default function Home() {
   const [file, setFile] = useState({});
@@ -28,12 +29,24 @@ export default function Home() {
       </Head>
 
       <Header />
+
+      <p>Document name</p>
+      <p>
+        <strong>{file.name}</strong>
+      </p>
+
       <ImportButton getFileData={getFileData} />
 
       <CodeMirror
-        value={file ? file.content : "IMPORT HTML FILE"}
+        value={file.content}
+        extensions={htmlLanguage}
         onChange={(value, viewUpdate) => {
           console.log("value:", value);
+        }}
+        options={{
+          placeholder: "Please enter the JavaScript code.",
+          tabSize: 2,
+          mode: "js",
         }}
       />
     </div>
