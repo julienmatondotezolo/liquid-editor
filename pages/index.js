@@ -7,6 +7,17 @@ import ImportButton from "../src/components/importButton";
 export default function Home() {
   const [file, setFile] = useState({});
 
+  const getFileData = (e) => {
+    const file = e.target.files[0];
+    const reader = new FileReader();
+
+    reader.onload = function (event) {
+      setFile({ name: e.target.files[0].name, content: event.target.result });
+    };
+
+    reader.readAsText(file);
+  };
+
   return (
     <div>
       <Head>
@@ -16,7 +27,7 @@ export default function Home() {
       </Head>
 
       <Header />
-      <ImportButton setFile={setFile} />
+      <ImportButton getFileData={getFileData} />
     </div>
   );
 }
