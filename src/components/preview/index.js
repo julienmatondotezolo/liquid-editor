@@ -1,10 +1,12 @@
 import React from "react";
 import styles from "./style.module.scss";
 
-export const Preview = () => {
+export const Preview = ({ value }) => {
   return (
     <div className={styles.preview}>
-      <article>Preview</article>
+      <article>
+        <p>{value}</p>
+      </article>
     </div>
   );
 };

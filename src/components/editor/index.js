@@ -20,11 +20,11 @@ export const Editor = () => {
   };
 
   return (
-    <div>
+    <div className={styles.editor}>
       <ImportButton getFileData={getFileData} />
-      <div className={styles.editor}>
+      <div className={styles.editorCode}>
         <CodeMirror className={styles.codeMirror} value={file.content} extensions={htmlLanguage} />
-        <Preview className={styles.codePreview} />
+        <Preview className={styles.codePreview} value={file.content} />
       </div>
     </div>
   );

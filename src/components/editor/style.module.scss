@@ -1,11 +1,19 @@
 @import "../../assets/styles/colors.scss";
+@import "../../assets/styles/variables.scss";
 
 .editor {
+  margin-top: $header-height;
+}
+
+.editorCode {
   display: flex;
   flex-wrap: wrap;
   width: 100%;
 
   .codeMirror {
     width: 50%;
+    border-top: 2px solid $brand-color--primary-light;
+    border-bottom: 2px solid $brand-color--primary-light;
+    border-right: 4px solid $brand-color--primary-light;
   }
 }

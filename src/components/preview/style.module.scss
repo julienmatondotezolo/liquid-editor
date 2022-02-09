@@ -2,8 +2,11 @@
 
 .preview {
   width: 50%;
+
   article {
     padding: 2rem;
     box-sizing: border-box;
+    border-top: 2px solid $brand-color--primary-light;
+    border-bottom: 2px solid $brand-color--primary-light;
   }
 }

@@ -2,6 +2,8 @@
 @import "../../assets/styles/variables.scss";
 
 .container {
+  position: fixed;
+  top: 0;
   display: flex;
   justify-content: center;
   width: 100%;
@@ -9,11 +11,10 @@
   background: $brand-color--primary;
   color: #fff;
   border-bottom: 3px solid #fff;
+  z-index: 9;
 }
 
 .nav {
-  position: fixed;
-  top: 0;
   width: 90%;
   max-width: 1600px;
   display: flex;
