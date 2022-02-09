@@ -1,13 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
 import { Liquid } from "liquidjs";
 import styles from "./style.module.scss";
 
 export const Preview = ({ value }) => {
+  const [liquidValue, setLiquidValue] = useState(value);
   const engine = new Liquid();
-  engine.parseAndRender("{{name | capitalize}}", { name: "alice" }).then(console.log);
+  {
+    value && engine.parseAndRender(value).then((result) => setLiquidValue(result));
+  }
   return (
     <div className={styles.preview}>
-      <div dangerouslySetInnerHTML={{ __html: value }} />
+      <div dangerouslySetInnerHTML={{ __html: liquidValue }} />
     </div>
   );
 };
