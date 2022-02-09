@@ -28,7 +28,7 @@ export const Editor = () => {
           className={styles.codeMirror}
           value={file.content}
           extensions={htmlLanguage}
-          onChange={(value) => setFile((prevFile) => ({ ...prevFile, content: value }))}
+          onChange={(value) => setFile({ ...file, content: value })}
         />
         <Preview className={styles.codePreview} value={file.content} />
       </div>
