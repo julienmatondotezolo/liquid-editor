@@ -4,12 +4,12 @@
 .sidebar {
   position: fixed;
   top: $header-height;
-  padding: 0 5%;
+  padding: 1rem 5%;
   box-sizing: border-box;
   float: left;
   width: 400px;
   height: calc(100vh - $header-height);
   color: #fff;
   background: $brand-color--primary;
-  z-index: 9;
+  z-index: 1;
 }
