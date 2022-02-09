@@ -2,6 +2,8 @@
 @import "../../assets/styles/variables.scss";
 
 .sidebar {
+  position: fixed;
+  top: $header-height;
   padding: 0 5%;
   box-sizing: border-box;
   float: left;
@@ -9,4 +11,5 @@
   height: calc(100vh - $header-height);
   color: #fff;
   background: $brand-color--primary;
+  z-index: 9;
 }

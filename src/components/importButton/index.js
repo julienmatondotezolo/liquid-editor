@@ -8,7 +8,7 @@ const ImportButton = ({ getFileData }) => {
     <div className={styles.button}>
       <Image src={importIcon} alt="Import file" width={20} height={20} />
       <p>Import file</p>
-      <input type="file" accept=".html" onChange={(file) => getFileData(file)}></input>
+      <input type="file" accept=".html, .liquid" onChange={(file) => getFileData(file)}></input>
     </div>
   );
 };
