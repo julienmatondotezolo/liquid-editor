@@ -6,7 +6,7 @@ import ImportButton from "../importButton";
 import { Preview } from "../preview";
 
 export const Editor = () => {
-  const [file, setFile] = useState({});
+  const [file, setFile] = useState({ name: "index.html" });
 
   const getFileData = (e) => {
     const file = e.target.files[0];
@@ -23,7 +23,15 @@ export const Editor = () => {
     <div className={styles.editor}>
       <ImportButton getFileData={getFileData} />
       <div className={styles.editorCode}>
-        <CodeMirror className={styles.codeMirror} value={file.content} extensions={htmlLanguage} />
+        <CodeMirror
+          className={styles.codeMirror}
+          value={file.content}
+          extensions={htmlLanguage}
+          onChange={(value, viewUpdate) => {
+            // setFile((prevFile) => [...prevFile, { content: value }]);
+            setFile((prevFile) => ({ ...prevFile, content: value }));
+          }}
+        />
         <Preview className={styles.codePreview} value={file.content} />
       </div>
     </div>
