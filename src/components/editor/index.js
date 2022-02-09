@@ -4,6 +4,7 @@ import { htmlLanguage } from "@codemirror/lang-html";
 import styles from "./style.module.scss";
 import ImportButton from "../importButton";
 import { Preview } from "../preview";
+import { DocumentName } from "../documentName";
 
 export const Editor = () => {
   const [file, setFile] = useState({ name: "index.html" });
@@ -18,7 +19,10 @@ export const Editor = () => {
   };
   return (
     <div className={styles.editor}>
-      <ImportButton getFileData={getFileData} />
+      <section className={styles.container}>
+        <DocumentName name={file.name} />
+        <ImportButton getFileData={getFileData} />
+      </section>
       <div className={styles.editorCode}>
         <CodeMirror
           className={styles.codeMirror}

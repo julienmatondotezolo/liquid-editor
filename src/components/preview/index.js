@@ -9,8 +9,8 @@ export const Preview = ({ value }) => {
     value && engine.parseAndRender(value).then((result) => setLiquidValue(result));
   }
   return (
-    <div className={styles.preview}>
+    <article className={styles.preview}>
       <div dangerouslySetInnerHTML={{ __html: liquidValue }} />
-    </div>
+    </article>
   );
 };

@@ -1,0 +1,14 @@
+@import "../../assets/styles/colors.scss";
+
+.documentName {
+  display: inline-block;
+
+  p {
+    color: $brand-color--primary;
+    margin: 0;
+    &:last-child {
+      font-weight: 600;
+      font-size: 1.5rem;
+    }
+  }
+}
