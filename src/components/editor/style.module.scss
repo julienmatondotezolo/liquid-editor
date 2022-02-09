@@ -1,0 +1,11 @@
+@import "../../assets/styles/colors.scss";
+
+.editor {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+
+  .codeMirror {
+    width: 50%;
+  }
+}
