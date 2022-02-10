@@ -5,6 +5,7 @@ import styles from "./style.module.scss";
 import ImportButton from "../importButton";
 import { Preview } from "../preview";
 import { DocumentName } from "../documentName";
+import ExportButton from "../exportButton";
 
 export const Editor = () => {
   const [file, setFile] = useState({ name: "index.html" });
@@ -21,7 +22,10 @@ export const Editor = () => {
     <div className={styles.editor}>
       <section className={styles.container}>
         <DocumentName name={file.name} />
-        <ImportButton getFileData={getFileData} />
+        <section className={styles.buttons}>
+          <ImportButton getFileData={getFileData} />
+          <ExportButton />
+        </section>
       </section>
       <div className={styles.editorCode}>
         <CodeMirror
