@@ -8,7 +8,11 @@ import { DocumentName } from "../documentName";
 import ExportButton from "../exportButton";
 
 export const Editor = () => {
-  const [file, setFile] = useState(JSON.parse(window.localStorage.getItem("liquid-editor-code")));
+  const [file, setFile] = useState({ name: "index.html" });
+
+  useEffect(() => {
+    setFile(JSON.parse(window.localStorage.getItem("liquid-editor-code")));
+  }, []);
 
   useEffect(() => {
     localStorage.setItem("liquid-editor-code", JSON.stringify(file));
@@ -23,9 +27,11 @@ export const Editor = () => {
 
     reader.readAsText(file);
   };
+
   const getDocumentName = (value) => {
     setFile({ ...file, name: value });
   };
+
   return (
     <div className={styles.editor}>
       <section className={styles.container}>
