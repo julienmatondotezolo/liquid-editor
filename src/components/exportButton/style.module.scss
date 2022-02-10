@@ -1,0 +1,11 @@
+@import "../../assets/styles/colors.scss";
+
+.button {
+  display: flex;
+  position: relative;
+  cursor: pointer;
+
+  p {
+    margin: 0 0 0 0.5rem;
+  }
+}
