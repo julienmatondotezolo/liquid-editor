@@ -16,7 +16,7 @@
 
 .nav {
   width: 90%;
-  max-width: 1600px;
+  max-width: $screen-size--large;
   display: flex;
   flex-wrap: wrap;
   align-items: center;
