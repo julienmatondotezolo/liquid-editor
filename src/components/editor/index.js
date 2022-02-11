@@ -4,14 +4,16 @@ import { htmlLanguage } from "@codemirror/lang-html";
 import styles from "./style.module.scss";
 import ImportButton from "../importButton";
 import { Preview } from "../preview";
-import { DocumentName } from "../documentName";
+import { FileName } from "../fileName";
 import ExportButton from "../exportButton";
+import { FileExtensionName } from "../fileExtensionName";
 
 export const Editor = () => {
   const [file, setFile] = useState({ name: "index.html" });
 
   useEffect(() => {
     setFile(JSON.parse(window.localStorage.getItem("liquid-editor-code")));
+    console.log("getItem");
   }, []);
 
   useEffect(() => {
@@ -19,13 +21,13 @@ export const Editor = () => {
   }, [file]);
 
   const getFileData = (e) => {
-    const file = e.target.files[0];
+    const getFile = e.target.files[0];
     const reader = new FileReader();
     reader.onload = function (event) {
       setFile({ name: e.target.files[0].name, content: event.target.result });
     };
 
-    reader.readAsText(file);
+    reader.readAsText(getFile);
   };
 
   const getDocumentName = (value) => {
@@ -35,12 +37,16 @@ export const Editor = () => {
   return (
     <div className={styles.editor}>
       <section className={styles.container}>
-        <DocumentName file={file} setName={getDocumentName} />
+        <FileName file={file} setName={getDocumentName} />
         <section className={styles.buttons}>
           <ImportButton getFileData={getFileData} />
           <ExportButton data={file} />
         </section>
       </section>
+      <div className={styles.editorHeader}>
+        <FileExtensionName extension={"liquid"} />
+        <FileExtensionName extension={"preview"} />
+      </div>
       <div className={styles.editorCode}>
         <CodeMirror
           className={styles.codeMirror}
