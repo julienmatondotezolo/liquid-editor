@@ -1,11 +1,15 @@
 @import "../../assets/styles/colors.scss";
 
-.button {
+.exportButton {
   display: flex;
   position: relative;
   cursor: pointer;
 
   button {
     margin: 0 0 0 0.5rem;
+    padding: 0;
+    border: none;
+    font: unset;
+    background: none;
   }
 }
