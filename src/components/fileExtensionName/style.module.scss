@@ -6,7 +6,7 @@
   flex-wrap: wrap;
   width: 100%;
   justify-content: space-between;
-  padding: 1rem;
+  padding: $padding--md;
   border-right: 4px solid $brand-color--primary-light;
 
   p {

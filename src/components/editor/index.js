@@ -19,11 +19,11 @@ export const Editor = () => {
     localStorage.setItem("liquid-editor-code", JSON.stringify(file));
   }, [file]);
 
-  const getFileData = (e) => {
-    const getFile = e.target.files[0];
+  const getFileData = (event) => {
+    const getFile = event.target.files[0];
     const reader = new FileReader();
-    reader.onload = function (event) {
-      setFile({ name: e.target.files[0].name, content: event.target.result });
+    reader.onload = function (eventReader) {
+      setFile({ name: event.target.files[0].name, content: eventReader.target.result });
     };
 
     reader.readAsText(getFile);
