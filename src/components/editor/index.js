@@ -13,7 +13,6 @@ export const Editor = () => {
 
   useEffect(() => {
     setFile(JSON.parse(window.localStorage.getItem("liquid-editor-code")));
-    console.log("getItem");
   }, []);
 
   useEffect(() => {
