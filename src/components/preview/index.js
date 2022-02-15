@@ -11,11 +11,9 @@ export const Preview = ({ value }) => {
   }, []);
 
   const engine = new Liquid();
-  // engine.parseAndRender(value ? value : "").then((result) => setLiquidValue(result));
-  console.log(value);
   engine
     .parseAndRender(value ? value : "", scenario ? JSON.parse(scenario.content) : "")
-    .then((result) => console.log(result));
+    .then((result) => setLiquidValue(result));
 
   return (
     <article className={styles.preview}>

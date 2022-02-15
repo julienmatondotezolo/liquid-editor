@@ -22,12 +22,8 @@ const Sidebar = () => {
               <a>Scenario 2</a>
             </Link>
           </li>
-          <li>
-            <Link href="/">
-              <a>Add new scenario</a>
-            </Link>
-          </li>
         </ul>
+        <button>Add new scenario</button>
       </div>
     </nav>
   );
