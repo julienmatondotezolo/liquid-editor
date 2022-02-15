@@ -2,10 +2,10 @@ import React, { useState, useEffect } from "react";
 import CodeMirror from "@uiw/react-codemirror";
 import { html, htmlLanguage } from "@codemirror/lang-html";
 import styles from "./style.module.scss";
-import ImportButton from "../importButton";
+import ImportButton from "../shared/importButton";
 import { Preview } from "../preview";
-import { FileName } from "../fileName";
-import ExportButton from "../exportButton";
+import { FileName } from "../shared/fileName";
+import ExportButton from "../shared/exportButton";
 import { FileExtensionName } from "../fileExtensionName";
 
 export const Editor = () => {
