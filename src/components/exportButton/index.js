@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useRef } from "react";
 import { FaFileExport } from "react-icons/fa";
 import styles from "./style.module.scss";
 
