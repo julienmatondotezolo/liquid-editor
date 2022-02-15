@@ -13,7 +13,7 @@ const Sidebar = () => {
         <p>Scenario</p>
         <ul>
           <li>
-            <Link href="/">
+            <Link href="scenario">
               <a>Scenario 1</a>
             </Link>
           </li>

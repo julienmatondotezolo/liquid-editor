@@ -1,32 +1,31 @@
 import React, { useState, useEffect } from "react";
 import CodeMirror from "@uiw/react-codemirror";
-import { htmlLanguage } from "@codemirror/lang-html";
+import { jsonLanguage } from "@codemirror/lang-json";
 import styles from "./style.module.scss";
 import ImportButton from "../shared/importButton";
-import { Preview } from "../preview";
 import { FileName } from "../shared/fileName";
 import ExportButton from "../shared/exportButton";
 import { FileExtensionName } from "../fileExtensionName";
 
-export const Editor = () => {
-  const [file, setFile] = useState({ name: "index.html" });
+export const JSONeditor = () => {
+  const [scenario, setScenario] = useState({ id: 0, name: "Scenario 1" });
 
   useEffect(() => {
-    setFile(JSON.parse(window.localStorage.getItem("bothive-liquid")));
+    setScenario(JSON.parse(window.localStorage.getItem("bothive-liquid-scenario")));
   }, []);
 
   useEffect(() => {
-    localStorage.setItem("bothive-liquid", JSON.stringify(file));
-  }, [file]);
+    localStorage.setItem("bothive-liquid-scenario", JSON.stringify(scenario));
+  }, [scenario]);
 
   const getFileData = (event) => {
     const getFile = event.target.files[0];
     const fileExtension = getFile.name.split(".").pop();
 
-    if (fileExtension == "html" || fileExtension == "liquid") {
+    if (fileExtension == "json") {
       const reader = new FileReader();
       reader.onload = function (eventReader) {
-        setFile({ name: getFile.name, content: eventReader.target.result });
+        setScenario({ content: eventReader.target.result });
       };
       reader.readAsText(getFile);
     } else {
@@ -35,30 +34,28 @@ export const Editor = () => {
   };
 
   const getDocumentName = (value) => {
-    setFile({ ...file, name: value });
+    setScenario({ ...scenario, name: value });
   };
 
   return (
     <div className={styles.editor}>
       <section className={styles.container}>
-        <FileName file={file} setName={getDocumentName} />
+        <FileName file={scenario} setName={getDocumentName} />
         <section className={styles.buttons}>
           <ImportButton getFileData={getFileData} />
-          <ExportButton data={file} />
+          <ExportButton data={scenario} />
         </section>
       </section>
       <div className={styles.editorHeader}>
-        <FileExtensionName extension={"liquid"} />
-        <FileExtensionName extension={"preview"} />
+        <FileExtensionName extension={"JSON"} />
       </div>
       <div className={styles.editorCode}>
         <CodeMirror
           className={styles.codeMirror}
-          value={file.content}
-          extensions={htmlLanguage}
-          onChange={(value) => setFile({ ...file, content: value })}
+          value={scenario.content}
+          extensions={jsonLanguage}
+          onChange={(value) => setScenario({ ...scenario, content: value })}
         />
-        <Preview className={styles.codePreview} value={file.content} />
       </div>
     </div>
   );
