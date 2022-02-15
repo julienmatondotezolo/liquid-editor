@@ -21,12 +21,12 @@ export const Editor = () => {
 
   const getFileData = (event) => {
     const getFile = event.target.files[0];
-    const fileExtension = getFile.type.split("/")[1];
+    const fileExtension = getFile.name.split(".").pop();
 
     if (fileExtension == "html" || fileExtension == "liquid" || fileExtension == "json") {
       const reader = new FileReader();
       reader.onload = function (eventReader) {
-        setFile({ name: event.target.files[0].name, content: eventReader.target.result });
+        setFile({ name: getFile.name, content: eventReader.target.result });
       };
       reader.readAsText(getFile);
     } else {
