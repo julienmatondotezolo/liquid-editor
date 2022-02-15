@@ -7,6 +7,10 @@
   position: relative;
   cursor: pointer;
 
+  &hover {
+    color: $brand-color--light;
+  }
+
   p {
     margin: 0 0 0 $margin--sm;
   }

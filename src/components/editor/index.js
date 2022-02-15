@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import CodeMirror from "@uiw/react-codemirror";
-import { htmlLanguage } from "@codemirror/lang-html";
+import { html, htmlLanguage } from "@codemirror/lang-html";
 import styles from "./style.module.scss";
 import ImportButton from "../importButton";
 import { Preview } from "../preview";
@@ -21,12 +21,17 @@ export const Editor = () => {
 
   const getFileData = (event) => {
     const getFile = event.target.files[0];
-    const reader = new FileReader();
-    reader.onload = function (eventReader) {
-      setFile({ name: event.target.files[0].name, content: eventReader.target.result });
-    };
+    const fileExtension = getFile.type.split("/")[1];
 
-    reader.readAsText(getFile);
+    if (fileExtension == "html" || fileExtension == "liquid" || fileExtension == "json") {
+      const reader = new FileReader();
+      reader.onload = function (eventReader) {
+        setFile({ name: event.target.files[0].name, content: eventReader.target.result });
+      };
+      reader.readAsText(getFile);
+    } else {
+      alert("Wrong file type");
+    }
   };
 
   const getDocumentName = (value) => {
