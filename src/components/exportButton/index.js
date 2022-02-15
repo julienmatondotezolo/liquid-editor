@@ -1,6 +1,5 @@
 import React, { useState, useRef } from "react";
-import Image from "next/image";
-import exportIcon from "../../assets/images/export_icon.svg";
+import { FaFileExport } from "react-icons/fa";
 import styles from "./style.module.scss";
 
 const ExportButton = ({ data }) => {
@@ -14,7 +13,7 @@ const ExportButton = ({ data }) => {
 
   return (
     <div className={styles.exportButton}>
-      <Image src={exportIcon} alt="Import file" width={20} height={20} />
+      <FaFileExport />
       <button onClick={exportData}>
         Export file
         <a href="#" ref={anchorElement} download={data.name}></a>
