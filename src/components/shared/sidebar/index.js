@@ -1,8 +1,14 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import styles from "./style.module.scss";
 
 const Sidebar = () => {
+  const [scenarios, setScenarios] = useState([]);
+
+  useEffect(() => {
+    setScenarios(JSON.parse(window.localStorage.getItem("bothive-liquid-scenario")));
+  }, []);
+
   return (
     <nav className={styles.sidebar}>
       <Link href="/">
@@ -12,6 +18,14 @@ const Sidebar = () => {
       <div>
         <p>Scenario</p>
         <ul>
+          {scenarios.map((scenario) => {
+            <li>
+              <Link href={scenario.id}>
+                <a>{scenario.name}</a>
+              </Link>
+            </li>;
+          })}
+
           <li>
             <Link href="scenario">
               <a>Scenario 1</a>

@@ -1,11 +1,7 @@
 import React, { useState, useEffect } from "react";
 import CodeMirror from "@uiw/react-codemirror";
-<<<<<<< HEAD
 import { htmlLanguage } from "@codemirror/lang-html";
-=======
-import { html, htmlLanguage } from "@codemirror/lang-html";
 import { useAlert } from "react-alert";
->>>>>>> LE-7-only-allow-html-file-upload
 import styles from "./style.module.scss";
 import ImportButton from "../shared/importButton";
 import { Preview } from "../preview";
@@ -36,7 +32,7 @@ export const Editor = () => {
       };
       reader.readAsText(getFile);
     } else {
-      alert.error("Wrong file type ! (Only .html & .json or accepted ");
+      alert.error("Wrong file type ! (Only .html & .liquid or accepted");
     }
   };
 
