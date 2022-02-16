@@ -2,7 +2,7 @@
   "name": "liquid_editor",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "next -p 8123",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
@@ -11,6 +11,7 @@
     "@codemirror/lang-html": "0.19.4",
     "@codemirror/lang-json": "0.19.1",
     "@uiw/react-codemirror": "4.3.3",
+    "eslint-plugin-prettier": "^4.0.0",
     "liquidjs": "9.34.0",
     "next": "12.0.10",
     "react": "17.0.2",
@@ -26,6 +27,6 @@
     "eslint-config-prettier": "8.3.0",
     "eslint-plugin-import": "2.25.4",
     "eslint-plugin-simple-import-sort": "7.0.0",
-    "prettier": "2.3.0"
+    "prettier": "^2.3.0"
   }
 }
