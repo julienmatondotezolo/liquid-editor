@@ -1,22 +1,23 @@
-import React, { useState, useEffect } from "react";
-import CodeMirror from "@uiw/react-codemirror";
 import { htmlLanguage } from "@codemirror/lang-html";
-import styles from "./style.module.scss";
-import ImportButton from "../importButton";
-import { Preview } from "../preview";
-import { FileName } from "../fileName";
+import CodeMirror from "@uiw/react-codemirror";
+import React, { useEffect, useState } from "react";
 import ExportButton from "../exportButton";
 import { FileExtensionName } from "../fileExtensionName";
+import { FileName } from "../fileName";
+import ImportButton from "../importButton";
+import { Preview } from "../preview";
+import styles from "./style.module.scss";
+import config from "../../config/config.json";
 
 export const Editor = () => {
   const [file, setFile] = useState({ name: "index.html" });
 
   useEffect(() => {
-    setFile(JSON.parse(window.localStorage.getItem("liquid-editor-code")));
+    setFile(JSON.parse(window.localStorage.getItem(config.STORAGE.USER_CODE)));
   }, []);
 
   useEffect(() => {
-    localStorage.setItem("liquid-editor-code", JSON.stringify(file));
+    localStorage.setItem(config.STORAGE.USER_CODE, JSON.stringify(file));
   }, [file]);
 
   const getFileData = (event) => {
@@ -50,7 +51,7 @@ export const Editor = () => {
       <div className={styles.editorCode}>
         <CodeMirror
           className={styles.codeMirror}
-          value={file.content}
+          value={file && file.content}
           extensions={htmlLanguage}
           onChange={(value) => setFile({ ...file, content: value })}
         />
