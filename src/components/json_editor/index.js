@@ -1,5 +1,6 @@
 import { jsonLanguage } from "@codemirror/lang-json";
 import CodeMirror from "@uiw/react-codemirror";
+import { Router, useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
 import { useAlert } from "react-alert";
 
@@ -15,8 +16,10 @@ export const JSONeditor = () => {
     { id: 1, name: "Scenario 2" },
   ]);
   const alert = useAlert();
+  // const router = useRouter();
 
   useEffect(() => {
+    // eslint-disable-next-line prettier/prettier
     setScenarios(JSON.parse(window.localStorage.getItem("bothive-liquid-scenario")));
   }, []);
 
@@ -40,14 +43,33 @@ export const JSONeditor = () => {
     }
   };
 
-  const getDocumentName = (value) => {
-    setScenarios({ ...scenarios, name: value });
+  const helperChangeScenario = (scenarios, value) =>
+    [...scenarios].map((scenario) => {
+      if (scenario.id === 0) {
+        scenario = { ...scenario, ...value };
+      }
+      return scenario;
+    });
+
+  const handleDocumentName = (name) => {
+    const newScenarioName = { name };
+    const newScenarios = helperChangeScenario(scenarios, newScenarioName);
+
+    // setScenarios({ ...scenarios, name: value });
+    setScenarios(newScenarios);
+  };
+
+  const handleScenario = (content) => {
+    const newScenarioContent = { content };
+    const newScenarios = helperChangeScenario(scenarios, newScenarioContent);
+
+    setScenarios(newScenarios);
   };
 
   return (
     <div className={styles.editor}>
       <section className={styles.container}>
-        <FileName file={scenarios} setName={getDocumentName} />
+        <FileName file={scenarios[0]} setName={handleDocumentName} />
         <section className={styles.buttons}>
           <ImportButton getFileData={getFileData} />
           <ExportButton data={scenarios} />
@@ -59,9 +81,9 @@ export const JSONeditor = () => {
       <div className={styles.editorCode}>
         <CodeMirror
           className={styles.codeMirror}
-          value={scenarios.content}
+          value={scenarios && scenarios.content}
           extensions={jsonLanguage}
-          onChange={(value) => setScenarios({ ...scenarios, content: value })}
+          onChange={(value) => handleScenario(value)}
         />
       </div>
     </div>

@@ -1,11 +1,13 @@
-import React, { useState, useEffect } from "react";
 import Link from "next/link";
+import React, { useEffect, useState } from "react";
+
 import styles from "./style.module.scss";
 
 const Sidebar = () => {
   const [scenarios, setScenarios] = useState([]);
 
   useEffect(() => {
+    // eslint-disable-next-line prettier/prettier
     setScenarios(JSON.parse(window.localStorage.getItem("bothive-liquid-scenario")));
   }, []);
 
@@ -18,7 +20,7 @@ const Sidebar = () => {
       <div>
         <p>Scenario</p>
         <ul>
-          {scenarios.map((scenario) => {
+          {scenarios?.map((scenario) => {
             <li>
               <Link href={scenario.id}>
                 <a>{scenario.name}</a>
@@ -26,7 +28,7 @@ const Sidebar = () => {
             </li>;
           })}
 
-          <li>
+          {/* <li>
             <Link href="scenario">
               <a>Scenario 1</a>
             </Link>
@@ -35,7 +37,7 @@ const Sidebar = () => {
             <Link href="/">
               <a>Scenario 2</a>
             </Link>
-          </li>
+          </li> */}
         </ul>
         <button>Add new scenario</button>
       </div>
