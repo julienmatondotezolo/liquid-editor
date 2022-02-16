@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import CodeMirror from "@uiw/react-codemirror";
 import { html, htmlLanguage } from "@codemirror/lang-html";
+import { useAlert } from "react-alert";
 import styles from "./style.module.scss";
 import ImportButton from "../shared/importButton";
 import { Preview } from "../preview";
@@ -10,6 +11,7 @@ import { FileExtensionName } from "../fileExtensionName";
 
 export const Editor = () => {
   const [file, setFile] = useState({ name: "index.html" });
+  const alert = useAlert();
 
   useEffect(() => {
     setFile(JSON.parse(window.localStorage.getItem("liquid-editor-code")));
@@ -30,7 +32,7 @@ export const Editor = () => {
       };
       reader.readAsText(getFile);
     } else {
-      alert("Wrong file type");
+      alert.error("Wrong file type ! (Only .html & .json or accepted ");
     }
   };
 
