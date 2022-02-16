@@ -22,6 +22,7 @@ export const Editor = () => {
   const getFileData = (event) => {
     const getFile = event.target.files[0];
     const reader = new FileReader();
+
     reader.onload = function (eventReader) {
       setFile({ name: event.target.files[0].name, content: eventReader.target.result });
     };
