@@ -1,12 +1,13 @@
-import React, { useState, useEffect } from "react";
-import CodeMirror from "@uiw/react-codemirror";
 import { jsonLanguage } from "@codemirror/lang-json";
+import CodeMirror from "@uiw/react-codemirror";
+import React, { useEffect, useState } from "react";
 import { useAlert } from "react-alert";
-import styles from "./style.module.scss";
-import ImportButton from "../shared/importButton";
-import { FileName } from "../shared/fileName";
-import ExportButton from "../shared/exportButton";
+
 import { FileExtensionName } from "../fileExtensionName";
+import ExportButton from "../shared/exportButton";
+import { FileName } from "../shared/fileName";
+import ImportButton from "../shared/importButton";
+import styles from "./style.module.scss";
 
 export const JSONeditor = () => {
   const [scenarios, setScenarios] = useState([
@@ -29,6 +30,7 @@ export const JSONeditor = () => {
 
     if (fileExtension == "json") {
       const reader = new FileReader();
+
       reader.onload = function (eventReader) {
         setScenarios({ content: eventReader.target.result });
       };

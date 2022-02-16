@@ -1,7 +1,8 @@
-import React, { useState } from "react";
 import Head from "next/head";
-import Header from "../src/components/shared/header";
+import React, { useState } from "react";
+
 import { JSONeditor } from "../src/components/json_editor";
+import Header from "../src/components/shared/header";
 
 export default function Home() {
   return (

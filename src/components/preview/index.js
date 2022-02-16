@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from "react";
 import { Liquid } from "liquidjs";
+import React, { useEffect, useState } from "react";
+
 import styles from "./style.module.scss";
 
 export const Preview = ({ value }) => {
@@ -11,6 +12,7 @@ export const Preview = ({ value }) => {
   }, []);
 
   const engine = new Liquid();
+
   engine
     .parseAndRender(value ? value : "", scenario ? JSON.parse(scenario.content) : "")
     .then((result) => setLiquidValue(result));

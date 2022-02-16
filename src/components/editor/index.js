@@ -1,13 +1,14 @@
-import React, { useState, useEffect } from "react";
-import CodeMirror from "@uiw/react-codemirror";
 import { htmlLanguage } from "@codemirror/lang-html";
+import CodeMirror from "@uiw/react-codemirror";
+import React, { useEffect, useState } from "react";
 import { useAlert } from "react-alert";
-import styles from "./style.module.scss";
-import ImportButton from "../shared/importButton";
-import { Preview } from "../preview";
-import { FileName } from "../shared/fileName";
-import ExportButton from "../shared/exportButton";
+
 import { FileExtensionName } from "../fileExtensionName";
+import { Preview } from "../preview";
+import ExportButton from "../shared/exportButton";
+import { FileName } from "../shared/fileName";
+import ImportButton from "../shared/importButton";
+import styles from "./style.module.scss";
 
 export const Editor = () => {
   const [file, setFile] = useState({ name: "index.html" });
@@ -27,6 +28,7 @@ export const Editor = () => {
 
     if (fileExtension == "html" || fileExtension == "liquid") {
       const reader = new FileReader();
+
       reader.onload = function (eventReader) {
         setFile({ name: getFile.name, content: eventReader.target.result });
       };
@@ -60,7 +62,7 @@ export const Editor = () => {
           extensions={htmlLanguage}
           onChange={(value) => setFile({ ...file, content: value })}
         />
-        <Preview className={styles.codePreview} value={file.content} />
+        {/* <Preview className={styles.codePreview} value={file.content} /> */}
       </div>
     </div>
   );
