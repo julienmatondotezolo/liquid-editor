@@ -16,7 +16,11 @@ export const Editor = () => {
   const alert = useAlert();
 
   useEffect(() => {
-    setFile(JSON.parse(window.localStorage.getItem(config.STORAGE.USER_CODE)));
+    const storageFile = window.localStorage.getItem(config.STORAGE.USER_CODE);
+
+    if (storageFile) {
+      setFile(JSON.parse(storageFile));
+    }
   }, []);
 
   useEffect(() => {
@@ -67,11 +71,11 @@ export const Editor = () => {
       <div className={styles.editorCode}>
         <CodeMirror
           className={styles.codeMirror}
-          value={file && file.content}
+          value={file ? file.content : "<h1>Write your code here...</h1>"}
           extensions={htmlLanguage}
           onChange={(value) => setFile({ ...file, content: value })}
         />
-        <Preview className={styles.codePreview} value={file?.content} />
+        <Preview className={styles.codePreview} value={file.content} />
       </div>
     </div>
   );

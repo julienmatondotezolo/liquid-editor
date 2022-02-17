@@ -9,6 +9,6 @@ export const FileName = ({ file, setName }) => (
       type="text"
       value={file && file.name}
       onChange={(e) => setName(e.target.value)}
-    ></input>
+    />
   </article>
 );

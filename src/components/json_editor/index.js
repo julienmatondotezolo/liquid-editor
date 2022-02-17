@@ -3,6 +3,7 @@ import CodeMirror from "@uiw/react-codemirror";
 import React, { useEffect, useState } from "react";
 import { useAlert } from "react-alert";
 
+import config from "../../config/config.json";
 import { FileExtensionName } from "../fileExtensionName";
 import ExportButton from "../shared/exportButton";
 import { FileName } from "../shared/fileName";
@@ -11,19 +12,23 @@ import styles from "./style.module.scss";
 
 export const JSONeditor = () => {
   const [scenarios, setScenarios] = useState([
-    { id: 0, name: "Scenario 1" },
-    { id: 1, name: "Scenario 2" },
+    { id: 0, name: "data.json" },
+    { id: 1, name: "data-2.json" },
   ]);
   const alert = useAlert();
 
   useEffect(() => {
-    setScenarios(
-      JSON.parse(window.localStorage.getItem("bothive-liquid-scenario"))
+    const storageScenarios = window.localStorage.getItem(
+      config.STORAGE.SCENARIOS
     );
+
+    if (storageScenarios) {
+      setScenarios(JSON.parse(storageScenarios));
+    }
   }, []);
 
   useEffect(() => {
-    localStorage.setItem("bothive-liquid-scenario", JSON.stringify(scenarios));
+    localStorage.setItem(config.STORAGE.SCENARIOS, JSON.stringify(scenarios));
   }, [scenarios]);
 
   const getFileData = (event) => {
@@ -34,7 +39,8 @@ export const JSONeditor = () => {
       const reader = new FileReader();
 
       reader.onload = function (eventReader) {
-        setScenarios({ content: eventReader.target.result });
+        // setScenarios({ content: eventReader.target.result });
+        handleScenario(eventReader.target.result);
       };
       reader.readAsText(getFile);
     } else {
@@ -42,15 +48,13 @@ export const JSONeditor = () => {
     }
   };
 
-  const helperChangeScenario = (scenarios, value) => {
-    console.log("FUCKED VALUE:", value);
-    return [...scenarios].map((scenario) => {
+  const helperChangeScenario = (scenarios, value) =>
+    [...scenarios].map((scenario) => {
       if (scenario.id === 0) {
         scenario = { ...scenario, ...value };
       }
       return scenario;
     });
-  };
 
   const handleDocumentName = (name) => {
     const newScenarioName = { name };
@@ -60,11 +64,14 @@ export const JSONeditor = () => {
   };
 
   const handleScenario = (contentValue) => {
-    const content = JSON.parse(contentValue);
-    const newScenarios = helperChangeScenario(scenarios, { content });
+    try {
+      const content = JSON.parse(contentValue);
+      const newScenarios = helperChangeScenario(scenarios, { content });
 
-    console.log(newScenarios);
-    setScenarios(newScenarios);
+      setScenarios(newScenarios);
+    } catch (e) {
+      alert.error("Write a valid JSON");
+    }
   };
 
   return (
@@ -73,7 +80,7 @@ export const JSONeditor = () => {
         <FileName file={scenarios?.[0]} setName={handleDocumentName} />
         <section className={styles.buttons}>
           <ImportButton getFileData={getFileData} />
-          <ExportButton data={scenarios} />
+          <ExportButton data={scenarios[0]} />
         </section>
       </section>
       <div className={styles.editorHeader}>
@@ -82,7 +89,7 @@ export const JSONeditor = () => {
       <div className={styles.editorCode}>
         <CodeMirror
           className={styles.codeMirror}
-          value={scenarios && JSON.stringify(scenarios[0].parsedContent)}
+          value={scenarios ? JSON.stringify(scenarios[0].content) : ""}
           extensions={jsonLanguage}
           onChange={(value) => handleScenario(value)}
         />
