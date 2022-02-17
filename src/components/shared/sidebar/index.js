@@ -11,6 +11,12 @@ const Sidebar = () => {
     setScenarios(JSON.parse(window.localStorage.getItem("bothive-liquid-scenario")));
   }, []);
 
+  useEffect(() => {
+    scenarios.map((scenario) => {
+      console.log(scenario.id);
+    });
+  }, [scenarios]);
+
   return (
     <nav className={styles.sidebar}>
       <Link href="/">
@@ -18,9 +24,14 @@ const Sidebar = () => {
       </Link>
 
       <div>
-        <p>Scenario</p>
+        <p>Scenario {scenarios[0].name}</p>
+
+        {scenarios.map((scenario) => {
+          <p>{scenario}</p>;
+        })}
+
         <ul>
-          {scenarios?.map((scenario) => {
+          {scenarios.map((scenario) => {
             <li>
               <Link href={scenario.id}>
                 <a>{scenario.name}</a>
