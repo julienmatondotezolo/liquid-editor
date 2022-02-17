@@ -11,7 +11,7 @@ const ImportButton = ({ getFileData }) => (
       type="file"
       accept=".html, .liquid"
       onChange={(file) => getFileData(file)}
-    ></input>
+    />
   </div>
 );
 
