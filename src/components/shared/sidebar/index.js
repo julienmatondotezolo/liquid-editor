@@ -7,8 +7,9 @@ const Sidebar = () => {
   const [scenarios, setScenarios] = useState([]);
 
   useEffect(() => {
-    // eslint-disable-next-line prettier/prettier
-    setScenarios(JSON.parse(window.localStorage.getItem("bothive-liquid-scenario")));
+    setScenarios(
+      JSON.parse(window.localStorage.getItem("bothive-liquid-scenario"))
+    );
   }, []);
 
   return (

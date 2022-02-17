@@ -3,6 +3,7 @@ import CodeMirror from "@uiw/react-codemirror";
 import React, { useEffect, useState } from "react";
 import { useAlert } from "react-alert";
 
+import config from "../../config/config.json";
 import { FileExtensionName } from "../fileExtensionName";
 import { Preview } from "../preview";
 import ExportButton from "../shared/exportButton";
@@ -15,16 +16,24 @@ export const Editor = () => {
   const alert = useAlert();
 
   useEffect(() => {
-    setFile(JSON.parse(window.localStorage.getItem("bothive-liquid")));
+    setFile(JSON.parse(window.localStorage.getItem(config.STORAGE.USER_CODE)));
   }, []);
 
   useEffect(() => {
-    localStorage.setItem("bothive-liquid", JSON.stringify(file));
+    localStorage.setItem(config.STORAGE.USER_CODE, JSON.stringify(file));
   }, [file]);
 
   const getFileData = (event) => {
     const getFile = event.target.files[0];
     const fileExtension = getFile.name.split(".").pop();
+    const reader = new FileReader();
+
+    reader.onload = function (eventReader) {
+      setFile({
+        name: event.target.files[0].name,
+        content: eventReader.target.result,
+      });
+    };
 
     if (fileExtension == "html" || fileExtension == "liquid") {
       const reader = new FileReader();
