@@ -1,32 +1,57 @@
-import React, { useState } from "react";
-import CodeMirror from "@uiw/react-codemirror";
 import { htmlLanguage } from "@codemirror/lang-html";
-import styles from "./style.module.scss";
+import CodeMirror from "@uiw/react-codemirror";
+import React, { useEffect, useState } from "react";
+import ExportButton from "../exportButton";
+import { FileExtensionName } from "../fileExtensionName";
+import { FileName } from "../fileName";
 import ImportButton from "../importButton";
 import { Preview } from "../preview";
-import { DocumentName } from "../documentName";
+import styles from "./style.module.scss";
+import config from "../../config/config.json";
 
 export const Editor = () => {
   const [file, setFile] = useState({ name: "index.html" });
-  const getFileData = (e) => {
-    const file = e.target.files[0];
+
+  useEffect(() => {
+    setFile(JSON.parse(window.localStorage.getItem(config.STORAGE.USER_CODE)));
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem(config.STORAGE.USER_CODE, JSON.stringify(file));
+  }, [file]);
+
+  const getFileData = (event) => {
+    const getFile = event.target.files[0];
     const reader = new FileReader();
-    reader.onload = function (event) {
-      setFile({ name: e.target.files[0].name, content: event.target.result });
+
+    reader.onload = function (eventReader) {
+      setFile({ name: event.target.files[0].name, content: eventReader.target.result });
     };
 
-    reader.readAsText(file);
+    reader.readAsText(getFile);
   };
+
+  const getDocumentName = (value) => {
+    setFile({ ...file, name: value });
+  };
+
   return (
     <div className={styles.editor}>
       <section className={styles.container}>
-        <DocumentName name={file.name} />
-        <ImportButton getFileData={getFileData} />
+        <FileName file={file} setName={getDocumentName} />
+        <section className={styles.buttons}>
+          <ImportButton getFileData={getFileData} />
+          <ExportButton data={file} />
+        </section>
       </section>
+      <div className={styles.editorHeader}>
+        <FileExtensionName extension={"liquid"} />
+        <FileExtensionName extension={"preview"} />
+      </div>
       <div className={styles.editorCode}>
         <CodeMirror
           className={styles.codeMirror}
-          value={file.content}
+          value={file && file.content}
           extensions={htmlLanguage}
           onChange={(value) => setFile({ ...file, content: value })}
         />

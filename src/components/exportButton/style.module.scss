@@ -1,20 +1,17 @@
 @import "../../assets/styles/colors.scss";
 @import "../../assets/styles/variables.scss";
 
-.button {
+.exportButton {
   display: flex;
   align-items: center;
   position: relative;
   cursor: pointer;
 
-  p {
+  button {
     margin: 0 0 0 $margin--sm;
-  }
-
-  input {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    opacity: 0;
+    padding: 0;
+    border: none;
+    font: unset;
+    background: none;
   }
 }

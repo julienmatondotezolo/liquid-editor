@@ -1,0 +1,23 @@
+@import "../../assets/styles/colors.scss";
+@import "../../assets/styles/variables.scss";
+
+.extensionBox {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  justify-content: space-between;
+  padding: $padding--md;
+  border-right: 4px solid $brand-color--primary-light;
+
+  p {
+    color: $brand-color--light;
+    margin: 0;
+    font-size: $font-size--small;
+    font-weight: $font-weight--bold;
+    text-transform: uppercase;
+  }
+
+  img {
+    cursor: pointer;
+  }
+}

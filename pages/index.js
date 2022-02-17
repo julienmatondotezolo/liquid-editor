@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Head from "next/head";
-import Header from "../src/components/header";
+import Header from "../src/components/shared/header";
 import { Editor } from "../src/components/editor";
 
 export default function Home() {

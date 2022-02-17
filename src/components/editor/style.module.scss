@@ -15,18 +15,36 @@
     width: 90%;
     max-width: $screen-size--large;
     padding: 2rem 0;
+
+    .buttons {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
   }
-}
 
-.editorCode {
-  display: flex;
-  flex-wrap: wrap;
-  width: 100%;
-
-  .codeMirror {
-    width: 50%;
+  .editorHeader {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
     border-top: 2px solid $brand-color--primary-light;
-    border-bottom: 2px solid $brand-color--primary-light;
-    border-right: 4px solid $brand-color--primary-light;
+    overflow: hidden;
+
+    section {
+      width: 50%;
+    }
+  }
+
+  .editorCode {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+
+    .codeMirror {
+      width: 50%;
+      border-top: 2px solid $brand-color--primary-light;
+      border-bottom: 2px solid $brand-color--primary-light;
+      border-right: 4px solid $brand-color--primary-light;
+    }
   }
 }
