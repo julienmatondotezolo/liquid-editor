@@ -11,8 +11,8 @@ import styles from "./style.module.scss";
 
 export const JSONeditor = () => {
   const [scenarios, setScenarios] = useState([
-    { id: 0, name: "Scenario 1", content: "{}" },
-    { id: 1, name: "Scenario 2", content: "{}" },
+    { id: 0, name: "Scenario 1" },
+    { id: 1, name: "Scenario 2" },
   ]);
   const alert = useAlert();
 
@@ -59,9 +59,9 @@ export const JSONeditor = () => {
     setScenarios(newScenarios);
   };
 
-  const handleScenario = (content) => {
-    const parsedContent = JSON.parse(content);
-    const newScenarios = helperChangeScenario(scenarios, { parsedContent });
+  const handleScenario = (contentValue) => {
+    const content = JSON.parse(contentValue);
+    const newScenarios = helperChangeScenario(scenarios, { content });
 
     console.log(newScenarios);
     setScenarios(newScenarios);

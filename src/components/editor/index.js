@@ -71,7 +71,7 @@ export const Editor = () => {
           extensions={htmlLanguage}
           onChange={(value) => setFile({ ...file, content: value })}
         />
-        <Preview className={styles.codePreview} value={file.content} />
+        <Preview className={styles.codePreview} value={file?.content} />
       </div>
     </div>
   );
