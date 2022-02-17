@@ -18,7 +18,9 @@ const Sidebar = () => {
       </Link>
 
       <div>
-        <p>Scenario</p>
+        <Link href="/">
+          <p>Scenario</p>
+        </Link>
 
         <ul>
           {scenarios?.map((scenario) => (
