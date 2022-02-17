@@ -8,22 +8,32 @@ import { Preview } from "../preview";
 import { FileName } from "../shared/fileName";
 import ExportButton from "../shared/exportButton";
 import { FileExtensionName } from "../fileExtensionName";
+import { FileName } from "../fileName";
+import ImportButton from "../importButton";
+import { Preview } from "../preview";
+import styles from "./style.module.scss";
+import config from "../../config/config.json";
 
 export const Editor = () => {
   const [file, setFile] = useState({ name: "index.html" });
   const alert = useAlert();
 
   useEffect(() => {
-    setFile(JSON.parse(window.localStorage.getItem("liquid-editor-code")));
+    setFile(JSON.parse(window.localStorage.getItem(config.STORAGE.USER_CODE)));
   }, []);
 
   useEffect(() => {
-    localStorage.setItem("liquid-editor-code", JSON.stringify(file));
+    localStorage.setItem(config.STORAGE.USER_CODE, JSON.stringify(file));
   }, [file]);
 
   const getFileData = (event) => {
     const getFile = event.target.files[0];
     const fileExtension = getFile.name.split(".").pop();
+    const reader = new FileReader();
+
+    reader.onload = function (eventReader) {
+      setFile({ name: event.target.files[0].name, content: eventReader.target.result });
+    };
 
     if (fileExtension == "html" || fileExtension == "liquid" || fileExtension == "json") {
       const reader = new FileReader();
@@ -56,7 +66,7 @@ export const Editor = () => {
       <div className={styles.editorCode}>
         <CodeMirror
           className={styles.codeMirror}
-          value={file.content}
+          value={file && file.content}
           extensions={htmlLanguage}
           onChange={(value) => setFile({ ...file, content: value })}
         />
