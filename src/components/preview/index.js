@@ -8,13 +8,18 @@ export const Preview = ({ value }) => {
   const [scenario, setScenario] = useState(value);
 
   useEffect(() => {
-    setScenario(JSON.parse(window.localStorage.getItem("bothive-liquid-scenario")));
+    setScenario(
+      JSON.parse(window.localStorage.getItem("bothive-liquid-scenario"))
+    );
   }, []);
 
   const engine = new Liquid();
 
   engine
-    .parseAndRender(value ? value : "", scenario ? JSON.parse(scenario.content) : "")
+    .parseAndRender(
+      value ? value : "",
+      scenario ? JSON.parse(scenario.content) : ""
+    )
     .then((result) => setLiquidValue(result));
 
   return (

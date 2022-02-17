@@ -18,8 +18,8 @@ const Sidebar = () => {
       </Link>
 
       <div>
-        <Link href="/">
-          <p>Scenario</p>
+        <Link href="/scenario">
+          <a>Scenario</a>
         </Link>
 
         <ul>

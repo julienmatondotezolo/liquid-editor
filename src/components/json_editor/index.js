@@ -1,6 +1,5 @@
 import { jsonLanguage } from "@codemirror/lang-json";
 import CodeMirror from "@uiw/react-codemirror";
-import { Router, useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
 import { useAlert } from "react-alert";
 
@@ -16,11 +15,11 @@ export const JSONeditor = () => {
     { id: 1, name: "Scenario 2" },
   ]);
   const alert = useAlert();
-  // const router = useRouter();
 
   useEffect(() => {
-    // eslint-disable-next-line prettier/prettier
-    setScenarios(JSON.parse(window.localStorage.getItem("bothive-liquid-scenario")));
+    setScenarios(
+      JSON.parse(window.localStorage.getItem("bothive-liquid-scenario"))
+    );
   }, []);
 
   useEffect(() => {
