@@ -1,5 +1,4 @@
 export const downloadFile = (file, fileName) => {
-  console.log(file);
   const url = window.URL.createObjectURL(new Blob(["\ufeff", file]));
   const link = document.createElement("a");
 
