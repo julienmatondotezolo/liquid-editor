@@ -11,8 +11,8 @@ import styles from "./style.module.scss";
 
 export const JSONeditor = () => {
   const [scenarios, setScenarios] = useState([
-    { id: 0, name: "Scenario 1" },
-    { id: 1, name: "Scenario 2" },
+    { id: 0, name: "Scenario 1", content: "{}" },
+    { id: 1, name: "Scenario 2", content: "{}" },
   ]);
   const alert = useAlert();
 
@@ -42,33 +42,35 @@ export const JSONeditor = () => {
     }
   };
 
-  const helperChangeScenario = (scenarios, value) =>
-    [...scenarios].map((scenario) => {
+  const helperChangeScenario = (scenarios, value) => {
+    console.log("FUCKED VALUE:", value);
+    return [...scenarios].map((scenario) => {
       if (scenario.id === 0) {
         scenario = { ...scenario, ...value };
       }
       return scenario;
     });
+  };
 
   const handleDocumentName = (name) => {
     const newScenarioName = { name };
     const newScenarios = helperChangeScenario(scenarios, newScenarioName);
 
-    // setScenarios({ ...scenarios, name: value });
     setScenarios(newScenarios);
   };
 
   const handleScenario = (content) => {
-    const newScenarioContent = { content };
-    const newScenarios = helperChangeScenario(scenarios, newScenarioContent);
+    const parsedContent = JSON.parse(content);
+    const newScenarios = helperChangeScenario(scenarios, { parsedContent });
 
+    console.log(newScenarios);
     setScenarios(newScenarios);
   };
 
   return (
     <div className={styles.editor}>
       <section className={styles.container}>
-        <FileName file={scenarios[0]} setName={handleDocumentName} />
+        <FileName file={scenarios?.[0]} setName={handleDocumentName} />
         <section className={styles.buttons}>
           <ImportButton getFileData={getFileData} />
           <ExportButton data={scenarios} />
@@ -80,7 +82,7 @@ export const JSONeditor = () => {
       <div className={styles.editorCode}>
         <CodeMirror
           className={styles.codeMirror}
-          value={scenarios && scenarios.content}
+          value={scenarios && JSON.stringify(scenarios[0].parsedContent)}
           extensions={jsonLanguage}
           onChange={(value) => handleScenario(value)}
         />

@@ -7,7 +7,7 @@ export const FileName = ({ file, setName }) => (
     <p>Document name</p>
     <input
       type="text"
-      value={file.name}
+      value={file && file.name}
       onChange={(e) => setName(e.target.value)}
     ></input>
   </article>
