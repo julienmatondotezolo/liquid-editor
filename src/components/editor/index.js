@@ -1,18 +1,15 @@
-import React, { useState, useEffect } from "react";
+import { htmlLanguage } from "@codemirror/lang-html";
 import CodeMirror from "@uiw/react-codemirror";
-import { html, htmlLanguage } from "@codemirror/lang-html";
+import React, { useEffect, useState } from "react";
 import { useAlert } from "react-alert";
-import styles from "./style.module.scss";
-import ImportButton from "../shared/importButton";
-import { Preview } from "../preview";
-import { FileName } from "../shared/fileName";
-import ExportButton from "../shared/exportButton";
-import { FileExtensionName } from "../fileExtensionName";
-import { FileName } from "../fileName";
-import ImportButton from "../importButton";
-import { Preview } from "../preview";
-import styles from "./style.module.scss";
+
 import config from "../../config/config.json";
+import { FileExtensionName } from "../fileExtensionName";
+import { Preview } from "../preview";
+import ExportButton from "../shared/exportButton";
+import { FileName } from "../shared/fileName";
+import ImportButton from "../shared/importButton";
+import styles from "./style.module.scss";
 
 export const Editor = () => {
   const [file, setFile] = useState({ name: "index.html" });
@@ -32,11 +29,15 @@ export const Editor = () => {
     const reader = new FileReader();
 
     reader.onload = function (eventReader) {
-      setFile({ name: event.target.files[0].name, content: eventReader.target.result });
+      setFile({
+        name: event.target.files[0].name,
+        content: eventReader.target.result,
+      });
     };
 
-    if (fileExtension == "html" || fileExtension == "liquid" || fileExtension == "json") {
+    if (fileExtension == "html" || fileExtension == "liquid") {
       const reader = new FileReader();
+
       reader.onload = function (eventReader) {
         setFile({ name: getFile.name, content: eventReader.target.result });
       };
