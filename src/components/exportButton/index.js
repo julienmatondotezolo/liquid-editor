@@ -4,8 +4,6 @@ import styles from "./style.module.scss";
 import { downloadFile } from "../../helpers";
 
 const ExportButton = ({ data }) => {
-  const anchorElement = useRef();
-
   return (
     <div className={styles.exportButton}>
       <FaFileExport />
