@@ -1,11 +1,14 @@
-@import "../../assets/styles/colors.scss";
-@import "../../assets/styles/variables.scss";
+@import "../../../assets/styles/colors.scss";
+@import "../../../assets/styles/variables.scss";
 
 .exportButton {
   display: flex;
   align-items: center;
-  position: relative;
   cursor: pointer;
+
+  &hover {
+    color: $brand-color--light;
+  }
 
   button {
     margin: 0 0 0 $margin--sm;

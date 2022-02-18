@@ -1,11 +1,15 @@
-@import "../../assets/styles/colors.scss";
-@import "../../assets/styles/variables.scss";
+@import "../../../assets/styles/colors.scss";
+@import "../../../assets/styles/variables.scss";
 
 .button {
   display: flex;
   align-items: center;
   position: relative;
   cursor: pointer;
+
+  &hover {
+    color: $brand-color--light;
+  }
 
   p {
     margin: 0 0 0 $margin--sm;
