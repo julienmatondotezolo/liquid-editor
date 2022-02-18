@@ -13,13 +13,13 @@ import styles from "./style.module.scss";
 
 export const JSONeditor = () => {
   const [scenarios, setScenarios] = useState([
-    { id: 0, name: "data.json" },
+    { id: 0, name: "untitled-scenario.json" },
     { id: 1, name: "data-2.json" },
   ]);
   const alert = useAlert();
 
   const router = useRouter();
-  const { id } = router.query;
+  const pageId = router.query.id ?? 0;
 
   useEffect(() => {
     const storageScenarios = window.localStorage.getItem(
@@ -54,7 +54,7 @@ export const JSONeditor = () => {
 
   const helperChangeScenario = (scenarios, value) =>
     [...scenarios].map((scenario) => {
-      if (scenario.id === id) {
+      if (scenario.id === pageId) {
         scenario = { ...scenario, ...value };
       }
       return scenario;
@@ -81,10 +81,10 @@ export const JSONeditor = () => {
   return (
     <div className={styles.editor}>
       <section className={styles.container}>
-        <FileName file={scenarios?.[id]} setName={handleDocumentName} />
+        <FileName file={scenarios?.[pageId]} setName={handleDocumentName} />
         <section className={styles.buttons}>
           <ImportButton getFileData={getFileData} />
-          <ExportButton data={scenarios[id]} />
+          <ExportButton data={scenarios[pageId]} />
         </section>
       </section>
       <div className={styles.editorHeader}>
@@ -93,7 +93,7 @@ export const JSONeditor = () => {
       <div className={styles.editorCode}>
         <CodeMirror
           className={styles.codeMirror}
-          value={scenarios ? JSON.stringify(scenarios[id].content) : ""}
+          value={scenarios ? JSON.stringify(scenarios[pageId].content) : ""}
           extensions={jsonLanguage}
           onChange={(value) => handleScenario(value)}
         />

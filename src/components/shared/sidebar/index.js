@@ -5,7 +5,7 @@ import React, { useEffect, useState } from "react";
 import config from "../../../config/config.json";
 import styles from "./style.module.scss";
 
-const Sidebar = () => {
+const Sidebar = ({ setOpen }) => {
   const [scenarios, setScenarios] = useState([]);
   const router = useRouter();
   const { id } = router.query;
@@ -17,29 +17,42 @@ const Sidebar = () => {
 
     if (storageScenarios) {
       setScenarios(JSON.parse(storageScenarios));
-      console.log(JSON.parse(storageScenarios));
     }
   }, []);
 
-  const createScenario = (event) => {
-    setScenarios({ ...scenarios, name: "untitled-scenario.json" });
+  // const handleScenarioClick = (scenarioId) => {
+  //   setOpen(false);
+  //   router.push(`scenario/${scenarioId}`);
+  // };
+
+  const createScenario = () => {
+    const scenariosLength = scenarios.length;
+    const newId = scenariosLength + 1;
+
+    setScenarios({ ...scenarios, id: newId, name: "untitled-scenario.json" });
   };
 
   return (
     <nav className={styles.sidebar}>
-      <Link href="/">
+      <Link href="/" onClick={() => setOpen(false)}>
         <a>Editor</a>
       </Link>
 
       <div>
-        <Link href="/scenario">
+        <Link href="/scenario" onClick={() => setOpen(false)}>
           <a>Scenario</a>
         </Link>
 
         <ul>
           {scenarios?.map((scenario) => (
-            <Link href={`/scenario/${scenario.id}`} key={scenario.id} passHref>
+            <Link
+              href={`/scenario/${scenario.id}`}
+              key={scenario.id}
+              onClick={() => setOpen(false)}
+              passHref
+            >
               <li
+                // onClick={() => handleScenarioClick(scenario.id)}
                 className={scenario.id == id && styles.active}
                 aria-hidden="true"
               >
@@ -50,7 +63,7 @@ const Sidebar = () => {
             </Link>
           ))}
         </ul>
-        <button onClick={(e) => createScenario(e)}>Add new scenario</button>
+        <button onClick={() => createScenario()}>Add new scenario</button>
       </div>
     </nav>
   );

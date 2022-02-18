@@ -6,11 +6,6 @@ import { JSONeditor } from "../../src/components/json_editor";
 import Header from "../../src/components/shared/header";
 
 export default function Scenario() {
-  const router = useRouter();
-  const { id } = router.query;
-
-  console.log(id);
-
   return (
     <div>
       <Head>
