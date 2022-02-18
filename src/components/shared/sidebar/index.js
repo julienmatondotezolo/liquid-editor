@@ -20,16 +20,14 @@ const Sidebar = ({ setOpen }) => {
     }
   }, []);
 
-  // const handleScenarioClick = (scenarioId) => {
-  //   setOpen(false);
-  //   router.push(`scenario/${scenarioId}`);
-  // };
-
   const createScenario = () => {
     const scenariosLength = scenarios.length;
     const newId = scenariosLength + 1;
+    const newScenario = { id: newId, name: "untitled-scenario.json" };
 
-    setScenarios({ ...scenarios, id: newId, name: "untitled-scenario.json" });
+    console.log(newScenario);
+
+    setScenarios(...scenarios, newScenario);
   };
 
   return (
@@ -45,15 +43,10 @@ const Sidebar = ({ setOpen }) => {
 
         <ul>
           {scenarios?.map((scenario) => (
-            <Link
-              href={`/scenario/${scenario.id}`}
-              key={scenario.id}
-              onClick={() => setOpen(false)}
-              passHref
-            >
+            <Link href={`/scenario/${scenario.id}`} key={scenario.id} passHref>
               <li
-                // onClick={() => handleScenarioClick(scenario.id)}
-                className={scenario.id == id && styles.active}
+                className={scenario.id == id ? styles.active : ""}
+                onClick={() => setOpen(false)}
                 aria-hidden="true"
               >
                 <p>
@@ -63,6 +56,7 @@ const Sidebar = ({ setOpen }) => {
             </Link>
           ))}
         </ul>
+
         <button onClick={() => createScenario()}>Add new scenario</button>
       </div>
     </nav>

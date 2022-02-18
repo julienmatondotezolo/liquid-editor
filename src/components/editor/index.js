@@ -13,19 +13,35 @@ import styles from "./style.module.scss";
 
 export const Editor = () => {
   const [file, setFile] = useState({ name: "index.html" });
+  const [scenarios, setScenarios] = useState([
+    {
+      id: 0,
+      name: "untitled-scenario.json",
+      content: { name: "julien", age: 13 },
+    },
+    { id: 1, name: "data-2.json" },
+  ]);
   const alert = useAlert();
 
   useEffect(() => {
     const storageFile = window.localStorage.getItem(config.STORAGE.USER_CODE);
+    const storageScenarios = window.localStorage.getItem(
+      config.STORAGE.SCENARIOS
+    );
 
     if (storageFile) {
       setFile(JSON.parse(storageFile));
+    }
+
+    if (storageScenarios) {
+      setScenarios(JSON.parse(storageScenarios));
     }
   }, []);
 
   useEffect(() => {
     localStorage.setItem(config.STORAGE.USER_CODE, JSON.stringify(file));
-  }, [file]);
+    localStorage.setItem(config.STORAGE.SCENARIOS, JSON.stringify(scenarios));
+  }, [file, scenarios]);
 
   const getFileData = (event) => {
     const getFile = event.target.files[0];

@@ -1,5 +1,4 @@
 import Head from "next/head";
-import { useRouter } from "next/router";
 import React from "react";
 
 import { JSONeditor } from "../../src/components/json_editor";

@@ -13,7 +13,11 @@ import styles from "./style.module.scss";
 
 export const JSONeditor = () => {
   const [scenarios, setScenarios] = useState([
-    { id: 0, name: "untitled-scenario.json" },
+    {
+      id: 0,
+      name: "untitled-scenario.json",
+      content: { name: "julien", age: 13 },
+    },
     { id: 1, name: "data-2.json" },
   ]);
   const alert = useAlert();
@@ -43,7 +47,6 @@ export const JSONeditor = () => {
       const reader = new FileReader();
 
       reader.onload = function (eventReader) {
-        // setScenarios({ content: eventReader.target.result });
         handleScenario(eventReader.target.result);
       };
       reader.readAsText(getFile);
@@ -52,13 +55,15 @@ export const JSONeditor = () => {
     }
   };
 
-  const helperChangeScenario = (scenarios, value) =>
-    [...scenarios].map((scenario) => {
+  const helperChangeScenario = (scenarios, value) => {
+    console.log("Value:", value);
+    return [...scenarios].map((scenario) => {
       if (scenario.id === pageId) {
         scenario = { ...scenario, ...value };
       }
       return scenario;
     });
+  };
 
   const handleDocumentName = (name) => {
     const newScenarioName = { name };
@@ -72,6 +77,7 @@ export const JSONeditor = () => {
       const content = JSON.parse(contentValue);
       const newScenarios = helperChangeScenario(scenarios, { content });
 
+      console.log(newScenarios);
       setScenarios(newScenarios);
     } catch (e) {
       alert.error("Write a valid JSON");
@@ -81,7 +87,7 @@ export const JSONeditor = () => {
   return (
     <div className={styles.editor}>
       <section className={styles.container}>
-        <FileName file={scenarios?.[pageId]} setName={handleDocumentName} />
+        <FileName file={scenarios[pageId]} setName={handleDocumentName} />
         <section className={styles.buttons}>
           <ImportButton getFileData={getFileData} />
           <ExportButton data={scenarios[pageId]} />
