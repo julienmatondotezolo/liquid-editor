@@ -1,5 +1,6 @@
 import { jsonLanguage } from "@codemirror/lang-json";
 import CodeMirror from "@uiw/react-codemirror";
+import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
 import { useAlert } from "react-alert";
 
@@ -16,6 +17,9 @@ export const JSONeditor = () => {
     { id: 1, name: "data-2.json" },
   ]);
   const alert = useAlert();
+
+  const router = useRouter();
+  const { id } = router.query;
 
   useEffect(() => {
     const storageScenarios = window.localStorage.getItem(
@@ -50,7 +54,7 @@ export const JSONeditor = () => {
 
   const helperChangeScenario = (scenarios, value) =>
     [...scenarios].map((scenario) => {
-      if (scenario.id === 0) {
+      if (scenario.id === id) {
         scenario = { ...scenario, ...value };
       }
       return scenario;
@@ -77,10 +81,10 @@ export const JSONeditor = () => {
   return (
     <div className={styles.editor}>
       <section className={styles.container}>
-        <FileName file={scenarios?.[0]} setName={handleDocumentName} />
+        <FileName file={scenarios?.[id]} setName={handleDocumentName} />
         <section className={styles.buttons}>
           <ImportButton getFileData={getFileData} />
-          <ExportButton data={scenarios[0]} />
+          <ExportButton data={scenarios[id]} />
         </section>
       </section>
       <div className={styles.editorHeader}>
@@ -89,7 +93,7 @@ export const JSONeditor = () => {
       <div className={styles.editorCode}>
         <CodeMirror
           className={styles.codeMirror}
-          value={scenarios ? JSON.stringify(scenarios[0].content) : ""}
+          value={scenarios ? JSON.stringify(scenarios[id].content) : ""}
           extensions={jsonLanguage}
           onChange={(value) => handleScenario(value)}
         />

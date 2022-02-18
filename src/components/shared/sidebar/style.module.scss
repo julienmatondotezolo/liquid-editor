@@ -12,4 +12,21 @@
   color: #fff;
   background: $brand-color--primary;
   z-index: 1;
+
+  div {
+    margin-top: $margin--md;
+  }
+
+  li {
+    cursor: pointer;
+    margin-top: $margin--sm;
+    &:hover {
+      font-weight: $font-weight--bold;
+    }
+  }
+
+  .active {
+    text-decoration: underline;
+    font-weight: $font-weight--bold;
+  }
 }

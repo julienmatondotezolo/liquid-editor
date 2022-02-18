@@ -1,10 +1,10 @@
 import Head from "next/head";
 import React from "react";
 
-import { JSONeditor } from "../src/components/json_editor";
-import Header from "../src/components/shared/header";
+import { JSONeditor } from "../../src/components/json_editor";
+import Header from "../../src/components/shared/header";
 
-export default function Home() {
+export default function Scenario() {
   return (
     <div>
       <Head>
