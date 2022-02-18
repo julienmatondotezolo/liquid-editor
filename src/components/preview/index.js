@@ -8,8 +8,6 @@ export const Preview = ({ value, scenario }) => {
   const [liquidValue, setLiquidValue] = useState(value);
   const [scenarios, setScenarios] = useState([]);
 
-  console.log("CURRENT SCENARIO:", scenario);
-
   useEffect(() => {
     const storageScenario = window.localStorage.getItem(
       config.STORAGE.SCENARIOS

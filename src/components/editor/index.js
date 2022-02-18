@@ -85,7 +85,7 @@ export const Editor = () => {
       <div className={styles.editorHeader}>
         <FileExtensionName extension={"liquid"} />
         <ScenarioPreviewPicker
-          scenario={scenarios}
+          scenarios={scenarios}
           setCurrentScenario={setCurrentScenario}
         />
       </div>

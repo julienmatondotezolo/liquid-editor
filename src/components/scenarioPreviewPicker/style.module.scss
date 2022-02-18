@@ -11,13 +11,30 @@
 
   p {
     color: $brand-color--light;
-    margin: 0;
+    // margin: 0;
     font-size: $font-size--small;
     font-weight: $font-weight--bold;
     text-transform: uppercase;
   }
 
-  img {
+  .dropdown {
+    position: absolute;
+    right: 5%;
+    display: inline-block;
     cursor: pointer;
+  }
+
+  &:hover .dropdownContent {
+    display: block;
+  }
+
+  .dropdownContent {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    padding: $padding--md;
+    z-index: 1;
   }
 }
