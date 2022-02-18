@@ -13,6 +13,22 @@
   background: $brand-color--primary;
   z-index: 1;
 
+  .btn {
+    padding: 1em;
+    background: #fff;
+    width: 100%;
+    color: $brand-color--primary;
+    border: 2px solid #fff;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+
+    &:hover {
+      color: #fff;
+      background: $brand-color--primary;
+    }
+  }
+
   div {
     margin-top: $margin--md;
   }

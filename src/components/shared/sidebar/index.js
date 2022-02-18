@@ -33,8 +33,6 @@ const Sidebar = ({ setOpen }) => {
       content: { name: "Write JSON here." },
     };
 
-    console.log(newScenario);
-
     setScenarios((oldScenarios) => [...oldScenarios, newScenario]);
   };
 
@@ -65,7 +63,9 @@ const Sidebar = ({ setOpen }) => {
           ))}
         </ul>
 
-        <button onClick={() => createScenario()}>Add new scenario</button>
+        <button className={styles.btn} onClick={() => createScenario()}>
+          Add new scenario
+        </button>
       </div>
     </nav>
   );
