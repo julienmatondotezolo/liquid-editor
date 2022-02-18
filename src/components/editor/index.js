@@ -6,6 +6,7 @@ import { useAlert } from "react-alert";
 import config from "../../config/config.json";
 import { FileExtensionName } from "../fileExtensionName";
 import { Preview } from "../preview";
+import { ScenarioPreviewPicker } from "../scenarioPreviewPicker";
 import ExportButton from "../shared/exportButton";
 import { FileName } from "../shared/fileName";
 import ImportButton from "../shared/importButton";
@@ -21,6 +22,7 @@ export const Editor = () => {
     },
     { id: 1, name: "data-2.json" },
   ]);
+  const [currentScenario, setCurrentScenario] = useState(0);
   const alert = useAlert();
 
   useEffect(() => {
@@ -82,7 +84,10 @@ export const Editor = () => {
       </section>
       <div className={styles.editorHeader}>
         <FileExtensionName extension={"liquid"} />
-        <FileExtensionName extension={"preview"} />
+        <ScenarioPreviewPicker
+          scenario={scenarios}
+          setCurrentScenario={setCurrentScenario}
+        />
       </div>
       <div className={styles.editorCode}>
         <CodeMirror
@@ -91,7 +96,11 @@ export const Editor = () => {
           extensions={htmlLanguage}
           onChange={(value) => setFile({ ...file, content: value })}
         />
-        <Preview className={styles.codePreview} value={file.content} />
+        <Preview
+          className={styles.codePreview}
+          scenario={currentScenario}
+          value={file.content}
+        />
       </div>
     </div>
   );

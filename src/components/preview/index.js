@@ -1,15 +1,14 @@
 import { Liquid } from "liquidjs";
-import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
 
 import config from "../../config/config.json";
 import styles from "./style.module.scss";
 
-export const Preview = ({ value }) => {
+export const Preview = ({ value, scenario }) => {
   const [liquidValue, setLiquidValue] = useState(value);
   const [scenarios, setScenarios] = useState([]);
-  const router = useRouter();
-  const pageId = router.query.id ?? 0;
+
+  console.log("CURRENT SCENARIO:", scenario);
 
   useEffect(() => {
     const storageScenario = window.localStorage.getItem(
@@ -26,7 +25,7 @@ export const Preview = ({ value }) => {
   engine
     .parseAndRender(
       value ?? "",
-      scenarios.length > 0 ? scenarios[pageId].content : ""
+      scenarios.length > 0 ? scenarios[scenario].content : ""
     )
     .then((result) => {
       setLiquidValue(result);

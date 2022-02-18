@@ -20,14 +20,22 @@ const Sidebar = ({ setOpen }) => {
     }
   }, []);
 
+  useEffect(() => {
+    localStorage.setItem(config.STORAGE.SCENARIOS, JSON.stringify(scenarios));
+  }, [scenarios]);
+
   const createScenario = () => {
-    const scenariosLength = scenarios.length;
+    const scenariosLength = scenarios.length - 1;
     const newId = scenariosLength + 1;
-    const newScenario = { id: newId, name: "untitled-scenario.json" };
+    const newScenario = {
+      id: newId,
+      name: `untitled-scenario${newId}.json`,
+      content: { name: "Write JSON here." },
+    };
 
     console.log(newScenario);
 
-    setScenarios(...scenarios, newScenario);
+    setScenarios((oldScenarios) => [...oldScenarios, newScenario]);
   };
 
   return (

@@ -16,14 +16,18 @@ export const JSONeditor = () => {
     {
       id: 0,
       name: "untitled-scenario.json",
-      content: { name: "julien", age: 13 },
+      content: { name: "Write JSON here." },
     },
-    { id: 1, name: "data-2.json" },
   ]);
+  const [pageId, setPageId] = useState(0);
   const alert = useAlert();
-
   const router = useRouter();
-  const pageId = router.query.id ?? 0;
+
+  useEffect(() => {
+    if (router.asPath !== router.route) {
+      setPageId(parseInt(router.query.id));
+    }
+  }, [router]);
 
   useEffect(() => {
     const storageScenarios = window.localStorage.getItem(
@@ -55,33 +59,26 @@ export const JSONeditor = () => {
     }
   };
 
-  const helperChangeScenario = (scenarios, value) => {
-    console.log("Value:", value);
-    return [...scenarios].map((scenario) => {
+  const helperChangeScenario = (value) =>
+    [...scenarios].map((scenario) => {
       if (scenario.id === pageId) {
         scenario = { ...scenario, ...value };
       }
       return scenario;
     });
-  };
 
   const handleDocumentName = (name) => {
     const newScenarioName = { name };
-    const newScenarios = helperChangeScenario(scenarios, newScenarioName);
+    const newScenarios = helperChangeScenario(newScenarioName);
 
     setScenarios(newScenarios);
   };
 
   const handleScenario = (contentValue) => {
-    try {
-      const content = JSON.parse(contentValue);
-      const newScenarios = helperChangeScenario(scenarios, { content });
+    const content = JSON.parse(contentValue);
+    const newScenarios = helperChangeScenario({ content });
 
-      console.log(newScenarios);
-      setScenarios(newScenarios);
-    } catch (e) {
-      alert.error("Write a valid JSON");
-    }
+    setScenarios(newScenarios);
   };
 
   return (
@@ -99,7 +96,7 @@ export const JSONeditor = () => {
       <div className={styles.editorCode}>
         <CodeMirror
           className={styles.codeMirror}
-          value={scenarios ? JSON.stringify(scenarios[pageId].content) : ""}
+          value={scenarios ? JSON.stringify(scenarios[pageId]?.content) : ""}
           extensions={jsonLanguage}
           onChange={(value) => handleScenario(value)}
         />
