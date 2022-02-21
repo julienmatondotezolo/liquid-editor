@@ -25,11 +25,11 @@ const Sidebar = ({ setOpen }) => {
   }, [scenarios]);
 
   const createScenario = () => {
-    const scenariosLength = scenarios.length - 1;
-    const newId = scenariosLength + 1;
+    // const scenariosLength = scenarios.length - 1;
+    const newScenarioId = scenarios.length + 1;
     const newScenario = {
-      id: newId,
-      name: `untitled-scenario${newId}.json`,
+      id: newScenarioId,
+      name: `untitled-scenario${newScenarioId}.json`,
       content: { name: "Write JSON here." },
     };
 
@@ -55,9 +55,7 @@ const Sidebar = ({ setOpen }) => {
                 onClick={() => setOpen(false)}
                 aria-hidden="true"
               >
-                <p>
-                  {scenario.id}: {scenario.name}
-                </p>
+                <p>{scenario.name}</p>
               </li>
             </Link>
           ))}

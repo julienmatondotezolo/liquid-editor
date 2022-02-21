@@ -12,14 +12,8 @@ import ImportButton from "../shared/importButton";
 import styles from "./style.module.scss";
 
 export const JSONeditor = () => {
-  const [scenarios, setScenarios] = useState([
-    {
-      id: 0,
-      name: "untitled-scenario.json",
-      content: { name: "Write JSON here." },
-    },
-  ]);
   const [pageId, setPageId] = useState(0);
+  const [scenarios, setScenarios] = useState([]);
   const alert = useAlert();
   const router = useRouter();
 
@@ -96,7 +90,11 @@ export const JSONeditor = () => {
       <div className={styles.editorCode}>
         <CodeMirror
           className={styles.codeMirror}
-          value={scenarios ? JSON.stringify(scenarios[pageId]?.content) : ""}
+          value={
+            scenarios
+              ? JSON.stringify(scenarios[pageId]?.content)
+              : { name: "Write JSON here." }
+          }
           extensions={jsonLanguage}
           onChange={(value) => handleScenario(value)}
         />

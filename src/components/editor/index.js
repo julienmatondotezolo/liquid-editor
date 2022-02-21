@@ -20,7 +20,6 @@ export const Editor = () => {
       name: "untitled-scenario.json",
       content: { name: "julien", age: 13 },
     },
-    { id: 1, name: "data-2.json" },
   ]);
   const [currentScenario, setCurrentScenario] = useState(0);
   const alert = useAlert();

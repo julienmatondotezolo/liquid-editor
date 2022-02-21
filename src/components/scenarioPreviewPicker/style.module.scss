@@ -22,10 +22,10 @@
     right: 5%;
     display: inline-block;
     cursor: pointer;
-  }
 
-  &:hover .dropdownContent {
-    display: block;
+    &:hover .dropdownContent {
+      display: block;
+    }
   }
 
   .dropdownContent {
