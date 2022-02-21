@@ -25,8 +25,8 @@ const Sidebar = ({ setOpen }) => {
   }, [scenarios]);
 
   const createScenario = () => {
-    // const scenariosLength = scenarios.length - 1;
-    const newScenarioId = scenarios.length + 1;
+    let scenariosLength = scenarios.length;
+    const newScenarioId = scenariosLength++;
     const newScenario = {
       id: newScenarioId,
       name: `untitled-scenario${newScenarioId}.json`,
@@ -43,7 +43,7 @@ const Sidebar = ({ setOpen }) => {
       </Link>
 
       <div>
-        <Link href="/scenario" onClick={() => setOpen(false)}>
+        <Link href="/" onClick={() => setOpen(false)}>
           <a>Scenario</a>
         </Link>
 
