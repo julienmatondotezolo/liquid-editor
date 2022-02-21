@@ -1,5 +1,7 @@
 export const downloadFile = (file, fileName) => {
-  const url = window.URL.createObjectURL(new Blob(["\ufeff", file]));
+  const url = window.URL.createObjectURL(
+    new Blob(["\ufeff", typeof file === "object" ? JSON.stringify(file) : file])
+  );
   const link = document.createElement("a");
 
   link.href = url;

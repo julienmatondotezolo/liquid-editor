@@ -9,7 +9,7 @@ const ImportButton = ({ getFileData }) => (
     <p>Import file</p>
     <input
       type="file"
-      accept=".html, .liquid"
+      accept=".html, .liquid, .json"
       onChange={(file) => getFileData(file)}
     />
   </div>

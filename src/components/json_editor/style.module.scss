@@ -1,0 +1,49 @@
+@import "../../assets/styles/colors.scss";
+@import "../../assets/styles/variables.scss";
+
+.editor {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 100%;
+  margin-top: $header-height;
+
+  .container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    width: 90%;
+    max-width: $screen-size--large;
+    padding: 2rem 0;
+
+    .buttons {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+  }
+
+  .editorHeader {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    border-top: 2px solid $brand-color--primary-light;
+    overflow: hidden;
+
+    section {
+      width: 100%;
+    }
+  }
+
+  .editorCode {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+
+    .codeMirror {
+      width: 100%;
+      border-top: 2px solid $brand-color--primary-light;
+      border-bottom: 2px solid $brand-color--primary-light;
+    }
+  }
+}

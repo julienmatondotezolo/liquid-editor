@@ -23,7 +23,7 @@ const Header = () => {
           <h1>Bothive Liquid editor</h1>
         </section>
       </nav>
-      {open && <Sidebar />}
+      {open && <Sidebar setOpen={setOpen} />}
     </div>
   );
 };

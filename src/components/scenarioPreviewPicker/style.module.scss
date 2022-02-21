@@ -1,0 +1,39 @@
+@import "../../assets/styles/colors.scss";
+@import "../../assets/styles/variables.scss";
+
+.extensionBox {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  justify-content: space-between;
+  padding: $padding--md;
+  border-right: 4px solid $brand-color--primary-light;
+
+  p {
+    color: $brand-color--light;
+    font-size: $font-size--small;
+    font-weight: $font-weight--bold;
+    text-transform: uppercase;
+  }
+
+  .dropdown {
+    position: absolute;
+    right: 5%;
+    display: inline-block;
+    cursor: pointer;
+
+    &:hover .dropdownContent {
+      display: block;
+    }
+  }
+
+  .dropdownContent {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    padding: $padding--md;
+    z-index: 1;
+  }
+}

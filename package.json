@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "@codemirror/lang-html": "0.19.4",
+    "@codemirror/lang-json": "0.19.1",
     "@uiw/react-codemirror": "4.3.3",
     "eslint-plugin-prettier": "4.0.0",
     "liquidjs": "9.34.0",

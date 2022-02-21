@@ -1,6 +1,6 @@
 {
   "STORAGE": {
-    "USER_CODE": "liquid-editor-code",
-    "SCENARIOS": "bothive-liquid-scenario"
+    "USER_CODE": "bothive-editor-code",
+    "SCENARIOS": "bothive-editor-scenario"
   }
 }

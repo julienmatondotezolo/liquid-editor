@@ -1,16 +1,33 @@
 import { Liquid } from "liquidjs";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
+import config from "../../config/config.json";
 import styles from "./style.module.scss";
 
-export const Preview = ({ value }) => {
+export const Preview = ({ value, scenario }) => {
   const [liquidValue, setLiquidValue] = useState(value);
+  const [scenarios, setScenarios] = useState([]);
+
+  useEffect(() => {
+    const storageScenario = window.localStorage.getItem(
+      config.STORAGE.SCENARIOS
+    );
+
+    if (storageScenario) {
+      setScenarios(JSON.parse(storageScenario));
+    }
+  }, []);
 
   const engine = new Liquid();
 
   engine
-    .parseAndRender(value ? value : "")
-    .then((result) => setLiquidValue(result));
+    .parseAndRender(
+      value ?? "",
+      scenarios.length > 0 ? scenarios[scenario].content : ""
+    )
+    .then((result) => {
+      setLiquidValue(result);
+    });
 
   return (
     <article className={styles.preview}>

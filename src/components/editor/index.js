@@ -6,6 +6,7 @@ import { useAlert } from "react-alert";
 import config from "../../config/config.json";
 import { FileExtensionName } from "../fileExtensionName";
 import { Preview } from "../preview";
+import { ScenarioPreviewPicker } from "../scenarioPreviewPicker";
 import ExportButton from "../shared/exportButton";
 import { FileName } from "../shared/fileName";
 import ImportButton from "../shared/importButton";
@@ -13,15 +14,35 @@ import styles from "./style.module.scss";
 
 export const Editor = () => {
   const [file, setFile] = useState({ name: "index.html" });
+  const [scenarios, setScenarios] = useState([
+    {
+      id: 0,
+      name: "untitled-scenario.json",
+      content: { name: "julien", age: 13 },
+    },
+  ]);
+  const [currentScenario, setCurrentScenario] = useState(0);
   const alert = useAlert();
 
   useEffect(() => {
-    setFile(JSON.parse(window.localStorage.getItem(config.STORAGE.USER_CODE)));
+    const storageFile = window.localStorage.getItem(config.STORAGE.USER_CODE);
+    const storageScenarios = window.localStorage.getItem(
+      config.STORAGE.SCENARIOS
+    );
+
+    if (storageFile) {
+      setFile(JSON.parse(storageFile));
+    }
+
+    if (storageScenarios) {
+      setScenarios(JSON.parse(storageScenarios));
+    }
   }, []);
 
   useEffect(() => {
     localStorage.setItem(config.STORAGE.USER_CODE, JSON.stringify(file));
-  }, [file]);
+    localStorage.setItem(config.STORAGE.SCENARIOS, JSON.stringify(scenarios));
+  }, [file, scenarios]);
 
   const getFileData = (event) => {
     const getFile = event.target.files[0];
@@ -43,7 +64,7 @@ export const Editor = () => {
       };
       reader.readAsText(getFile);
     } else {
-      alert.error("Wrong file type ! (Only .html & .json or accepted ");
+      alert.error("Wrong file type ! (Only .html & .liquid or accepted");
     }
   };
 
@@ -62,16 +83,23 @@ export const Editor = () => {
       </section>
       <div className={styles.editorHeader}>
         <FileExtensionName extension={"liquid"} />
-        <FileExtensionName extension={"preview"} />
+        <ScenarioPreviewPicker
+          scenarios={scenarios}
+          setCurrentScenario={setCurrentScenario}
+        />
       </div>
       <div className={styles.editorCode}>
         <CodeMirror
           className={styles.codeMirror}
-          value={file && file.content}
+          value={file ? file.content : "<h1>Write your code here...</h1>"}
           extensions={htmlLanguage}
           onChange={(value) => setFile({ ...file, content: value })}
         />
-        <Preview className={styles.codePreview} value={file.content} />
+        <Preview
+          className={styles.codePreview}
+          scenario={currentScenario}
+          value={file.content}
+        />
       </div>
     </div>
   );

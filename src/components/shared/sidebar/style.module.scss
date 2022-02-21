@@ -1,0 +1,48 @@
+@import "../../../assets/styles/colors.scss";
+@import "../../../assets/styles/variables.scss";
+
+.sidebar {
+  position: fixed;
+  top: $header-height;
+  padding: 1rem 5%;
+  box-sizing: border-box;
+  float: left;
+  width: 400px;
+  height: calc(100vh - $header-height);
+  color: #fff;
+  background: $brand-color--primary;
+  z-index: 1;
+
+  .btn {
+    padding: 1em;
+    background: #fff;
+    width: 100%;
+    color: $brand-color--primary;
+    border: 2px solid #fff;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+
+    &:hover {
+      color: #fff;
+      background: $brand-color--primary;
+    }
+  }
+
+  div {
+    margin-top: $margin--md;
+  }
+
+  li {
+    cursor: pointer;
+    margin-top: $margin--sm;
+    &:hover {
+      font-weight: $font-weight--bold;
+    }
+  }
+
+  .active {
+    text-decoration: underline;
+    font-weight: $font-weight--bold;
+  }
+}
