@@ -9,14 +9,14 @@ export const fileAtom = atom({
 });
 
 export const scenariosAtom = atom({
-  key: "scenarios",
+  key: "scenariosIds",
   default: [],
 });
 
 export const scenarioAtom = atomFamily({
   key: "scenario",
   default: {
-    name: "untitled-scenario.json",
+    name: "untitled-scenario",
     content: { company: "Bothive" },
   },
 });
