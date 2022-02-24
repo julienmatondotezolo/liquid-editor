@@ -4,7 +4,7 @@ import React, { useEffect, useState } from "react";
 import { useRecoilState } from "recoil";
 
 import config from "../../config/config.json";
-import { fileAtom, scenarioAtom } from "../../recoil/atoms";
+import { fileAtom, scenariosAtom } from "../../recoil/atoms";
 import { FileExtensionName } from "../fileExtensionName";
 import { Preview } from "../preview";
 import { ScenarioPreviewPicker } from "../scenarioPreviewPicker";
@@ -15,7 +15,7 @@ import styles from "./style.module.scss";
 
 export const Editor = () => {
   const [file, setFile] = useRecoilState(fileAtom);
-  const [scenarios, setScenarios] = useRecoilState(scenarioAtom);
+  const [scenarios, setScenarios] = useRecoilState(scenariosAtom);
   const [currentScenario, setCurrentScenario] = useState(0);
 
   useEffect(() => {
