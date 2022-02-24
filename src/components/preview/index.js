@@ -1,12 +1,15 @@
 import { Liquid } from "liquidjs";
 import React, { useEffect, useState } from "react";
+import { useRecoilValue } from "recoil";
 
 import config from "../../config/config.json";
+import { fileAtom } from "../../recoil/atoms";
 import styles from "./style.module.scss";
 
-export const Preview = ({ value, scenario }) => {
-  const [liquidValue, setLiquidValue] = useState(value);
+export const Preview = ({ scenario }) => {
+  const file = useRecoilValue(fileAtom);
   const [scenarios, setScenarios] = useState([]);
+  const [liquidValue, setLiquidValue] = useState("");
 
   useEffect(() => {
     const storageScenario = window.localStorage.getItem(
@@ -22,7 +25,7 @@ export const Preview = ({ value, scenario }) => {
 
   engine
     .parseAndRender(
-      value ?? "",
+      file.content ?? "",
       scenarios.length > 0 ? scenarios[scenario].content : ""
     )
     .then((result) => {

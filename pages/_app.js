@@ -2,6 +2,7 @@ import "../src/assets/styles/globals.scss";
 
 import { positions, Provider as AlertProvider } from "react-alert";
 import AlertTemplate from "react-alert-template-basic";
+import { RecoilRoot } from "recoil";
 
 import Layout from "../src/components/layout";
 
@@ -12,11 +13,13 @@ const options = {
 
 function MyApp({ Component, pageProps }) {
   return (
-    <AlertProvider template={AlertTemplate} {...options}>
-      <Layout>
-        <Component {...pageProps} />
-      </Layout>
-    </AlertProvider>
+    <RecoilRoot>
+      <AlertProvider template={AlertTemplate} {...options}>
+        <Layout>
+          <Component {...pageProps} />
+        </Layout>
+      </AlertProvider>
+    </RecoilRoot>
   );
 }
 
