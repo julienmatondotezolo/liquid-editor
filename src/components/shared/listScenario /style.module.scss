@@ -22,3 +22,8 @@
     opacity: 0;
   }
 }
+
+.active {
+  text-decoration: underline;
+  font-weight: $font-weight--bold;
+}

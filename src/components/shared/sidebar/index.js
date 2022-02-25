@@ -1,6 +1,6 @@
 import Link from "next/link";
-import React, { useEffect, useState } from "react";
-import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";
+import React, { useEffect } from "react";
+import { useRecoilState, useSetRecoilState } from "recoil";
 
 import config from "../../../config/config.json";
 import { scenariosAtom } from "../../../recoil/atoms";
@@ -39,7 +39,7 @@ const Sidebar = ({ setOpen }) => {
 
         <ul>
           {scenarios.map((id) => (
-            <ListScenario scenarioId={id} key={id} setOpen={setOpen} />
+            <ListScenario id={id} key={id} />
           ))}
         </ul>
 

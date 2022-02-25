@@ -3,8 +3,10 @@ import CodeMirror from "@uiw/react-codemirror";
 import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
 import { useAlert } from "react-alert";
+import { useRecoilState } from "recoil";
 
 import config from "../../config/config.json";
+import { scenarioAtomFamily } from "../../recoil/atoms";
 import { FileExtensionName } from "../fileExtensionName";
 import ExportButton from "../shared/exportButton";
 import { FileName } from "../shared/fileName";
@@ -14,6 +16,7 @@ import styles from "./style.module.scss";
 export const JSONeditor = () => {
   const [pageId, setPageId] = useState(0);
   const [scenarios, setScenarios] = useState([]);
+
   const alert = useAlert();
   const router = useRouter();
 
@@ -23,19 +26,23 @@ export const JSONeditor = () => {
     }
   }, [router]);
 
-  useEffect(() => {
-    const storageScenarios = window.localStorage.getItem(
-      config.STORAGE.SCENARIOS
-    );
+  const [allScenarios, setAllScenarios] = useRecoilState(
+    scenarioAtomFamily(pageId)
+  );
 
-    if (storageScenarios) {
-      setScenarios(JSON.parse(storageScenarios));
-    }
-  }, []);
+  // useEffect(() => {
+  //   const storageScenarios = window.localStorage.getItem(
+  //     config.STORAGE.SCENARIOS
+  //   );
 
-  useEffect(() => {
-    localStorage.setItem(config.STORAGE.SCENARIOS, JSON.stringify(scenarios));
-  }, [scenarios]);
+  //   if (storageScenarios) {
+  //     setScenarios(JSON.parse(storageScenarios));
+  //   }
+  // }, []);
+
+  // useEffect(() => {
+  //   localStorage.setItem(config.STORAGE.SCENARIOS, JSON.stringify(scenarios));
+  // }, [scenarios]);
 
   const getFileData = (event) => {
     const getFile = event.target.files[0];
@@ -90,13 +97,25 @@ export const JSONeditor = () => {
       <div className={styles.editorCode}>
         <CodeMirror
           className={styles.codeMirror}
+          // value={
+          //   scenarios
+          //     ? JSON.stringify(scenarios[pageId]?.content)
+          //     : { name: "Write JSON here." }
+          // }
           value={
-            scenarios
-              ? JSON.stringify(scenarios[pageId]?.content)
+            allScenarios
+              ? JSON.stringify(allScenarios.content)
               : { name: "Write JSON here." }
           }
           extensions={jsonLanguage}
-          onChange={(value) => handleScenario(value)}
+          // onChange={(value) => handleScenario(value)}
+          onChange={(value) =>
+            setAllScenarios({
+              ...allScenarios,
+              id: pageId,
+              content: JSON.parse(value),
+            })
+          }
         />
       </div>
     </div>

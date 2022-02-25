@@ -7,7 +7,7 @@ import { fileAtom } from "../../../recoil/atoms";
 import styles from "./style.module.scss";
 
 export const ImportButton = () => {
-  const [file, setFile] = useRecoilState(fileAtom);
+  const [, setFile] = useRecoilState(fileAtom);
 
   return (
     <div className={styles.button}>
