@@ -1,6 +1,6 @@
 import Link from "next/link";
 import React, { useEffect } from "react";
-import { useRecoilState, useSetRecoilState } from "recoil";
+import { useRecoilState } from "recoil";
 
 import config from "../../../config/config.json";
 import { scenariosAtom } from "../../../recoil/atoms";
@@ -9,8 +9,6 @@ import styles from "./style.module.scss";
 
 const Sidebar = ({ setOpen }) => {
   const [scenarios, setScenarios] = useRecoilState(scenariosAtom);
-
-  // const [scenarios, setScenarios] = useState([]);
 
   // useEffect(() => {
   //   const storageScenarios = window.localStorage.getItem(
@@ -43,9 +41,6 @@ const Sidebar = ({ setOpen }) => {
           ))}
         </ul>
 
-        {/* <button className={styles.btn} onClick={() => createScenario()}>
-          Add new scenario
-        </button> */}
         <button
           className={styles.btn}
           onClick={() => setScenarios([...scenarios, scenarios.length])}

@@ -10,7 +10,7 @@ export const fileAtom = atom({
 
 export const scenariosAtom = atom({
   key: "scenariosIds",
-  default: [0, 1, 2],
+  default: [0],
 });
 
 export const selectedScenarioState = atom({
@@ -21,6 +21,7 @@ export const selectedScenarioState = atom({
 export const scenarioAtomFamily = atomFamily({
   key: "scenario",
   default: (id) => ({
+    id: id,
     name: `untitled-scenario-${id}.json`,
     content: { company: "Bothive" },
   }),
