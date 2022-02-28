@@ -1,3 +1,1 @@
-export const getFromStorage = (key) => {
-  JSON.parse(window.localStorage.getItem(key));
-};
+export const getFromStorage = (key) => window.localStorage.getItem(key);

@@ -3,7 +3,7 @@ import CodeMirror from "@uiw/react-codemirror";
 import React, { useEffect } from "react";
 
 import config from "../../config/config.json";
-import { useFile } from "../../context/ index";
+import { useFileContext, useScenarioContext } from "../../context/index";
 import { FileExtensionName } from "../fileExtensionName";
 import { Preview } from "../preview";
 // import { ScenarioPreviewPicker } from "../scenarioPreviewPicker";
@@ -13,15 +13,8 @@ import { FileName } from "../shared/fileName";
 import styles from "./style.module.scss";
 
 export const Editor = () => {
-  const { file, setFile } = useFile();
-
-  useEffect(() => {
-    const storageFile = window.localStorage.getItem(config.STORAGE.USER_CODE);
-
-    if (storageFile) {
-      setFile(JSON.parse(storageFile));
-    }
-  }, []);
+  const { file, setFile } = useFileContext();
+  const { scenarios, scenario } = useScenarioContext();
 
   useEffect(() => {
     window.localStorage.setItem(config.STORAGE.USER_CODE, JSON.stringify(file));

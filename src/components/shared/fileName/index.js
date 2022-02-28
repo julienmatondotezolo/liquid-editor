@@ -1,10 +1,10 @@
 import React from "react";
 
-import { useFile } from "../../../context/ index";
+import { useFileContext } from "../../../context/index";
 import styles from "./style.module.scss";
 
 export const FileName = ({ name }) => {
-  const { file, setFile } = useFile();
+  const { file, setFile } = useFileContext();
 
   return (
     <article className={styles.documentName}>

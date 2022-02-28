@@ -1,7 +1,7 @@
 import { Liquid } from "liquidjs";
 import React, { useState } from "react";
 
-import { useFile, useScenario } from "../../context/ index";
+import { useFile, useScenario } from "../../context/index";
 import styles from "./style.module.scss";
 
 export const Preview = () => {

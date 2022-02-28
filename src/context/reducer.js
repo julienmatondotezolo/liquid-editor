@@ -1,13 +1,20 @@
 import config from "../config/config.json";
 import { getFromStorage, getHighestId, setToStorage } from "../helpers";
 
-export const initialScenarioState = [
+const initialScenarioState = [
   {
     id: 0,
     name: "untitled-scenario.json",
     content: { company: "Bothive" },
   },
 ];
+
+export const initializer = (initialValue = initialScenarioState) => {
+  if (typeof window !== "undefined") {
+    return JSON.parse(getFromStorage(config.STORAGE.SCENARIOS)) || initialValue;
+  }
+  return initialValue;
+};
 
 export const reducerTypes = {
   Add: "add",

@@ -2,12 +2,12 @@ import Link from "next/link";
 import React, { useEffect } from "react";
 
 import config from "../../../config/config.json";
-import { useScenario } from "../../../context/ index";
+import { useScenarioContext } from "../../../context/index";
 import ListScenario from "../listScenario ";
 import styles from "./style.module.scss";
 
 const Sidebar = ({ setOpen }) => {
-  const { scenarios, scenario } = useScenario();
+  const { scenarios, scenario } = useScenarioContext();
 
   return (
     <nav className={styles.sidebar}>
