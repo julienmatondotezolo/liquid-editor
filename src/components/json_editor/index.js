@@ -14,24 +14,14 @@ import styles from "./style.module.scss";
 
 export const JSONeditor = () => {
   const selectedScenarioID = useRecoilValue(selectedScenarioState);
-  const [allScenarios, setAllScenarios] = useRecoilState(scenariosSelector);
+  const allScenarios = useRecoilValue(scenariosSelector);
   const [scenario, setScenario] = useRecoilState(
     scenarioAtomFamily(selectedScenarioID)
   );
   const { name, content } = scenario;
 
   useEffect(() => {
-    const storageScenarios = window.localStorage.getItem(
-      config.STORAGE.SCENARIOS
-    );
-
-    if (storageScenarios) {
-      setAllScenarios(JSON.parse(storageScenarios));
-    }
-  }, []);
-
-  useEffect(() => {
-    localStorage.setItem(
+    window.localStorage.setItem(
       config.STORAGE.SCENARIOS,
       JSON.stringify(allScenarios)
     );

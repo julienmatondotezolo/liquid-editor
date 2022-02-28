@@ -12,7 +12,6 @@ export const scenariosSelector = selector({
 
     const newScenarios = scenarioIds.map((id) => get(scenarioAtomFamily(id)));
 
-    console.log(newScenarios);
     return newScenarios;
   },
 });
