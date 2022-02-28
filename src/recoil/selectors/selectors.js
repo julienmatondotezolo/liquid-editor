@@ -1,22 +1,18 @@
-/* eslint-disable indent */
-import { selectorFamily } from "recoil";
+import { selector } from "recoil";
 
-import { scenarioAtom } from "../atoms/atoms";
+import { scenarioAtomFamily, scenariosAtom } from "../atoms/atoms";
 
-export const scenarioSelector = selectorFamily({
-  key: "scenarioIdSelector",
-  // eslint-disable-next-line prettier/prettier
-  get: (id) => ({ get }) => {
-      // eslint-disable-next-line indent
-      // eslint-disable-next-line newline-after-var
-      const atom = get(scenarioAtom(id));
-      console.log(atom);
-      return atom;
-    },
-  // eslint-disable-next-line prettier/prettier
-  set: (id) => ({ set }, newValue) => {
-      console.log(scenarioAtom(id));
-      console.log(newValue);
-      set(scenarioAtom(id), newValue);
-    },
+export const scenariosSelector = selector({
+  key: "scenarioSelector",
+
+  get: ({ get }) => {
+    const scenarioIds = get(scenariosAtom);
+
+    scenarioIds.map((id) => get(scenarioAtomFamily(id)));
+
+    const newScenarios = scenarioIds.map((id) => get(scenarioAtomFamily(id)));
+
+    console.log(newScenarios);
+    return newScenarios;
+  },
 });

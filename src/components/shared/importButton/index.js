@@ -1,13 +1,19 @@
 import React from "react";
 import { FaFileImport } from "react-icons/fa";
-import { useRecoilState } from "recoil";
+import { useRecoilValue, useSetRecoilState } from "recoil";
 
 import { getFileData } from "../../../helpers";
-import { fileAtom } from "../../../recoil/atoms";
+import {
+  fileAtom,
+  scenarioAtomFamily,
+  selectedScenarioState,
+} from "../../../recoil/atoms";
 import styles from "./style.module.scss";
 
 export const ImportButton = () => {
-  const [, setFile] = useRecoilState(fileAtom);
+  const selectedScenarioID = useRecoilValue(selectedScenarioState);
+  const setFile = useSetRecoilState(fileAtom);
+  const setScenario = useSetRecoilState(scenarioAtomFamily(selectedScenarioID));
 
   return (
     <div className={styles.button}>
@@ -16,7 +22,7 @@ export const ImportButton = () => {
       <input
         type="file"
         accept=".html, .liquid, .json"
-        onChange={(fileData) => getFileData(fileData, setFile)}
+        onChange={(fileData) => getFileData(fileData, setFile, setScenario)}
       />
     </div>
   );

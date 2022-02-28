@@ -1,8 +1,7 @@
 import { Liquid } from "liquidjs";
-import React, { useEffect, useState } from "react";
-import { useRecoilState, useRecoilValue } from "recoil";
+import React, { useState } from "react";
+import { useRecoilValue } from "recoil";
 
-import config from "../../config/config.json";
 import {
   fileAtom,
   scenarioAtomFamily,
@@ -13,21 +12,9 @@ import styles from "./style.module.scss";
 export const Preview = () => {
   const file = useRecoilValue(fileAtom);
   const selectedScenarioID = useRecoilValue(selectedScenarioState);
-  const [scenario, setScenario] = useRecoilState(
-    scenarioAtomFamily(selectedScenarioID)
-  );
+  const scenario = useRecoilValue(scenarioAtomFamily(selectedScenarioID));
   const { content } = scenario;
   const [liquidValue, setLiquidValue] = useState("");
-
-  // useEffect(() => {
-  //   const storageScenario = window.localStorage.getItem(
-  //     config.STORAGE.SCENARIOS
-  //   );
-
-  //   if (storageScenario) {
-  //     setScenarios(JSON.parse(storageScenario));
-  //   }
-  // }, []);
 
   const engine = new Liquid();
 

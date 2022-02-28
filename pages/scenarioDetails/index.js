@@ -5,9 +5,9 @@ import Header from "../../src/components/shared/header";
 
 export default function Scenario() {
   return (
-    <div>
+    <>
       <Header />
       <JSONeditor />
-    </div>
+    </>
   );
 }

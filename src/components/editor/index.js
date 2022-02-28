@@ -4,11 +4,7 @@ import React, { useEffect } from "react";
 import { useRecoilState, useRecoilValue } from "recoil";
 
 import config from "../../config/config.json";
-import {
-  fileAtom,
-  scenarioAtomFamily,
-  selectedScenarioState,
-} from "../../recoil/atoms";
+import { fileAtom, selectedScenarioState } from "../../recoil/atoms";
 import { FileExtensionName } from "../fileExtensionName";
 import { Preview } from "../preview";
 import { ScenarioPreviewPicker } from "../scenarioPreviewPicker";
@@ -20,32 +16,18 @@ import styles from "./style.module.scss";
 export const Editor = () => {
   const [file, setFile] = useRecoilState(fileAtom);
   const selectedScenarioID = useRecoilValue(selectedScenarioState);
-  const [scenario, setScenario] = useRecoilState(
-    scenarioAtomFamily(selectedScenarioID)
-  );
 
   useEffect(() => {
     const storageFile = window.localStorage.getItem(config.STORAGE.USER_CODE);
-    // const storageScenarios = window.localStorage.getItem(
-    //   config.STORAGE.SCENARIOS
-    // );
 
     if (storageFile) {
       setFile(JSON.parse(storageFile));
     }
-
-    // if (storageScenarios) {
-    //   setScenarios(JSON.parse(storageScenarios));
-    // }
   }, []);
 
   useEffect(() => {
-    localStorage.setItem(config.STORAGE.USER_CODE, JSON.stringify(file));
+    window.localStorage.setItem(config.STORAGE.USER_CODE, JSON.stringify(file));
   }, [file]);
-
-  // useEffect(() => {
-  //   localStorage.setItem(config.STORAGE.SCENARIOS, JSON.stringify(scenarios));
-  // }, [scenarios]);
 
   return (
     <div className={styles.editor}>
@@ -58,10 +40,6 @@ export const Editor = () => {
       </section>
       <div className={styles.editorHeader}>
         <FileExtensionName extension={"liquid"} />
-        {/* <ScenarioPreviewPicker
-          scenarios={scenarios}
-          setCurrentScenario={setCurrentScenario}
-        /> */}
         <ScenarioPreviewPicker />
       </div>
       <div className={styles.editorCode}>

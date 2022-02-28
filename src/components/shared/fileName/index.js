@@ -1,20 +1,41 @@
 import React from "react";
-import { useRecoilState } from "recoil";
+import { useRecoilState, useRecoilValue } from "recoil";
 
-import { fileAtom } from "../../../recoil/atoms";
+import {
+  fileAtom,
+  scenarioAtomFamily,
+  selectedScenarioState,
+} from "../../../recoil/atoms";
 import styles from "./style.module.scss";
 
-export const FileName = () => {
+export const FileName = ({ name }) => {
   const [file, setFile] = useRecoilState(fileAtom);
+  const selectedScenarioID = useRecoilValue(selectedScenarioState);
+  const [scenario, setScenario] = useRecoilState(
+    scenarioAtomFamily(selectedScenarioID)
+  );
 
   return (
     <article className={styles.documentName}>
       <p>Document name</p>
-      <input
-        type="text"
-        value={file.name}
-        onChange={(event) => setFile({ ...file, name: event.target.value })}
-      />
+      {name ? (
+        <input
+          type="text"
+          value={name}
+          onChange={(event) =>
+            setScenario({
+              ...scenario,
+              name: event.target.value,
+            })
+          }
+        />
+      ) : (
+        <input
+          type="text"
+          value={file.name}
+          onChange={(event) => setFile({ ...file, name: event.target.value })}
+        />
+      )}
     </article>
   );
 };

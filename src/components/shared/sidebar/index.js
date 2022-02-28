@@ -1,28 +1,23 @@
 import Link from "next/link";
 import React, { useEffect } from "react";
-import { useRecoilState } from "recoil";
+import { useRecoilState, useRecoilValue } from "recoil";
 
 import config from "../../../config/config.json";
 import { scenariosAtom } from "../../../recoil/atoms";
+import { scenariosSelector } from "../../../recoil/selectors";
 import ListScenario from "../listScenario ";
 import styles from "./style.module.scss";
 
 const Sidebar = ({ setOpen }) => {
   const [scenarios, setScenarios] = useRecoilState(scenariosAtom);
+  const allScenarios = useRecoilValue(scenariosSelector);
 
-  // useEffect(() => {
-  //   const storageScenarios = window.localStorage.getItem(
-  //     config.STORAGE.SCENARIOS
-  //   );
-
-  //   if (storageScenarios) {
-  //     setScenarios(JSON.parse(storageScenarios));
-  //   }
-  // }, []);
-
-  // useEffect(() => {
-  //   localStorage.setItem(config.STORAGE.SCENARIOS, JSON.stringify(scenarios));
-  // }, [scenarios]);
+  useEffect(() => {
+    localStorage.setItem(
+      config.STORAGE.SCENARIOS,
+      JSON.stringify(allScenarios)
+    );
+  }, [allScenarios]);
 
   return (
     <nav className={styles.sidebar}>
@@ -37,7 +32,7 @@ const Sidebar = ({ setOpen }) => {
 
         <ul>
           {scenarios.map((id) => (
-            <ListScenario id={id} key={id} />
+            <ListScenario id={id} setOpen={setOpen} key={id} />
           ))}
         </ul>
 
