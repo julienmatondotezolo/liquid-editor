@@ -1,19 +1,10 @@
 import React from "react";
-import { useRecoilState, useRecoilValue } from "recoil";
 
-import {
-  fileAtom,
-  scenarioAtomFamily,
-  selectedScenarioState,
-} from "../../../recoil/atoms";
+import { useFile } from "../../../context/ index";
 import styles from "./style.module.scss";
 
 export const FileName = ({ name }) => {
-  const [file, setFile] = useRecoilState(fileAtom);
-  const selectedScenarioID = useRecoilValue(selectedScenarioState);
-  const [scenario, setScenario] = useRecoilState(
-    scenarioAtomFamily(selectedScenarioID)
-  );
+  const { file, setFile } = useFile();
 
   return (
     <article className={styles.documentName}>

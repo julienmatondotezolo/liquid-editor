@@ -1,25 +1,18 @@
 import { Liquid } from "liquidjs";
 import React, { useState } from "react";
-import { useRecoilValue } from "recoil";
 
-import {
-  fileAtom,
-  scenarioAtomFamily,
-  selectedScenarioState,
-} from "../../recoil/atoms";
+import { useFile, useScenario } from "../../context/ index";
 import styles from "./style.module.scss";
 
 export const Preview = () => {
-  const file = useRecoilValue(fileAtom);
-  const selectedScenarioID = useRecoilValue(selectedScenarioState);
-  const scenario = useRecoilValue(scenarioAtomFamily(selectedScenarioID));
-  const { content } = scenario;
+  const { file } = useFile();
+  const { scenarios } = useScenario();
   const [liquidValue, setLiquidValue] = useState("");
 
   const engine = new Liquid();
 
   engine
-    .parseAndRender(file.content ?? "", content ? content : "")
+    .parseAndRender(file.content ?? "", scenarios ? scenarios[0].content : "")
     .then((result) => {
       setLiquidValue(result);
     });

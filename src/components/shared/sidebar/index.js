@@ -1,23 +1,19 @@
 import Link from "next/link";
 import React, { useEffect } from "react";
-import { useRecoilState, useRecoilValue } from "recoil";
 
 import config from "../../../config/config.json";
-import { scenariosAtom } from "../../../recoil/atoms";
-import { scenariosSelector } from "../../../recoil/selectors";
+import { useScenario } from "../../../context/ index";
 import ListScenario from "../listScenario ";
 import styles from "./style.module.scss";
 
 const Sidebar = ({ setOpen }) => {
-  const [scenarios, setScenarios] = useRecoilState(scenariosAtom);
-  const allScenarios = useRecoilValue(scenariosSelector);
+  const { scenarios, scenario } = useScenario();
+
+  console.log(scenarios);
 
   useEffect(() => {
-    localStorage.setItem(
-      config.STORAGE.SCENARIOS,
-      JSON.stringify(allScenarios)
-    );
-  }, [allScenarios]);
+    localStorage.setItem(config.STORAGE.SCENARIOS, JSON.stringify(scenarios));
+  }, [scenarios]);
 
   return (
     <nav className={styles.sidebar}>
@@ -31,16 +27,13 @@ const Sidebar = ({ setOpen }) => {
         </Link>
 
         <ul>
-          {scenarios.map((id) => (
-            <ListScenario id={id} setOpen={setOpen} key={id} />
-          ))}
+          {/* {scenarios.map((scenario) => ({
+            <ListScenario />
+          }))} */}
         </ul>
 
-        <button
-          className={styles.btn}
-          onClick={() => setScenarios([...scenarios, scenarios.length])}
-        >
-          Add new scenario
+        <button className={styles.btn} onClick={() => scenario.add()}>
+          Add new scenarioscenario
         </button>
       </div>
     </nav>
