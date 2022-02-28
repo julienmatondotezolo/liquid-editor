@@ -1,8 +1,7 @@
 import { jsonLanguage } from "@codemirror/lang-json";
 import CodeMirror from "@uiw/react-codemirror";
-import React, { useEffect } from "react";
+import React from "react";
 
-import config from "../../config/config.json";
 import { useScenarioContext } from "../../context";
 import { FileExtensionName } from "../fileExtensionName";
 import ExportButton from "../shared/exportButton";
