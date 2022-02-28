@@ -3,8 +3,6 @@ export const getFileData = (event, setFile, setScenario) => {
   const fileExtension = getFile.name.split(".").pop();
   const reader = new FileReader();
 
-  console.log(getFile);
-
   if (fileExtension == "html" || fileExtension == "liquid") {
     reader.onload = function (eventReader) {
       setFile({ name: getFile.name, content: eventReader.target.result });
