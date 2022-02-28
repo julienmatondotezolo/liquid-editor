@@ -7,8 +7,7 @@ import styles from "./style.module.scss";
 export const ListScenario = ({ scenario, setOpen }) => {
   const { selectedScenario, setSelectedScenario } = useScenarioContext();
   const handleScenarioClick = (event) => {
-    console.log(event.target.dataset);
-    setSelectedScenario(scenario.id);
+    setSelectedScenario(event.target.dataset.id);
     setOpen(false);
   };
 
