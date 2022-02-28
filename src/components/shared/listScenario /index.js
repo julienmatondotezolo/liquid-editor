@@ -3,7 +3,7 @@ import React from "react";
 
 import styles from "./style.module.scss";
 
-export const ListScenario = ({ id, name, setOpen }) => {
+export const ListScenario = ({ scenario, setOpen }) => {
   const handleScenarioClick = () => {
     // setSelectedScenario(id);
     setOpen(false);
@@ -16,7 +16,7 @@ export const ListScenario = ({ id, name, setOpen }) => {
         onClick={() => handleScenarioClick()}
         aria-hidden="true"
       >
-        <p>{name}</p>
+        <p>{scenario.name}</p>
       </li>
     </Link>
   );

@@ -1,10 +1,8 @@
-import React, { useContext, useReducer, useState } from "react";
+import React, { useContext, useEffect, useReducer, useState } from "react";
 
-import {
-  initialScenarioState,
-  reducerTypes,
-  scenariosReducer,
-} from "./reducer";
+import config from "../config/config.json";
+import { getFromStorage, initialScenarioState } from "../helpers";
+import { reducerTypes, scenariosReducer } from "./reducer";
 
 const scenarioContext = React.createContext();
 const fileContext = React.createContext();
@@ -17,6 +15,21 @@ export const MyProvider = ({ children }) => {
     name: "template.html",
     content: "<h1>This is a {{company}} flow template.</h1>",
   });
+
+  const [scenarioStorage, setScenarioStorage] = useState();
+
+  useEffect(() => {
+    const storageFile = getFromStorage(config.STORAGE.USER_CODE);
+    const storageScenarios = getFromStorage(config.STORAGE.SCENARIOS);
+
+    if (storageFile) {
+      setFile(JSON.parse(storageFile));
+    }
+
+    if (storageScenarios) {
+      setScenarioStorage(JSON.parse(storageScenarios));
+    }
+  }, []);
 
   const [scenarios, dispatchScenarios] = useReducer(
     scenariosReducer,

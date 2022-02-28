@@ -9,12 +9,6 @@ import styles from "./style.module.scss";
 const Sidebar = ({ setOpen }) => {
   const { scenarios, scenario } = useScenario();
 
-  console.log(scenarios);
-
-  useEffect(() => {
-    localStorage.setItem(config.STORAGE.SCENARIOS, JSON.stringify(scenarios));
-  }, [scenarios]);
-
   return (
     <nav className={styles.sidebar}>
       <Link href="/" onClick={() => setOpen(false)}>
@@ -27,13 +21,17 @@ const Sidebar = ({ setOpen }) => {
         </Link>
 
         <ul>
-          {/* {scenarios.map((scenario) => ({
-            <ListScenario />
-          }))} */}
+          {scenarios?.map((scenario) => (
+            <ListScenario
+              scenario={scenario}
+              setOpen={setOpen}
+              key={scenario.id}
+            />
+          ))}
         </ul>
 
         <button className={styles.btn} onClick={() => scenario.add()}>
-          Add new scenarioscenario
+          Add new scenarios
         </button>
       </div>
     </nav>

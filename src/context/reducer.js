@@ -1,4 +1,5 @@
-import { getHighestId, setToStorage } from "../helpers";
+import config from "../config/config.json";
+import { getFromStorage, getHighestId, setToStorage } from "../helpers";
 
 export const initialScenarioState = [
   {
@@ -14,7 +15,7 @@ export const reducerTypes = {
 };
 
 export const scenariosReducer = (scenarios, action) => {
-  let newscenarios = [];
+  let newScenarios = [];
 
   switch (action.type) {
     // ADD
@@ -24,25 +25,24 @@ export const scenariosReducer = (scenarios, action) => {
       // eslint-disable-next-line no-case-declarations
       const newId = getHighestId(scenarios);
       // eslint-disable-next-line no-case-declarations
-      const newScenarioId = scenarios.length + 1;
+      const newScenarioId = scenarios.length;
 
       newInitialScenarioState.id = newId;
-      newInitialScenarioState.name = `${newInitialScenarioState.name}_${newScenarioId}.json`;
-      newscenarios = [...scenarios, newInitialScenarioState];
-      setToStorage("scenarios", newscenarios);
-      return newscenarios;
-
+      newInitialScenarioState.name = `untitled-scenario-${newScenarioId}.json`;
+      newScenarios = [...scenarios, newInitialScenarioState];
+      setToStorage(config.STORAGE.SCENARIOS, newScenarios);
+      return newScenarios;
     // UPDATE
     case reducerTypes.Update:
-      newscenarios = [...scenarios].map((scenario) =>
+      newScenarios = [...scenarios].map((scenario) =>
         scenario.id === action.id
           ? {
-            ...scenario,
-            ...action.key,
+              ...scenario,
+              ...action.key,
           }
           : scenario
       );
-      setToStorage("scenarios", newscenarios);
-      return newscenarios;
+      setToStorage(config.STORAGE.SCENARIOS, newScenarios);
+      return newScenarios;
   }
 };
