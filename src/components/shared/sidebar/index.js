@@ -1,7 +1,6 @@
 import Link from "next/link";
-import React, { useEffect } from "react";
+import React from "react";
 
-import config from "../../../config/config.json";
 import { useScenarioContext } from "../../../context/index";
 import ListScenario from "../listScenario ";
 import styles from "./style.module.scss";

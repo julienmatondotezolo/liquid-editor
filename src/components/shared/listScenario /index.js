@@ -1,19 +1,23 @@
 import Link from "next/link";
 import React from "react";
 
+import { useScenarioContext } from "../../../context";
 import styles from "./style.module.scss";
 
 export const ListScenario = ({ scenario, setOpen }) => {
-  const handleScenarioClick = () => {
-    // setSelectedScenario(id);
+  const { selectedScenario, setSelectedScenario } = useScenarioContext();
+  const handleScenarioClick = (event) => {
+    console.log(event.target.dataset);
+    setSelectedScenario(scenario.id);
     setOpen(false);
   };
 
   return (
     <Link href={"/scenario"} passHref>
       <li
-        // className={selectedScenario === id ? styles.active : ""}
-        onClick={() => handleScenarioClick()}
+        data-id={scenario.id}
+        className={selectedScenario === scenario.id ? styles.active : ""}
+        onClick={(event) => handleScenarioClick(event)}
         aria-hidden="true"
       >
         <p>{scenario.name}</p>

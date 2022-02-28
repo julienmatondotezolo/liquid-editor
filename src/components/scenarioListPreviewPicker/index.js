@@ -1,19 +1,16 @@
 import React from "react";
-import { useRecoilState, useRecoilValue } from "recoil";
 
-import { scenarioAtomFamily, selectedScenarioState } from "../../recoil/atoms";
+import { useScenarioContext } from "../../context";
 import styles from "./style.module.scss";
 
-export const ScenarioListPreviewPicker = ({ id }) => {
-  const { name } = useRecoilValue(scenarioAtomFamily(id));
-  const [selectedScenario, setSelectedScenario] = useRecoilState(
-    selectedScenarioState
-  );
+export const ScenarioListPreviewPicker = ({ scenario }) => {
+  const { name } = scenario;
+  const { selectedScenario, setSelectedScenario } = useScenarioContext();
 
   return (
     <p
-      className={selectedScenario === id ? styles.active : ""}
-      onClick={() => setSelectedScenario(id)}
+      className={selectedScenario === scenario.id ? styles.active : ""}
+      onClick={() => setSelectedScenario(scenario.id)}
       aria-hidden="true"
     >
       {name}

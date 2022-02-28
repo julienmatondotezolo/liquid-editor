@@ -1,12 +1,11 @@
 import React from "react";
-import { useRecoilValue } from "recoil";
 
-import { scenariosAtom } from "../../recoil/atoms";
+import { useScenarioContext } from "../../context";
 import ScenarioListPreviewPicker from "../scenarioListPreviewPicker";
 import styles from "./style.module.scss";
 
 export const ScenarioPreviewPicker = () => {
-  const scenarios = useRecoilValue(scenariosAtom);
+  const { scenarios } = useScenarioContext();
 
   return (
     <section className={styles.extensionBox}>
@@ -14,8 +13,8 @@ export const ScenarioPreviewPicker = () => {
       <div className={styles.dropdown}>
         <span>Pick scenario</span>
         <div className={styles.dropdownContent}>
-          {scenarios.map((id) => (
-            <ScenarioListPreviewPicker id={id} key={id} />
+          {scenarios.map((scenario) => (
+            <ScenarioListPreviewPicker scenario={scenario} key={scenario.id} />
           ))}
         </div>
       </div>

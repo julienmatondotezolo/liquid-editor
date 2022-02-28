@@ -1,4 +1,4 @@
-export const getFileData = (event, setFile, setScenario) => {
+export const getFileData = (event, setFile, scenario, selectedScenario) => {
   const getFile = event.target.files[0];
   const fileExtension = getFile.name.split(".").pop();
   const reader = new FileReader();
@@ -12,10 +12,17 @@ export const getFileData = (event, setFile, setScenario) => {
     const reader = new FileReader();
 
     reader.onload = function (eventReader) {
-      setScenario({
-        name: getFile.name,
-        content: JSON.parse(eventReader.target.result),
-      });
+      // setScenario({
+      //   name: getFile.name,
+      //   content: JSON.parse(eventReader.target.result),
+      // });
+      scenario.update(
+        {
+          name: getFile.name,
+          content: JSON.parse(eventReader.target.result),
+        },
+        selectedScenario
+      );
     };
     reader.readAsText(getFile);
   } else {

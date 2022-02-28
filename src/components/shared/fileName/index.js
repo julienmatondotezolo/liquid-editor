@@ -1,10 +1,11 @@
 import React from "react";
 
-import { useFileContext } from "../../../context/index";
+import { useFileContext, useScenarioContext } from "../../../context/index";
 import styles from "./style.module.scss";
 
 export const FileName = ({ name }) => {
   const { file, setFile } = useFileContext();
+  const { scenario, selectedScenario } = useScenarioContext();
 
   return (
     <article className={styles.documentName}>
@@ -14,10 +15,7 @@ export const FileName = ({ name }) => {
           type="text"
           value={name}
           onChange={(event) =>
-            setScenario({
-              ...scenario,
-              name: event.target.value,
-            })
+            scenario.update({ name: event.target.value }, selectedScenario)
           }
         />
       ) : (

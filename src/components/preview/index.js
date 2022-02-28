@@ -1,18 +1,20 @@
 import { Liquid } from "liquidjs";
 import React, { useState } from "react";
 
-import { useFile, useScenario } from "../../context/index";
+import { useFileContext, useScenarioContext } from "../../context/index";
 import styles from "./style.module.scss";
 
 export const Preview = () => {
-  const { file } = useFile();
-  const { scenarios } = useScenario();
+  const { file } = useFileContext();
+  const { scenarios, selectedScenario } = useScenarioContext();
   const [liquidValue, setLiquidValue] = useState("");
-
   const engine = new Liquid();
 
   engine
-    .parseAndRender(file.content ?? "", scenarios ? scenarios[0].content : "")
+    .parseAndRender(
+      file.content ?? "",
+      scenarios.length > 0 ? scenarios[selectedScenario].content : ""
+    )
     .then((result) => {
       setLiquidValue(result);
     });

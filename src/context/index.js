@@ -33,10 +33,11 @@ export const MyProvider = ({ children }) => {
     add: () => {
       dispatchScenarios({ type: reducerTypes.Add });
     },
-    update: (event, scenarioId) => {
+    update: (value, scenarioId) => {
+      console.log("scenario id:", scenarioId);
       dispatchScenarios({
         type: reducerTypes.Update,
-        key: { name: event.target.value },
+        key: value,
         id: scenarioId,
       });
     },
