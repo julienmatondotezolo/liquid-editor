@@ -15,10 +15,6 @@ import styles from "./style.module.scss";
 export const Editor = () => {
   const { file, setFile } = useFileContext();
 
-  useEffect(() => {
-    window.localStorage.setItem(config.STORAGE.USER_CODE, JSON.stringify(file));
-  }, [file]);
-
   return (
     <div className={styles.editor}>
       <section className={styles.container}>
@@ -35,7 +31,7 @@ export const Editor = () => {
       <div className={styles.editorCode}>
         <CodeMirror
           className={styles.codeMirror}
-          value={file ? file.content : ""}
+          value={file?.content || ""}
           extensions={htmlLanguage}
           onChange={(value) => setFile({ ...file, content: value })}
         />

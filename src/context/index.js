@@ -17,6 +17,10 @@ export const MyProvider = ({ children }) => {
   });
 
   useEffect(() => {
+    window.localStorage.setItem(config.STORAGE.USER_CODE, JSON.stringify(file));
+  }, [file]);
+
+  useEffect(() => {
     const storageFile = getFromStorage(config.STORAGE.USER_CODE);
 
     if (storageFile) {
