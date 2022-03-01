@@ -1,11 +1,9 @@
 import { jsonLanguage } from "@codemirror/lang-json";
 import CodeMirror from "@uiw/react-codemirror";
-import React, { useEffect } from "react";
+import React from "react";
 import { useRecoilState, useRecoilValue } from "recoil";
 
-import config from "../../config/config.json";
 import { scenarioAtomFamily, selectedScenarioState } from "../../recoil/atoms";
-import { scenariosSelector } from "../../recoil/selectors";
 import { FileExtensionName } from "../fileExtensionName";
 import ExportButton from "../shared/exportButton";
 import { FileName } from "../shared/fileName";
@@ -13,19 +11,11 @@ import ImportButton from "../shared/importButton";
 import styles from "./style.module.scss";
 
 export const JSONeditor = () => {
-  const selectedScenarioID = useRecoilValue(selectedScenarioState);
-  const allScenarios = useRecoilValue(scenariosSelector);
+  const selectedScenarioId = useRecoilValue(selectedScenarioState);
   const [scenario, setScenario] = useRecoilState(
-    scenarioAtomFamily(selectedScenarioID)
+    scenarioAtomFamily(selectedScenarioId)
   );
   const { name, content } = scenario;
-
-  useEffect(() => {
-    window.localStorage.setItem(
-      config.STORAGE.SCENARIOS,
-      JSON.stringify(allScenarios)
-    );
-  }, [allScenarios]);
 
   return (
     <div className={styles.editor}>

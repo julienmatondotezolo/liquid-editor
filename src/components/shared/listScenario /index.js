@@ -14,7 +14,7 @@ export const ListScenario = ({ id, setOpen }) => {
     selectedScenarioState
   );
 
-  const handleScenarioClick = () => {
+  const addSelectedScenarioId = () => {
     setSelectedScenario(id);
     setOpen(false);
   };
@@ -23,7 +23,7 @@ export const ListScenario = ({ id, setOpen }) => {
     <Link href={"/scenario"} passHref>
       <li
         className={selectedScenario === id ? styles.active : ""}
-        onClick={() => handleScenarioClick()}
+        onClick={() => addSelectedScenarioId()}
         aria-hidden="true"
       >
         <p>{name}</p>

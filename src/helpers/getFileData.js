@@ -8,7 +8,11 @@ export const getFileData = (event, setFile, setScenario) => {
       setFile({ name: getFile.name, content: eventReader.target.result });
     };
     reader.readAsText(getFile);
-  } else if (fileExtension == "json") {
+  } else {
+    alert("Wrong file type ! Only .html & .liquid are accepted.");
+  }
+
+  if (fileExtension == "json") {
     const reader = new FileReader();
 
     reader.onload = function (eventReader) {
@@ -19,6 +23,6 @@ export const getFileData = (event, setFile, setScenario) => {
     };
     reader.readAsText(getFile);
   } else {
-    alert("Wrong file type !");
+    alert("Wrong file type ! Only .json is accepted.");
   }
 };

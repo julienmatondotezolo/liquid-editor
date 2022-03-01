@@ -1,10 +1,9 @@
 import { htmlLanguage } from "@codemirror/lang-html";
 import CodeMirror from "@uiw/react-codemirror";
-import React, { useEffect } from "react";
-import { useRecoilState, useRecoilValue } from "recoil";
+import React from "react";
+import { useRecoilState } from "recoil";
 
-import config from "../../config/config.json";
-import { fileAtom, selectedScenarioState } from "../../recoil/atoms";
+import { fileAtom } from "../../recoil/atoms";
 import { FileExtensionName } from "../fileExtensionName";
 import { Preview } from "../preview";
 import { ScenarioPreviewPicker } from "../scenarioPreviewPicker";
@@ -15,19 +14,6 @@ import styles from "./style.module.scss";
 
 export const Editor = () => {
   const [file, setFile] = useRecoilState(fileAtom);
-  const selectedScenarioID = useRecoilValue(selectedScenarioState);
-
-  useEffect(() => {
-    const storageFile = window.localStorage.getItem(config.STORAGE.USER_CODE);
-
-    if (storageFile) {
-      setFile(JSON.parse(storageFile));
-    }
-  }, []);
-
-  useEffect(() => {
-    window.localStorage.setItem(config.STORAGE.USER_CODE, JSON.stringify(file));
-  }, [file]);
 
   return (
     <div className={styles.editor}>
@@ -49,7 +35,7 @@ export const Editor = () => {
           extensions={htmlLanguage}
           onChange={(value) => setFile({ ...file, content: value })}
         />
-        <Preview className={styles.codePreview} scenario={selectedScenarioID} />
+        <Preview className={styles.codePreview} />
       </div>
     </div>
   );

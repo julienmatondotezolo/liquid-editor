@@ -1,23 +1,13 @@
 import Link from "next/link";
-import React, { useEffect } from "react";
-import { useRecoilState, useRecoilValue } from "recoil";
+import React from "react";
+import { useRecoilState } from "recoil";
 
-import config from "../../../config/config.json";
 import { scenariosAtom } from "../../../recoil/atoms";
-import { scenariosSelector } from "../../../recoil/selectors";
 import ListScenario from "../listScenario ";
 import styles from "./style.module.scss";
 
 const Sidebar = ({ setOpen }) => {
   const [scenarios, setScenarios] = useRecoilState(scenariosAtom);
-  const allScenarios = useRecoilValue(scenariosSelector);
-
-  useEffect(() => {
-    localStorage.setItem(
-      config.STORAGE.SCENARIOS,
-      JSON.stringify(allScenarios)
-    );
-  }, [allScenarios]);
 
   return (
     <nav className={styles.sidebar}>
