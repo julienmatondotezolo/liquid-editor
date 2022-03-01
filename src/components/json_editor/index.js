@@ -34,12 +34,9 @@ export const JSONeditor = () => {
           className={styles.codeMirror}
           value={content ? JSON.stringify(content) : ""}
           extensions={jsonLanguage}
-          onChange={(value) =>
-            setScenario({
-              ...scenario,
-              content: JSON.parse(value),
-            })
-          }
+          onChange={(value) => {
+            setScenario({ ...scenario, content: JSON.parse(value) });
+          }}
         />
       </div>
     </div>
