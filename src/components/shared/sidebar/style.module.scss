@@ -9,13 +9,13 @@
   float: left;
   width: 400px;
   height: calc(100vh - $header-height);
-  color: #fff;
+  color: white;
   background: $brand-color--primary;
   z-index: 1;
 
   .btn {
     padding: 1em;
-    background: #fff;
+    background: white;
     width: 100%;
     color: $brand-color--primary;
     border: 2px solid #fff;
@@ -24,7 +24,7 @@
     transition: all 0.2s ease-in-out;
 
     &:hover {
-      color: #fff;
+      color: white;
       background: $brand-color--primary;
     }
   }

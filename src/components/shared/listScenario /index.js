@@ -21,15 +21,18 @@ export const ListScenario = ({ id, setOpen }) => {
 
   return (
     <Link href={"/scenario"} passHref>
-      <li
-        className={selectedScenario === id ? styles.active : ""}
-        data-id={id}
-        onClick={() => addSelectedScenarioId()}
-        onKeyDown={() => addSelectedScenarioId()}
-        tabIndex={id}
-        aria-hidden="true"
-      >
-        <p>{name}</p>
+      <li>
+        <div
+          className={selectedScenario === id ? styles.active : ""}
+          data-id={id}
+          onClick={() => addSelectedScenarioId()}
+          onKeyDown={() => addSelectedScenarioId()}
+          aria-hidden="true"
+          role="button"
+          tabIndex="0"
+        >
+          <p>{name}</p>
+        </div>
       </li>
     </Link>
   );
