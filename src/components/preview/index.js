@@ -18,11 +18,9 @@ export const Preview = () => {
 
   const engine = new Liquid();
 
-  engine
-    .parseAndRender(file.content ?? "", content ? content : "")
-    .then((result) => {
-      setLiquidValue(result);
-    });
+  engine.parseAndRender(file.content ?? "", content || "").then((result) => {
+    setLiquidValue(result);
+  });
 
   return (
     <article className={styles.preview}>

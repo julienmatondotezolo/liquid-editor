@@ -23,7 +23,10 @@ export const ListScenario = ({ id, setOpen }) => {
     <Link href={"/scenario"} passHref>
       <li
         className={selectedScenario === id ? styles.active : ""}
+        data-id={id}
         onClick={() => addSelectedScenarioId()}
+        onKeyDown={() => addSelectedScenarioId()}
+        tabIndex={id}
         aria-hidden="true"
       >
         <p>{name}</p>
