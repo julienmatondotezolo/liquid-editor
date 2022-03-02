@@ -18,27 +18,6 @@ export const MyProvider = ({ children }) => {
 
   const [selectedScenario, setSelectedScenario] = useState(0);
 
-  useEffect(() => {
-    window.localStorage.setItem(config.STORAGE.USER_CODE, JSON.stringify(file));
-    window.localStorage.setItem(
-      config.STORAGE.SCENARIOS_ID,
-      JSON.stringify(selectedScenario)
-    );
-  }, [file, selectedScenario]);
-
-  useEffect(() => {
-    const storageFile = getFromStorage(config.STORAGE.USER_CODE);
-    const storageScenarioId = getFromStorage(config.SCENARIOS_ID);
-
-    if (storageFile) {
-      setFile(JSON.parse(storageFile));
-    }
-
-    if (storageScenarioId) {
-      setSelectedScenario(JSON.parse(storageScenarioId));
-    }
-  }, []);
-
   const [scenarios, dispatchScenarios] = useReducer(
     scenariosReducer,
     initializer()
@@ -56,6 +35,27 @@ export const MyProvider = ({ children }) => {
       });
     },
   };
+
+  useEffect(() => {
+    const storageFile = getFromStorage(config.STORAGE.USER_CODE);
+    const storageScenarioId = getFromStorage(config.SCENARIOS_ID);
+
+    if (storageFile) {
+      setFile(JSON.parse(storageFile));
+    }
+
+    if (storageScenarioId) {
+      setSelectedScenario(JSON.parse(storageScenarioId));
+    }
+  }, []);
+
+  useEffect(() => {
+    window.localStorage.setItem(config.STORAGE.USER_CODE, JSON.stringify(file));
+    window.localStorage.setItem(
+      config.STORAGE.SCENARIOS_ID,
+      JSON.stringify(selectedScenario)
+    );
+  }, [file, selectedScenario]);
 
   return (
     <fileContext.Provider value={{ file, setFile }}>

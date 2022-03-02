@@ -12,7 +12,7 @@ export const Preview = () => {
 
   engine
     .parseAndRender(
-      file.content ?? "",
+      file ? file.content : "",
       scenarios.length > 0 ? scenarios[selectedScenario].content : ""
     )
     .then((result) => {

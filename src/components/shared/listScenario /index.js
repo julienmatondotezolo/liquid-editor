@@ -6,17 +6,19 @@ import styles from "./style.module.scss";
 
 export const ListScenario = ({ scenario, setOpen }) => {
   const { selectedScenario, setSelectedScenario } = useScenarioContext();
-  const handleScenarioClick = (event) => {
-    setSelectedScenario(event.target.dataset.id);
+  const handleScenarioClick = () => {
+    setSelectedScenario(scenario.id);
     setOpen(false);
   };
 
   return (
-    <Link href={"/scenario"} passHref>
+    <Link href={"/scenario"} tabindex={scenario.id} passHref>
       <li
-        data-id={scenario.id}
         className={selectedScenario === scenario.id ? styles.active : ""}
+        data-id={scenario.id}
         onClick={(event) => handleScenarioClick(event)}
+        onKeyDown={() => handleScenarioClick()}
+        tabIndex={scenario.id}
         aria-hidden="true"
       >
         <p>{scenario.name}</p>

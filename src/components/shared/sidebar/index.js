@@ -20,7 +20,7 @@ const Sidebar = ({ setOpen }) => {
         </Link>
 
         <ul>
-          {scenarios?.map((scenario) => (
+          {scenarios.map((scenario) => (
             <ListScenario
               scenario={scenario}
               setOpen={setOpen}
