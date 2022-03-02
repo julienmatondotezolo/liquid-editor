@@ -30,14 +30,24 @@
   }
 
   div {
+    color: #fff;
     margin-top: $margin--md;
-  }
 
-  li {
-    cursor: pointer;
-    margin-top: $margin--sm;
-    &:hover {
-      font-weight: $font-weight--bold;
+    ul {
+      padding-left: $padding--md;
+      margin: $margin--lg 0;
+
+      li {
+        cursor: pointer;
+        margin-top: $margin--sm;
+        &:hover {
+          font-weight: $font-weight--bold;
+        }
+
+        p {
+          color: #fff;
+        }
+      }
     }
   }
 }

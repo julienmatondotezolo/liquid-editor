@@ -9,16 +9,18 @@ export const ScenarioPreviewPicker = () => {
   const scenarios = useRecoilValue(scenariosAtom);
 
   return (
-    <section className={styles.extensionBox}>
-      <p>Preview</p>
-      <div className={styles.dropdown}>
-        <span>Pick scenario</span>
-        <div className={styles.dropdownContent}>
-          {scenarios.map((id) => (
-            <ScenarioListPreviewPicker id={id} key={id} />
-          ))}
+    <>
+      <section className={styles.extensionBox}>
+        <p>Preview</p>
+        <div className={styles.dropdown}>
+          <span>Pick scenario</span>
         </div>
+      </section>
+      <div className={styles.dropdownContent}>
+        {scenarios.map((id) => (
+          <ScenarioListPreviewPicker id={id} key={id} />
+        ))}
       </div>
-    </section>
+    </>
   );
 };
