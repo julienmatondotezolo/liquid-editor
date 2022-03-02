@@ -16,7 +16,9 @@ export const Preview = () => {
   const { content } = scenario;
   const [liquidValue, setLiquidValue] = useState("");
 
-  const engine = new Liquid();
+  const engine = new Liquid({
+    cache: true,
+  });
 
   engine.parseAndRender(file.content ?? "", content || "").then((result) => {
     setLiquidValue(result);

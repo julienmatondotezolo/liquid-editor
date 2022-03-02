@@ -31,7 +31,7 @@ export const Editor = () => {
       <div className={styles.editorCode}>
         <CodeMirror
           className={styles.codeMirror}
-          value={file ? file.content : ""}
+          value={file?.content || ""}
           extensions={htmlLanguage}
           onChange={(value) => setFile({ ...file, content: value })}
         />
