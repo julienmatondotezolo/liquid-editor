@@ -1,8 +1,7 @@
 import { htmlLanguage } from "@codemirror/lang-html";
 import CodeMirror from "@uiw/react-codemirror";
-import React, { useEffect } from "react";
+import React from "react";
 
-import config from "../../config/config.json";
 import { useFileContext } from "../../context/index";
 import { FileExtensionName } from "../fileExtensionName";
 import { Preview } from "../preview";

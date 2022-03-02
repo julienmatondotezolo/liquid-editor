@@ -1,6 +1,7 @@
 {
   "STORAGE": {
     "USER_CODE": "bothive-editor-code",
-    "SCENARIOS": "bothive-editor-scenario"
+    "SCENARIOS": "bothive-editor-scenario",
+    "SCENARIOS_ID": "bothive-editor-scenario-id"
   }
 }
