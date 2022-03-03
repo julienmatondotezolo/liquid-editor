@@ -15,16 +15,15 @@
     "liquidjs": "9.34.0",
     "next": "12.0.10",
     "react": "17.0.2",
-    "react-alert": "7.0.3",
-    "react-alert-template-basic": "1.0.2",
-    "react-dom": "17.0.2",
     "react-icons": "4.3.1",
+    "recoil": "0.6.1",
     "sass": "1.49.7"
   },
   "devDependencies": {
     "eslint": "8.8.0",
     "eslint-config-next": "12.0.10",
     "eslint-config-prettier": "8.3.0",
+    "eslint-plugin-jsx-a11y": "6.5.1",
     "eslint-plugin-import": "2.25.4",
     "eslint-plugin-simple-import-sort": "7.0.0",
     "prettier": "2.3.0"
