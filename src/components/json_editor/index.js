@@ -17,6 +17,14 @@ export const JSONeditor = () => {
   );
   const { name, content } = scenario;
 
+  const changeScenarioContent = (value) => {
+    console.log("ON CHANGE SCENARIO ID:", selectedScenarioId);
+    console.log(value);
+    // setScenario({ ...scenario, content: JSON.parse(value) });
+  };
+
+  console.log("SCENARIO ID:", selectedScenarioId);
+
   return (
     <div className={styles.editor}>
       <section className={styles.container}>
@@ -30,13 +38,21 @@ export const JSONeditor = () => {
         <FileExtensionName extension={"JSON"} />
       </div>
       <div className={styles.editorCode}>
+        {/* <input
+          type="text"
+          value={content ? JSON.stringify(conte©nt) : ""}
+          onChange={(event) =>
+            setScenario({
+              ...scenario,
+              content: JSON.parse(event.target.value),
+            })
+          }
+        /> */}
         <CodeMirror
           className={styles.codeMirror}
           value={content ? JSON.stringify(content) : ""}
           extensions={jsonLanguage}
-          onChange={(value) => {
-            setScenario({ ...scenario, content: JSON.parse(value) });
-          }}
+          onChange={(value) => changeScenarioContent(value)}
         />
       </div>
     </div>
