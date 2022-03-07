@@ -3,7 +3,7 @@ import CodeMirror from "@uiw/react-codemirror";
 import React from "react";
 import { useRecoilState } from "recoil";
 
-import { ShadowView } from "../../helpers/";
+import { ShadowRoot } from "../../helpers/";
 import { fileAtom } from "../../recoil/atoms";
 import { FileExtensionName } from "../fileExtensionName";
 import { Preview } from "../preview";
@@ -30,13 +30,14 @@ export const Editor = () => {
         <ScenarioPreviewPicker />
       </div>
       <div className={styles.editorCode}>
-        <ShadowView className={styles.codeMirror}>
+        <ShadowRoot>
           <CodeMirror
+            className={styles.codeMirror}
             value={file?.content || ""}
             extensions={htmlLanguage}
             onChange={(value) => setFile({ ...file, content: value })}
           />
-        </ShadowView>
+        </ShadowRoot>
         <Preview className={styles.codePreview} />
       </div>
     </div>
