@@ -5,9 +5,9 @@ import Header from "../src/components/shared/header";
 
 export default function Home() {
   return (
-    <div>
+    <>
       <Header />
       <Editor />
-    </div>
+    </>
   );
 }
