@@ -4,13 +4,13 @@ const persistLocalStorage = ({ onSet, setSelf, node }) => {
   if (typeof window !== "undefined") {
     const storedItems = localStorage.getItem(node.key);
 
-    if (storedItems != null) return setSelf(JSON.parse(storedItems));
+    if (storedItems !== null) setSelf(JSON.parse(storedItems));
 
-    onSet((newItems) => {
-      if (newItems instanceof DefaultValue) {
-        return localStorage.removeItem(node.key);
+    onSet((newValue) => {
+      if (newValue instanceof DefaultValue) {
+        localStorage.removeItem(node.key);
       }
-      return localStorage.setItem(node.key, JSON.stringify(newItems));
+      localStorage.setItem(node.key, JSON.stringify(newValue));
     });
   }
 };

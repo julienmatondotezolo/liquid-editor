@@ -40,7 +40,8 @@
     flex-wrap: wrap;
     width: 100%;
 
-    .codeMirror {
+    .codeMirror,
+    > div {
       width: 50%;
       border-top: 2px solid $brand-color--primary-light;
       border-bottom: 2px solid $brand-color--primary-light;

@@ -16,7 +16,7 @@ const Sidebar = ({ setOpen }) => {
       </Link>
 
       <div>
-        <Link href="/" onClick={() => setOpen(false)}>
+        <Link href="/scenario" onClick={() => setOpen(false)}>
           <a>Scenario</a>
         </Link>
 
