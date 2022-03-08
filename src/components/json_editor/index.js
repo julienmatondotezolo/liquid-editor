@@ -1,6 +1,6 @@
 import dynamic from "next/dynamic";
 import React from "react";
-import { useRecoilValue } from "recoil";
+import { useRecoilState, useRecoilValue } from "recoil";
 
 import { scenarioAtomFamily, selectedScenarioState } from "../../recoil/atoms";
 import { FileExtensionName } from "../fileExtensionName";
@@ -15,8 +15,13 @@ const CodeMirror = dynamic(() => import("../codeMirror"), {
 
 export const JSONeditor = () => {
   const selectedScenarioId = useRecoilValue(selectedScenarioState);
-  const scenario = useRecoilValue(scenarioAtomFamily(selectedScenarioId));
-  const { name } = scenario;
+  const [scenario, setScenario] = useRecoilState(
+    scenarioAtomFamily(selectedScenarioId)
+  );
+  const { name, content } = scenario;
+  const changeScenarioContent = (editor, data, value) => {
+    setScenario({ ...scenario, content: JSON.parse(value) });
+  };
 
   return (
     <div className={styles.editor}>
@@ -31,7 +36,12 @@ export const JSONeditor = () => {
         <FileExtensionName extension={"JSON"} />
       </div>
       <div className={styles.editorCode}>
-        <CodeMirror className={styles.codeMirror} />
+        <CodeMirror
+          mode={"json"}
+          content={JSON.stringify(content, null, 2)}
+          onChange={changeScenarioContent}
+          className={styles.codeMirror}
+        />
       </div>
     </div>
   );

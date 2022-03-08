@@ -8,9 +8,6 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@codemirror/lang-html": "0.19.4",
-    "@codemirror/lang-json": "0.19.1",
-    "@uiw/react-codemirror": "4.5.1",
     "codemirror": "5.65.2",
     "eslint-plugin-prettier": "4.0.0",
     "jsonlint-mod": "1.7.6",

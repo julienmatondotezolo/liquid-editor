@@ -1,35 +1,23 @@
 import "codemirror/lib/codemirror.css";
 import "codemirror/addon/lint/lint.css";
+import "codemirror/mode/xml/xml";
 import "codemirror/mode/javascript/javascript";
 import "codemirror/addon/lint/lint";
 import "codemirror/addon/lint/json-lint";
 import "codemirror/addon/edit/closebrackets";
 
+import jsonlint from "jsonlint-mod";
 import React from "react";
 import { UnControlled } from "react-codemirror2-react-17";
-import { useRecoilState, useRecoilValue } from "recoil";
 
-import { scenarioAtomFamily, selectedScenarioState } from "../../recoil/atoms";
-
-const jsonlint = require("jsonlint-mod");
-
-export default function CodeMirror() {
-  const selectedScenarioId = useRecoilValue(selectedScenarioState);
-  const [scenario, setScenario] = useRecoilState(
-    scenarioAtomFamily(selectedScenarioId)
-  );
-  const { content } = scenario;
-  const changeScenarioContent = (editor, data, value) => {
-    setScenario({ ...scenario, content: JSON.parse(value) });
-  };
-
+export default function CodeMirror({ mode, content, onChange }) {
   window.jsonlint = jsonlint;
 
   return (
     <UnControlled
-      value={content ? JSON.stringify(content, null, 2) : ""}
+      value={content ?? ""}
       options={{
-        mode: "application/ld+json",
+        mode: mode == "json" ? "application/ld+json" : "text/html",
         lint: true,
         autoCloseBrackets: true,
         lineWrapping: true,
@@ -37,7 +25,7 @@ export default function CodeMirror() {
         gutters: ["CodeMirror-lint-markers"],
       }}
       autoCursor={false}
-      onChange={changeScenarioContent}
+      onChange={onChange}
     />
   );
 }
