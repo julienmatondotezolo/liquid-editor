@@ -2,7 +2,6 @@ import dynamic from "next/dynamic";
 import React from "react";
 import { useRecoilState } from "recoil";
 
-import { ShadowRoot } from "../../helpers/";
 import { fileAtom } from "../../recoil/atoms";
 import { FileExtensionName } from "../fileExtensionName";
 import { Preview } from "../preview";
@@ -36,14 +35,12 @@ export const Editor = () => {
         <ScenarioPreviewPicker />
       </div>
       <div className={styles.editorCode}>
-        {/* <ShadowRoot> */}
         <CodeMirror
           mode={"html"}
           content={file?.content || ""}
           onChange={changeFileContent}
           className={styles.codeMirror}
         />
-        {/* </ShadowRoot> */}
         <Preview className={styles.codePreview} />
       </div>
     </div>
