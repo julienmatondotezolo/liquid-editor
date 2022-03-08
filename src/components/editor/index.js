@@ -36,14 +36,14 @@ export const Editor = () => {
         <ScenarioPreviewPicker />
       </div>
       <div className={styles.editorCode}>
-        <ShadowRoot>
-          <CodeMirror
-            mode={"html"}
-            content={file?.content || ""}
-            onChange={changeFileContent}
-            className={styles.codeMirror}
-          />
-        </ShadowRoot>
+        {/* <ShadowRoot> */}
+        <CodeMirror
+          mode={"html"}
+          content={file?.content || ""}
+          onChange={changeFileContent}
+          className={styles.codeMirror}
+        />
+        {/* </ShadowRoot> */}
         <Preview className={styles.codePreview} />
       </div>
     </div>

@@ -11,7 +11,7 @@
   height: calc(100vh - $header-height);
   color: white;
   background: $brand-color--primary;
-  z-index: 1;
+  z-index: 9;
 
   .btn {
     padding: 1em;
