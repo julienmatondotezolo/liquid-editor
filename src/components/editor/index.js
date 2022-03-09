@@ -2,6 +2,7 @@ import dynamic from "next/dynamic";
 import React from "react";
 import { useRecoilState } from "recoil";
 
+import config from "../../config/config.json";
 import { fileAtom } from "../../recoil/atoms";
 import { FileExtensionName } from "../fileExtensionName";
 import { Preview } from "../preview";
@@ -31,7 +32,10 @@ export const Editor = () => {
         </section>
       </section>
       <div className={styles.editorHeader}>
-        <FileExtensionName extension={"liquid"} />
+        <FileExtensionName
+          extension={"liquid"}
+          url={config.EXTERNAL.DOC.LIQUID}
+        />
         <ScenarioPreviewPicker />
       </div>
       <div className={styles.editorCode}>

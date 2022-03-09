@@ -1,8 +1,8 @@
 import Link from "next/link";
-import { useRouter } from "next/router";
 import React from "react";
 import { useRecoilState, useRecoilValue } from "recoil";
 
+import config from "../../../config/config.json";
 import {
   scenarioAtomFamily,
   selectedScenarioState,
@@ -21,7 +21,7 @@ export const ListScenario = ({ id, setOpen }) => {
   };
 
   return (
-    <Link href={"/scenario"} passHref>
+    <Link href={config.ROUTE.SCENARIO} passHref>
       <li>
         <div
           className={selectedScenario === id ? styles.active : ""}

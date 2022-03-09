@@ -1,6 +1,11 @@
 {
     "ROUTE": {
         "SCENARIO": "/scenario"
+    },
+    "EXTERNAL": {
+        "DOC": {
+            "LIQUID": "https://shopify.github.io/liquid/"
+        }
     }
 }
   
