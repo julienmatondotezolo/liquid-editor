@@ -2,6 +2,7 @@ import { Liquid } from "liquidjs";
 import React, { useState } from "react";
 import { useRecoilValue } from "recoil";
 
+import { ShadowRoot } from "../../helpers/";
 import {
   fileAtom,
   scenarioAtomFamily,
@@ -26,7 +27,9 @@ export const Preview = () => {
 
   return (
     <article className={styles.preview}>
-      <div dangerouslySetInnerHTML={{ __html: liquidValue }} />
+      <ShadowRoot>
+        <div dangerouslySetInnerHTML={{ __html: liquidValue }} />
+      </ShadowRoot>
     </article>
   );
 };
