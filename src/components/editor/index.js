@@ -31,7 +31,10 @@ export const Editor = () => {
         </section>
       </section>
       <div className={styles.editorHeader}>
-        <FileExtensionName extension={"liquid"} />
+        <FileExtensionName
+          extension={"liquid"}
+          url={"https://shopify.github.io/liquid/"}
+        />
         <ScenarioPreviewPicker />
       </div>
       <div className={styles.editorCode}>
