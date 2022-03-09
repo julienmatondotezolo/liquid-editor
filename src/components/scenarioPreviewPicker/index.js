@@ -2,6 +2,7 @@ import { useRouter } from "next/router";
 import React from "react";
 import { useRecoilState, useSetRecoilState } from "recoil";
 
+import config from "../../config/config.json";
 import { scenariosAtom, selectedScenarioState } from "../../recoil/atoms";
 import ScenarioListPreviewPicker from "../scenarioListPreviewPicker";
 import styles from "./style.module.scss";
@@ -10,10 +11,11 @@ export const ScenarioPreviewPicker = () => {
   const [scenarios, setScenarios] = useRecoilState(scenariosAtom);
   const setSelectedScenario = useSetRecoilState(selectedScenarioState);
   const router = useRouter();
+
   const createNewScenario = () => {
     setScenarios([...scenarios, scenarios.length]);
     setSelectedScenario(scenarios.length);
-    router.push("/scenario");
+    router.push(config.ROUTE.SCENARIO);
   };
 
   return (
@@ -25,7 +27,7 @@ export const ScenarioPreviewPicker = () => {
           {scenarios.map((id) => (
             <ScenarioListPreviewPicker id={id} key={id} />
           ))}
-          <button className={styles.btn} onClick={() => createNewScenario()}>
+          <button className={styles.btn} onClick={createNewScenario}>
             Add new scenario
           </button>
         </div>
