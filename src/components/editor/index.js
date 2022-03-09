@@ -2,6 +2,7 @@ import dynamic from "next/dynamic";
 import React from "react";
 import { useRecoilState } from "recoil";
 
+import config from "../../config/config.json";
 import { fileAtom } from "../../recoil/atoms";
 import { FileExtensionName } from "../fileExtensionName";
 import { Preview } from "../preview";
@@ -33,7 +34,7 @@ export const Editor = () => {
       <div className={styles.editorHeader}>
         <FileExtensionName
           extension={"liquid"}
-          url={"https://shopify.github.io/liquid/"}
+          url={config.EXTERNAL.DOC.LIQUID}
         />
         <ScenarioPreviewPicker />
       </div>
