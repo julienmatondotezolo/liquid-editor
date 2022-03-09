@@ -1,4 +1,6 @@
-export const getFileData = (event, setFile, setScenario) => {
+import { Notification } from "../components/shared/notification";
+
+export const getFileData = ({ event, setFile, setScenario }) => {
   const getFile = event.target.files[0];
   const fileExtension = getFile.name.split(".").pop();
   const reader = new FileReader();
@@ -10,6 +12,9 @@ export const getFileData = (event, setFile, setScenario) => {
     reader.readAsText(getFile);
   } else {
     alert("Wrong file type ! Only .html & .liquid are accepted.");
+    <Notification
+      message={"Wrong file type ! Only .html & .liquid are accepted."}
+    />;
   }
 
   if (fileExtension == "json") {
@@ -24,5 +29,6 @@ export const getFileData = (event, setFile, setScenario) => {
     reader.readAsText(getFile);
   } else {
     alert("Wrong file type ! Only .json is accepted.");
+    <Notification message={"Wrong file type ! Only .json is accepted."} />;
   }
 };
