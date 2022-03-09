@@ -1,9 +1,12 @@
 @import "../../assets/styles/colors.scss";
+@import "../../assets/styles/variables.scss";
 
 .preview {
   width: 50%;
-  padding: 2rem;
+  padding: $padding--md;
   box-sizing: border-box;
   border-top: 2px solid $brand-color--primary-light;
   border-bottom: 2px solid $brand-color--primary-light;
+  height: calc(100% - $padding--md);
+  overflow: scroll;
 }

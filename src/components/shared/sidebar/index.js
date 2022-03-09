@@ -16,7 +16,7 @@ const Sidebar = ({ setOpen }) => {
   const createNewScenario = () => {
     setScenarios([...scenarios, scenarios.length]);
     setSelectedScenario(scenarios.length);
-    router.push("/scenario");
+    router.push(config.ROUTE.SCENARIO);
   };
 
   return (
