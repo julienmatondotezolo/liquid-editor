@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { FaFileImport } from "react-icons/fa";
 import { useRecoilValue, useSetRecoilState } from "recoil";
 
+import config from "../../../config/config.json";
 import { getFileData } from "../../../helpers";
 import {
   fileAtom,
@@ -34,7 +35,7 @@ export const ImportButton = ({ type }) => {
         <Notification
           message={result.message}
           code={result.code}
-          delay="5000"
+          delay={config.NOTIFICATION.DELAY}
         />
       )}
     </div>

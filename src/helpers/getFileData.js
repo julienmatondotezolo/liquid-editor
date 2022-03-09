@@ -13,6 +13,7 @@ export const getFileData = (event, setFile, setScenario, type) => {
 
     result.message = `${getFile.name} is succesfully imported`;
     result.code = 200;
+    return result;
   }
 
   if (type == "scenario" && fileExtension == "json") {
@@ -28,6 +29,7 @@ export const getFileData = (event, setFile, setScenario, type) => {
 
     result.message = `${getFile.name} is succesfully imported`;
     result.code = 200;
+    return result;
   }
 
   if (type == "file" && fileExtension !== "html") {
@@ -38,7 +40,6 @@ export const getFileData = (event, setFile, setScenario, type) => {
   if (type == "scenario" && fileExtension !== "json") {
     result.message = "Wrong file type ! Only .json is accepted.";
     result.code = 406;
+    return result;
   }
-
-  return result;
 };
