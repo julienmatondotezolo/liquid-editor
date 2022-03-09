@@ -27,7 +27,7 @@ export const Editor = () => {
       <section className={styles.container}>
         <FileName />
         <section className={styles.buttons}>
-          <ImportButton />
+          <ImportButton type="file" />
           <ExportButton data={file} />
         </section>
       </section>

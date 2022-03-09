@@ -1,15 +1,23 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 import styles from "./style.module.scss";
 
-export const Notification = ({ message, error }) => {
-  const removeNotification = () => {
-    //
-  };
+export const Notification = ({ message, code, delay }) => {
+  const [visible, setVisible] = useState(true);
 
-  return (
-    <div className={`${styles.notification} ${error && styles.bgRed}`}>
+  useEffect(() => {
+    setTimeout(() => {
+      setVisible(false);
+    }, delay);
+  }, [delay]);
+
+  return visible ? (
+    <div
+      className={`${styles.notification} ${code != 200 ? styles.bgRed : ""}`}
+    >
       <p>{message}</p>
     </div>
+  ) : (
+    <div />
   );
 };
