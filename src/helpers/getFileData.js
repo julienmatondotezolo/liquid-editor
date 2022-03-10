@@ -7,7 +7,7 @@ export const getFileData = (event, setFile, setScenario, type) => {
 
   if (type == "file" && fileExtension == "html") {
     reader.onload = function (eventReader) {
-      setFile({ name: getFile.name, content: eventReader.target.result });
+      setFile({ name: getFile?.name, content: eventReader.target.result });
     };
     reader.readAsText(getFile);
 

@@ -1,0 +1,63 @@
+@import "../../../assets/styles/colors.scss";
+@import "../../../assets/styles/variables.scss";
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 9;
+
+  > article {
+    position: absolute;
+    left: 5%;
+    top: 5%;
+  }
+
+  svg {
+    cursor: pointer;
+    position: absolute;
+    right: 5%;
+    top: 5%;
+    transform-origin: center;
+    transform: scale(2);
+    transition: all 0.2s ease-in-out;
+    color: $brand-color--light;
+
+    &:hover {
+      transform: scale(1.5);
+      color: $brand-color--primary;
+    }
+  }
+
+  .modalBackground {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: $brand-color--modal-shaded;
+  }
+
+  .modalContent {
+    position: absolute;
+    top: 15%;
+    left: 50%;
+    width: 90%;
+    height: 80%;
+    padding: $padding--md;
+    box-sizing: border-box;
+    box-shadow: $box-shadow;
+    border-radius: $border-radius--large;
+    background: white;
+    transform: translate(-50%, 0);
+
+    > div {
+      height: 100%;
+      overflow: auto;
+
+      div {
+        height: fit-content;
+      }
+    }
+  }
+}

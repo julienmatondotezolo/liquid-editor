@@ -9,3 +9,6 @@ $margin--sm: 0.5rem;
 $margin--md: 1rem;
 $padding--md: 1rem;
 $box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+$border-radius--normal: 3px;
+$border-radius--medium: $border-radius--normal * 2;
+$border-radius--large: $border-radius--normal * 5;
