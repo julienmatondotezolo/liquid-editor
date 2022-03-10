@@ -35,7 +35,8 @@ export const Editor = () => {
         <FileExtensionName
           extension={"liquid"}
           url={config.EXTERNAL.DOC.LIQUID}
-          file={file}
+          mode={"html"}
+          content={file?.content || ""}
           onChange={changeFileContent}
         />
         <ScenarioPreviewPicker />

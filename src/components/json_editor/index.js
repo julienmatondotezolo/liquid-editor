@@ -33,7 +33,13 @@ export const JSONeditor = () => {
         </section>
       </section>
       <div className={styles.editorHeader}>
-        <FileExtensionName extension={"JSON"} />
+        <FileExtensionName
+          extension={"JSON"}
+          name={name}
+          mode={"json"}
+          content={JSON.stringify(content, null, 2)}
+          onChange={changeScenarioContent}
+        />
       </div>
       <div className={styles.editorCode}>
         <CodeMirror

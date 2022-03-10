@@ -4,7 +4,14 @@ import { FaExpand } from "react-icons/fa";
 import Modal from "../shared/modal";
 import styles from "./style.module.scss";
 
-export const FileExtensionName = ({ extension, url, file, onChange }) => {
+export const FileExtensionName = ({
+  extension,
+  url,
+  name,
+  content,
+  onChange,
+  mode,
+}) => {
   const [open, setOpen] = useState(false);
 
   return (
@@ -19,7 +26,15 @@ export const FileExtensionName = ({ extension, url, file, onChange }) => {
       </p>
 
       <FaExpand onClick={() => setOpen(!open)} />
-      {open && <Modal setOpen={setOpen} file={file} onChange={onChange} />}
+      {open && (
+        <Modal
+          setOpen={setOpen}
+          name={name}
+          mode={mode}
+          content={content}
+          onChange={onChange}
+        />
+      )}
     </section>
   );
 };
