@@ -10,7 +10,7 @@ import jsonlint from "jsonlint-mod";
 import React from "react";
 import { UnControlled } from "react-codemirror2-react-17";
 
-export default function CodeMirror({ mode, content, onChange }) {
+const CodeMirror = ({ mode, content, onChange }) => {
   window.jsonlint = jsonlint;
 
   return (
@@ -28,4 +28,6 @@ export default function CodeMirror({ mode, content, onChange }) {
       onChange={onChange}
     />
   );
-}
+};
+
+export default CodeMirror;

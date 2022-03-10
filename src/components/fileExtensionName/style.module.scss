@@ -25,6 +25,17 @@
     }
   }
 
+  > svg {
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    transform-origin: center;
+
+    &:hover {
+      color: $brand-color--light;
+      transform: scale(1.5);
+    }
+  }
+
   img {
     cursor: pointer;
   }
