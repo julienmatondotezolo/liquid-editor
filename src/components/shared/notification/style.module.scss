@@ -10,7 +10,7 @@
   width: 100%;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
-  background: $notification-color--green;
+  background: $brand-color--successs;
   transition: all 0.2s ease-in-out;
   z-index: 999;
 
@@ -20,5 +20,5 @@
 }
 
 .bgRed {
-  background: $notification-color--red;
+  background: $brand-color--error;
 }

@@ -35,6 +35,7 @@ export const getFileData = (event, setFile, setScenario, type) => {
   if (type == "file" && fileExtension !== "html") {
     result.message = "Wrong file type ! Only .html & .liquid are accepted.";
     result.code = 406;
+    return result;
   }
 
   if (type == "scenario" && fileExtension !== "json") {
