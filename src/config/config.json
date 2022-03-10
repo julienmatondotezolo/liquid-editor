@@ -6,6 +6,9 @@
         "DOC": {
             "LIQUID": "https://shopify.github.io/liquid/"
         }
+    },
+    "NOTIFICATION": {
+        "DELAY": "5000"
     }
 }
   

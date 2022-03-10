@@ -28,7 +28,7 @@ export const JSONeditor = () => {
       <section className={styles.container}>
         <FileName name={name} />
         <section className={styles.buttons}>
-          <ImportButton />
+          <ImportButton type="scenario" />
           <ExportButton data={scenario} />
         </section>
       </section>

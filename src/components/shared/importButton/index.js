@@ -1,19 +1,26 @@
-import React from "react";
+import React, { useState } from "react";
 import { FaFileImport } from "react-icons/fa";
 import { useRecoilValue, useSetRecoilState } from "recoil";
 
+import config from "../../../config/config.json";
 import { getFileData } from "../../../helpers";
 import {
   fileAtom,
   scenarioAtomFamily,
   selectedScenarioState,
 } from "../../../recoil/atoms";
+import { Notification } from "../../shared/notification";
 import styles from "./style.module.scss";
 
-export const ImportButton = () => {
+export const ImportButton = ({ type }) => {
   const selectedScenarioID = useRecoilValue(selectedScenarioState);
   const setFile = useSetRecoilState(fileAtom);
   const setScenario = useSetRecoilState(scenarioAtomFamily(selectedScenarioID));
+  const [result, setResult] = useState(null);
+
+  const importFile = (fileData) => {
+    setResult(getFileData(fileData, setFile, setScenario, type));
+  };
 
   return (
     <div className={styles.button}>
@@ -22,8 +29,15 @@ export const ImportButton = () => {
       <input
         type="file"
         accept=".html, .liquid, .json"
-        onChange={(fileData) => getFileData(fileData, setFile, setScenario)}
+        onChange={(fileData) => importFile(fileData)}
       />
+      {result && (
+        <Notification
+          message={result.message}
+          code={result.code}
+          delay={config.NOTIFICATION.DELAY}
+        />
+      )}
     </div>
   );
 };
