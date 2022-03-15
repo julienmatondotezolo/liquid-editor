@@ -12,7 +12,9 @@ export const ScenarioListPreviewPicker = ({ id }) => {
 
   return (
     <p
-      className={selectedScenario === id ? styles.activeList : ""}
+      className={`${styles.scenarioListItems} ${
+        selectedScenario === id ? styles.activeList : ""
+      }`}
       onClick={() => setSelectedScenario(id)}
       aria-hidden="true"
     >
