@@ -1,23 +1,14 @@
-import { useRouter } from "next/router";
 import React from "react";
 import { IoMdArrowDropdown } from "react-icons/io";
-import { useRecoilState, useSetRecoilState } from "recoil";
+import { useRecoilValue } from "recoil";
 
-import config from "../../config/config.json";
-import { scenariosAtom, selectedScenarioState } from "../../recoil/atoms";
+import { scenariosAtom } from "../../recoil/atoms";
 import ScenarioListPreviewPicker from "../scenarioListPreviewPicker";
+import { AddScenarioButton } from "../shared/addScenarioButton";
 import styles from "./style.module.scss";
 
 export const ScenarioPreviewPicker = () => {
-  const [scenarios, setScenarios] = useRecoilState(scenariosAtom);
-  const setSelectedScenario = useSetRecoilState(selectedScenarioState);
-  const router = useRouter();
-
-  const createNewScenario = () => {
-    setScenarios([...scenarios, scenarios.length]);
-    setSelectedScenario(scenarios.length);
-    router.push(config.ROUTE.SCENARIO);
-  };
+  const scenarios = useRecoilValue(scenariosAtom);
 
   return (
     <div className={styles.dropdown}>
@@ -28,9 +19,7 @@ export const ScenarioPreviewPicker = () => {
         {scenarios.map((id) => (
           <ScenarioListPreviewPicker id={id} key={id} />
         ))}
-        <button className={styles.btn} onClick={createNewScenario}>
-          Add new scenario
-        </button>
+        <AddScenarioButton />
       </div>
     </div>
   );
