@@ -20,15 +20,19 @@ export const ScenarioPreviewPicker = () => {
   };
 
   return (
-    <div className={styles.dropdown}>
-      <article className={styles.picker}>
-        <p>Pick scenario</p> <IoMdArrowDropdown />
+    <div className={styles.scenarioDropdown}>
+      <article className={styles.scenarioPicker}>
+        <p>Pick scenario</p>
+        <IoMdArrowDropdown />
       </article>
-      <div className={styles.dropdownContent}>
+      <div className={styles.scenarioDropdownContent}>
         {scenarios.map((id) => (
           <ScenarioListPreviewPicker id={id} key={id} />
         ))}
-        <button className={styles.btn} onClick={createNewScenario}>
+        <button
+          className={styles.addScenarioButton}
+          onClick={createNewScenario}
+        >
           Add new scenario
         </button>
       </div>
