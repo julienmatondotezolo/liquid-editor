@@ -1,17 +1,17 @@
 @import "../../assets/styles/colors.scss";
 @import "../../assets/styles/variables.scss";
 
-.dropdown {
+.scenarioDropdown {
   position: relative;
   display: inline-block;
   cursor: pointer;
   font-size: $font-size--small;
 
-  &:hover .dropdownContent {
+  &:hover .scenarioDropdownContent {
     display: block;
   }
 
-  .picker {
+  .scenarioPicker {
     display: flex;
     align-items: center;
     text-transform: uppercase;
@@ -24,7 +24,7 @@
   }
 }
 
-.dropdownContent {
+.scenarioDropdownContent {
   display: none;
   position: absolute;
   width: 100%;

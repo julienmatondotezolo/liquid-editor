@@ -11,11 +11,12 @@ export const ScenarioPreviewPicker = () => {
   const scenarios = useRecoilValue(scenariosAtom);
 
   return (
-    <div className={styles.dropdown}>
-      <article className={styles.picker}>
-        <p>Pick scenario</p> <IoMdArrowDropdown />
+    <div className={styles.scenarioDropdown}>
+      <article className={styles.scenarioPicker}>
+        <p>Pick scenario</p>
+        <IoMdArrowDropdown />
       </article>
-      <div className={styles.dropdownContent}>
+      <div className={styles.scenarioDropdownContent}>
         {scenarios.map((id) => (
           <ScenarioListPreviewPicker id={id} key={id} />
         ))}
