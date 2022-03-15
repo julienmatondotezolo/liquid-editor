@@ -1,23 +1,15 @@
 import Link from "next/link";
-import { useRouter } from "next/router";
 import React from "react";
-import { useRecoilState, useSetRecoilState } from "recoil";
+import { useRecoilValue } from "recoil";
 
 import config from "../../../config/config.json";
-import { scenariosAtom, selectedScenarioState } from "../../../recoil/atoms";
+import { scenariosAtom } from "../../../recoil/atoms";
+import { AddScenarioButton } from "../addScenarioButton";
 import ListScenario from "../listScenario ";
 import styles from "./style.module.scss";
 
 const Sidebar = ({ setOpen }) => {
-  const [scenarios, setScenarios] = useRecoilState(scenariosAtom);
-  const setSelectedScenario = useSetRecoilState(selectedScenarioState);
-  const router = useRouter();
-
-  const createNewScenario = () => {
-    setScenarios([...scenarios, scenarios.length]);
-    setSelectedScenario(scenarios.length);
-    router.push(config.ROUTE.SCENARIO);
-  };
+  const scenarios = useRecoilValue(scenariosAtom);
 
   return (
     <nav className={styles.sidebar}>
@@ -36,9 +28,7 @@ const Sidebar = ({ setOpen }) => {
           ))}
         </ul>
 
-        <button className={styles.btn} onClick={createNewScenario}>
-          Add new scenario
-        </button>
+        <AddScenarioButton />
       </div>
     </nav>
   );

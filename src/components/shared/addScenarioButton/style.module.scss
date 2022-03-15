@@ -5,12 +5,11 @@
   display: flex;
   font-weight: $font-weight--bold;
   color: $brand-color--success;
-  background: $brand-color--success-light;
+  background: $brand-color--success-opaque;
   width: 100%;
   cursor: pointer;
   border: none;
   padding: $padding--md $padding--lg;
-  transition: all 0.2s ease-in-out;
 
   section {
     margin: auto;
@@ -20,11 +19,11 @@
     svg {
       font-size: $font-size--medium;
       margin-right: $margin--sm;
+      transition: all 0.2s ease-in-out;
     }
   }
 
-  &:hover {
-    color: $brand-color--light;
-    background: $brand-color--success-opaque;
+  &:hover section > svg {
+    font-size: $font-size--medium * 1.2;
   }
 }
