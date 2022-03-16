@@ -1,29 +1,23 @@
 @import "../../../assets/styles/colors.scss";
 @import "../../../assets/styles/variables.scss";
 
-.button {
-  display: flex;
-  align-items: center;
-  position: relative;
+.listItem {
   cursor: pointer;
+  text-align: center;
+  padding: $padding--md $padding--lg;
+  border-bottom: 1px solid $brand-color--opaque;
+  transition: all .2s ease-in-out;
 
-  &hover {
+  &:hover {
     color: $brand-color--light;
-  }
-
-  p {
-    margin-left: $margin--sm;
-  }
-
-  input {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    opacity: 0;
+    border-right: 5px solid $brand-color--light;
+    background: $brand-color--light-opaque;
   }
 }
 
 .active {
-  text-decoration: underline;
+  color: $brand-color--light;
   font-weight: $font-weight--bold;
+  border-right: 5px solid $brand-color--light;
+  background: $brand-color--light-opaque;
 }

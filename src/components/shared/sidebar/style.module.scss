@@ -4,41 +4,16 @@
 .sidebar {
   position: fixed;
   top: $header-height;
-  padding: 1rem 5%;
   box-sizing: border-box;
   float: left;
   width: 400px;
   height: calc(100vh - $header-height);
-  color: white;
-  background: $brand-color--primary;
+  color: $brand-color--primary;
+  background: white;
   z-index: 9;
 
-  .btn {
-    text-transform: uppercase;
-    padding: 1em;
-    background: white;
+  ul {
     width: 100%;
-    color: $brand-color--primary;
-    border: 2px solid #fff;
-    border-radius: 3px;
-    cursor: pointer;
-    transition: all 0.2s ease-in-out;
-
-    &:hover {
-      color: white;
-      background: $brand-color--primary;
-    }
-  }
-
-  div {
-    margin-top: $margin--md;
-  }
-
-  li {
-    cursor: pointer;
-    margin-top: $margin--sm;
-    &:hover {
-      font-weight: $font-weight--bold;
-    }
+    float: left;
   }
 }
