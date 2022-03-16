@@ -18,8 +18,8 @@
   width: 90%;
   max-width: $screen-size--large;
   display: flex;
-  flex-wrap: wrap;
   align-items: center;
+  justify-content: center;
 }
 
 .hamburger {

@@ -1,45 +1,37 @@
-import Link from "next/link";
-import { useRouter } from "next/router";
-import React from "react";
-import { useRecoilState, useSetRecoilState } from "recoil";
+import React, { useState } from "react";
+import { IoIosArrowBack } from "react-icons/io";
+import { useRecoilValue } from "recoil";
 
-import config from "../../../config/config.json";
-import { scenariosAtom, selectedScenarioState } from "../../../recoil/atoms";
+import { scenariosAtom } from "../../../recoil/atoms";
+import { AddScenarioButton } from "../addScenarioButton";
 import ListScenario from "../listScenario ";
 import styles from "./style.module.scss";
 
-const Sidebar = ({ setOpen }) => {
-  const [scenarios, setScenarios] = useRecoilState(scenariosAtom);
-  const setSelectedScenario = useSetRecoilState(selectedScenarioState);
-  const router = useRouter();
-
-  const createNewScenario = () => {
-    setScenarios([...scenarios, scenarios.length]);
-    setSelectedScenario(scenarios.length);
-    router.push(config.ROUTE.SCENARIO);
-  };
+const Sidebar = () => {
+  const scenarios = useRecoilValue(scenariosAtom);
+  const [open, setOpen] = useState(false);
 
   return (
-    <nav className={styles.sidebar}>
-      <Link href="/" onClick={() => setOpen(false)}>
-        <a>Editor</a>
-      </Link>
-
-      <div>
-        <Link href={config.ROUTE.SCENARIO} onClick={() => setOpen(false)}>
-          <a>Scenario</a>
-        </Link>
-
-        <ul>
-          {scenarios.map((id) => (
-            <ListScenario id={id} setOpen={setOpen} key={id} />
-          ))}
-        </ul>
-
-        <button className={styles.btn} onClick={createNewScenario}>
-          Add new scenario
-        </button>
+    <nav
+      className={styles.sidebar}
+      onMouseEnter={() => setOpen(!open)}
+      onMouseLeave={() => setOpen(!open)}
+      style={{ left: open ? "0" : "-18%" }}
+    >
+      <div
+        className={styles.collapseIcon}
+        onClick={() => setOpen(!open)}
+        style={{ transform: open ? "rotate(0deg)" : "rotate(180deg)" }}
+        aria-hidden="true"
+      >
+        <IoIosArrowBack />
       </div>
+      <AddScenarioButton />
+      <ul style={{ display: open ? "block" : "none" }}>
+        {scenarios.map((id) => (
+          <ListScenario id={id} key={id} />
+        ))}
+      </ul>
     </nav>
   );
 };
