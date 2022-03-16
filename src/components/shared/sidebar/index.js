@@ -16,18 +16,18 @@ const Sidebar = () => {
       className={styles.sidebar}
       onMouseEnter={() => setOpen(!open)}
       onMouseLeave={() => setOpen(!open)}
-      style={open ? { left: "0" } : { left: "-18%" }}
+      style={{ left: open ? "0" : "-18%" }}
     >
       <div
         className={styles.collapseIcon}
         onClick={() => setOpen(!open)}
-        style={open ? { transform: "rotate(0deg)" } : { transform: "rotate(180deg)" }}
+        style={{ transform: open ? "rotate(0deg)" : "rotate(180deg)" }}
         aria-hidden="true"
       >
         <IoIosArrowBack />
       </div>
       <AddScenarioButton />
-      <ul style={open ? { display: "block" } : { display: "none" }}>
+      <ul style={{ display: open ? "block" : "none" }}>
         {scenarios.map((id) => (
           <ListScenario id={id} key={id} />
         ))}
