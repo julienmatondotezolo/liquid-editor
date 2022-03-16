@@ -6,11 +6,36 @@
   top: $header-height;
   box-sizing: border-box;
   float: left;
-  width: 400px;
+  width: 20%;
   height: calc(100vh - $header-height);
   color: $brand-color--primary;
   background: white;
+  transition: all .2s ease-in-out;
+  box-shadow: $box-shadow;
   z-index: 9;
+
+  > div {
+    cursor: pointer;
+    position: absolute;
+    top: $padding--md;
+    right: - $padding--md;
+    color: $brand-color--light;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    background: white;
+    border-radius: 30px;
+    box-shadow: $box-shadow;
+    transition: all .2s ease-in-out;
+    transform: translate(0, -20%);
+
+    &:hover {
+      color: white;
+      background: $brand-color--light;
+    }
+  }
 
   ul {
     width: 100%;

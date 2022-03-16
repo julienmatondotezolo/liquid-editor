@@ -1,4 +1,5 @@
 import React from "react";
+import { IoIosArrowBack } from "react-icons/io";
 import { useRecoilValue } from "recoil";
 
 import { scenariosAtom } from "../../../recoil/atoms";
@@ -11,6 +12,9 @@ const Sidebar = () => {
 
   return (
     <nav className={styles.sidebar}>
+      <div>
+        <IoIosArrowBack />
+      </div>
       <AddScenarioButton />
       <ul>
         {scenarios.map((id) => (
