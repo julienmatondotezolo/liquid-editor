@@ -14,10 +14,10 @@
   box-shadow: $box-shadow;
   z-index: 9;
 
-  > div {
+  .collapseIcon {
     cursor: pointer;
     position: absolute;
-    top: $padding--md;
+    top: 10px;
     right: - $padding--md;
     color: $brand-color--light;
     display: flex;
@@ -29,7 +29,6 @@
     border-radius: 30px;
     box-shadow: $box-shadow;
     transition: all .2s ease-in-out;
-    transform: translate(0, -20%);
 
     &:hover {
       color: white;
