@@ -1,13 +1,17 @@
 $header-height: 65px;
 $dropdown-width: 160px;
 $font-size--small: 0.75rem;
+$font-size--normal: 1rem;
 $font-size--medium: 1.5rem;
 $font-size--large: 2rem;
 $font-weight--bold: 600;
 $screen-size--large: 1600px;
 $margin--sm: 0.5rem;
 $margin--md: 1rem;
+$padding--sm: 0.5rem;
 $padding--md: 1rem;
+$padding--lg: 2rem;
+$padding--lg-2x: $padding--lg * 2;
 $box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
 $border-radius--normal: 3px;
 $border-radius--medium: $border-radius--normal * 2;
