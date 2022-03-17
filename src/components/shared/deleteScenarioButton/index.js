@@ -15,8 +15,8 @@ export const DeleteScenarioButton = () => {
   const router = useRouter();
 
   const deleteScenario = () => {
-    const newScenarios = scenarios.filter(function (e) {
-      return e !== selectedScenario;
+    const newScenarios = scenarios.filter(function (scenarioId) {
+      return scenarioId !== selectedScenario;
     });
 
     setScenarios(newScenarios);
@@ -27,7 +27,7 @@ export const DeleteScenarioButton = () => {
   };
 
   return (
-    <button className={styles.btn} onClick={deleteScenario}>
+    <button className={styles.button} onClick={deleteScenario}>
       <section>
         <MdDelete />
         <p>Delete scenario</p>
