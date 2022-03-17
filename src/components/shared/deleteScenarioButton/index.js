@@ -10,7 +10,8 @@ import styles from "./style.module.scss";
 export const DeleteScenarioButton = () => {
   const [scenarios, setScenarios] = useRecoilState(scenariosAtom);
   const [selectedScenario, setSelectedScenario] = useRecoilState(selectedScenarioState);
-  // const resetList = useResetRecoilState(scenarioAtomFamily(selectedScenario));
+  const resetAtom = useResetRecoilState(scenarioAtomFamily(selectedScenario));
+
   const router = useRouter();
 
   const deleteScenario = () => {
@@ -19,6 +20,7 @@ export const DeleteScenarioButton = () => {
     });
 
     setScenarios(newScenarios);
+    resetAtom();
     setSelectedScenario(0);
 
     router.push(config.ROUTE.HOME);
