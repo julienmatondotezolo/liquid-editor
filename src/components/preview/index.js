@@ -3,11 +3,8 @@ import React, { useState } from "react";
 import { useRecoilValue } from "recoil";
 
 import { ShadowRoot } from "../../helpers/";
-import {
-  fileAtom,
-  scenarioAtomFamily,
-  selectedScenarioState,
-} from "../../recoil/atoms";
+import { fileAtom, scenarioAtomFamily, selectedScenarioState } from "../../recoil/atoms";
+import { ScenarioPreviewPicker } from "../scenarioPreviewPicker";
 import styles from "./style.module.scss";
 
 export const Preview = () => {
@@ -26,10 +23,15 @@ export const Preview = () => {
   });
 
   return (
-    <article className={styles.preview}>
-      <ShadowRoot>
-        <div dangerouslySetInnerHTML={{ __html: liquidValue }} />
-      </ShadowRoot>
-    </article>
+    <section className={styles.preview}>
+      <article className={styles.previewContent}>
+        <ShadowRoot>
+          <div dangerouslySetInnerHTML={{ __html: liquidValue }} />
+        </ShadowRoot>
+      </article>
+      <div className={styles.previewHeader}>
+        <ScenarioPreviewPicker />
+      </div>
+    </section>
   );
 };

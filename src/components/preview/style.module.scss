@@ -2,11 +2,23 @@
 @import "../../assets/styles/variables.scss";
 
 .preview {
+  position: relative;
   width: 50%;
   padding: $padding--md;
   box-sizing: border-box;
-  border-top: 2px solid $brand-color--primary-light;
-  border-bottom: 2px solid $brand-color--primary-light;
-  height: calc(100% - $padding--md);
-  overflow: scroll;
+  border-left: 2px solid $brand-color--light-opaque;
+  height: 100%;
+
+  .previewHeader {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 3;
+  }
+
+  .previewContent {
+    height: 100%;
+    width: 100%;
+    overflow: auto;
+  }
 }

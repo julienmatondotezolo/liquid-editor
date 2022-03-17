@@ -21,19 +21,17 @@
   .editorCode {
     display: flex;
     flex-wrap: wrap;
-    box-sizing: border-box;
     width: 95%;
     height: 80%;
-    padding: $padding--md;
     background: white;
     box-shadow: $box-shadow;
 
     .codeMirror,
     > div {
       width: 50%;
-      border-right: 4px solid $brand-color--primary-light;
-      height: calc(100%);
-      overflow: scroll;
+      height: calc(100% - $padding--md);
+      overflow: auto;
+      padding: $padding--md;
 
       > div {
         height: fit-content;

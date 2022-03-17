@@ -2,13 +2,9 @@ import dynamic from "next/dynamic";
 import React from "react";
 import { useRecoilState } from "recoil";
 
-import config from "../../config/config.json";
 import { fileAtom } from "../../recoil/atoms";
-import { FileExtensionName } from "../fileExtensionName";
 import { Preview } from "../preview";
-import { ScenarioPreviewPicker } from "../scenarioPreviewPicker";
 import ExportButton from "../shared/exportButton";
-import { FileName } from "../shared/fileName";
 import ImportButton from "../shared/importButton";
 import styles from "./style.module.scss";
 
@@ -28,7 +24,6 @@ export const Editor = () => {
         <ImportButton type="file" />
         <ExportButton data={file} />
       </section>
-      <ScenarioPreviewPicker />
       <div className={styles.editorCode}>
         <CodeMirror
           mode={"html"}
