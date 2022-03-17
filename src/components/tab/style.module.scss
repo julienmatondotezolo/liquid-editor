@@ -1,0 +1,22 @@
+@import "../../assets/styles/colors.scss";
+@import "../../assets/styles/variables.scss";
+
+.tab {
+    display: inline-block;
+    padding: $padding--md $padding--lg;
+    margin-right: $margin--md;
+    cursor: pointer;
+    background: $brand-color--light-opaque;
+    transition: all .2s ease-in-out;
+
+    &:hover {
+        font-weight: $font-weight--bold;
+    }
+}
+
+
+.active {
+    color: $brand-color--light;
+    font-weight: $font-weight--semi-bold;
+    background: white;
+}

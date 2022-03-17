@@ -18,23 +18,31 @@
     justify-content: space-between;
   }
 
-  .editorCode {
+  .tabs {
     display: flex;
-    flex-wrap: wrap;
+    width: 100%;
+  }
+
+  .editorCode {
     width: 95%;
     height: 80%;
-    background: white;
-    box-shadow: $box-shadow;
 
-    .codeMirror,
-    > div {
-      width: 50%;
-      height: calc(100% - $padding--md);
-      overflow: auto;
-      padding: $padding--md;
+    .editorContent {
+      display: flex;
+      flex-wrap: wrap;
+      height: 100%;
+      background: white;
+      box-shadow: $box-shadow;
 
       > div {
-        height: fit-content;
+        width: 50%;
+        height: calc(100% - $padding--md);
+        overflow: auto;
+        padding: $padding--md;
+  
+        > div {
+          height: fit-content;
+        }
       }
     }
   }

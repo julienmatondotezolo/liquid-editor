@@ -6,6 +6,7 @@ import { fileAtom } from "../../recoil/atoms";
 import { Preview } from "../preview";
 import ExportButton from "../shared/exportButton";
 import ImportButton from "../shared/importButton";
+import Tab from "../tab";
 import styles from "./style.module.scss";
 
 const CodeMirror = dynamic(() => import("../codeMirror"), {
@@ -20,18 +21,24 @@ export const Editor = () => {
 
   return (
     <div className={styles.editor}>
-      <section className={styles.buttons}>
-        <ImportButton type="file" />
-        <ExportButton data={file} />
-      </section>
       <div className={styles.editorCode}>
-        <CodeMirror
-          mode={"html"}
-          content={file?.content || ""}
-          onChange={changeFileContent}
-          className={styles.codeMirror}
-        />
-        <Preview className={styles.codePreview} />
+        <section className={styles.tabs}>
+          <Tab name={"Index.html"} active={true} />
+          <Tab name={"belasting-scenario.json"} active={false} />
+          <section className={styles.buttons}>
+            <ImportButton type="file" />
+            <ExportButton data={file} />
+          </section>
+        </section>
+        <div className={styles.editorContent}>
+          <CodeMirror
+            mode={"html"}
+            content={file?.content || ""}
+            onChange={changeFileContent}
+            className={styles.codeMirror}
+          />
+          <Preview className={styles.codePreview} />
+        </div>
       </div>
     </div>
   );
