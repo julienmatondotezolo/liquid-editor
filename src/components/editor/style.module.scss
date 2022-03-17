@@ -12,42 +12,27 @@
   padding-top: $header-height;
   overflow: hidden;
 
-  .container {
+  .buttons {
     display: flex;
-    flex-wrap: wrap;
+    flex-direction: column;
     justify-content: space-between;
-    width: 90%;
-    max-width: $screen-size--large;
-    padding: 2rem 0;
-
-    .buttons {
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-    }
-  }
-
-  .editorHeader {
-    display: flex;
-    flex-wrap: wrap;
-    width: 100%;
-    border-top: 2px solid $brand-color--primary-light;
   }
 
   .editorCode {
     display: flex;
     flex-wrap: wrap;
     box-sizing: border-box;
-    width: 100%;
+    width: 95%;
     height: 80%;
+    padding: $padding--md;
+    background: white;
+    box-shadow: $box-shadow;
 
     .codeMirror,
     > div {
       width: 50%;
-      border-top: 2px solid $brand-color--primary-light;
-      border-bottom: 2px solid $brand-color--primary-light;
       border-right: 4px solid $brand-color--primary-light;
-      height: calc(100% - $padding--md);
+      height: calc(100%);
       overflow: scroll;
 
       > div {

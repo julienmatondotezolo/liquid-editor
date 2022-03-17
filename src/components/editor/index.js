@@ -24,23 +24,11 @@ export const Editor = () => {
 
   return (
     <div className={styles.editor}>
-      <section className={styles.container}>
-        <FileName />
-        <section className={styles.buttons}>
-          <ImportButton type="file" />
-          <ExportButton data={file} />
-        </section>
+      <section className={styles.buttons}>
+        <ImportButton type="file" />
+        <ExportButton data={file} />
       </section>
-      <div className={styles.editorHeader}>
-        <FileExtensionName
-          extension={"liquid"}
-          url={config.EXTERNAL.DOC.LIQUID}
-          mode={"html"}
-          content={file?.content || ""}
-          onChange={changeFileContent}
-        />
-        <ScenarioPreviewPicker />
-      </div>
+      <ScenarioPreviewPicker />
       <div className={styles.editorCode}>
         <CodeMirror
           mode={"html"}

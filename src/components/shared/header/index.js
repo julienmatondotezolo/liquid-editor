@@ -1,6 +1,5 @@
 import React from "react";
 
-import Sidebar from "../sidebar";
 import styles from "./style.module.scss";
 
 const Header = () => (
@@ -10,7 +9,6 @@ const Header = () => (
         <h1>Bothive Liquid editor</h1>
       </section>
     </nav>
-    <Sidebar />
   </div>
 );
 
