@@ -12,15 +12,15 @@
   padding-top: $header-height;
   overflow: hidden;
 
-  .buttons {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-  }
-
   .tabs {
     display: flex;
     width: 100%;
+  }
+
+  .buttons {
+    float: right;
+    display: flex;
+    justify-content: space-between;
   }
 
   .editorCode {

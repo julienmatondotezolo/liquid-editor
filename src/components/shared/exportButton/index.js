@@ -6,10 +6,7 @@ import styles from "./style.module.scss";
 
 const ExportButton = ({ data }) => (
   <div className={styles.exportButton}>
-    <FaFileExport />
-    <button onClick={() => downloadFile(data.content, data.name)}>
-      Export file
-    </button>
+    <FaFileExport onClick={() => downloadFile(data.content, data.name)} />
   </div>
 );
 
