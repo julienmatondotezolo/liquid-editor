@@ -5,7 +5,6 @@ import { useRecoilValue } from "recoil";
 import { ShadowRoot } from "../../helpers/";
 import { fileAtom, scenarioAtomFamily, selectedScenarioState } from "../../recoil/atoms";
 import { ScenarioPreviewPicker } from "../scenarioPreviewPicker";
-import { FileName } from "../shared/fileName";
 import styles from "./style.module.scss";
 
 export const Preview = () => {
@@ -26,7 +25,6 @@ export const Preview = () => {
   return (
     <section className={styles.preview}>
       <div className={styles.previewHeader}>
-        <FileName />
         <ScenarioPreviewPicker />
       </div>
       <article className={styles.previewContent}>

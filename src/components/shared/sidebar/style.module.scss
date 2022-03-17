@@ -2,11 +2,13 @@
 @import "../../../assets/styles/variables.scss";
 
 .sidebar {
-  position: fixed;
+  position: relative;
   top: $header-height;
   box-sizing: border-box;
   float: left;
-  width: 20%;
+  // width: 20%;
+  display: flex;
+  flex-shrink: 1;
   height: calc(100vh - $header-height);
   color: $brand-color--primary;
   background: white;

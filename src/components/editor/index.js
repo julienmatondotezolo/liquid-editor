@@ -1,7 +1,9 @@
 import dynamic from "next/dynamic";
+import Link from "next/link";
 import React from "react";
 import { useRecoilState } from "recoil";
 
+import config from "../../config/config.json";
 import { fileAtom } from "../../recoil/atoms";
 import { Preview } from "../preview";
 import ExportButton from "../shared/exportButton";
@@ -23,8 +25,12 @@ export const Editor = () => {
     <div className={styles.editor}>
       <div className={styles.editorCode}>
         <section className={styles.tabs}>
-          <Tab name={"Index.html"} active={true} />
-          <Tab name={"belasting-scenario.json"} active={false} />
+          <Link href={config.ROUTE.HOME} passHref>
+            <Tab name={"Index.html"} active={true} />
+          </Link>
+          <Link href={config.ROUTE.SCENARIO} passHref>
+            <Tab name={"belasting-scenario.json"} active={false} />
+          </Link>
           <section className={styles.buttons}>
             <ImportButton type="file" />
             <ExportButton data={file} />
