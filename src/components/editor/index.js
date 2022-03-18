@@ -8,7 +8,7 @@ import { fileAtom } from "../../recoil/atoms";
 import { Preview } from "../preview";
 import ExportButton from "../shared/exportButton";
 import ImportButton from "../shared/importButton";
-import Tab from "../tab";
+import Tab from "../shared/tab";
 import styles from "./style.module.scss";
 
 const CodeMirror = dynamic(() => import("../codeMirror"), {

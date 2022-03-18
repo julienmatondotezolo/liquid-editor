@@ -14,8 +14,8 @@ const Sidebar = () => {
   return (
     <nav
       className={styles.sidebar}
-      // onMouseEnter={() => setOpen(!open)}
-      // onMouseLeave={() => setOpen(!open)}
+      onMouseEnter={() => setOpen(!open)}
+      onMouseLeave={() => setOpen(!open)}
       style={{ width: open ? "20%" : "2%" }}
     >
       <div
