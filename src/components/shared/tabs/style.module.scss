@@ -1,0 +1,20 @@
+@import "../../../assets/styles/colors.scss";
+@import "../../../assets/styles/variables.scss";
+
+.tabs {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    width: 100%;
+
+    .buttons {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+
+      a + a {
+        margin-left: $margin--md;
+      }
+    }
+}

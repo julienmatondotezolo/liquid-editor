@@ -2,11 +2,8 @@ import dynamic from "next/dynamic";
 import React from "react";
 import { useRecoilState, useRecoilValue } from "recoil";
 
-import config from "../../config/config.json";
 import { fileAtom, scenarioAtomFamily, selectedScenarioState } from "../../recoil/atoms";
-import ExportButton from "../shared/exportButton";
-import ImportButton from "../shared/importButton";
-import Tab from "../shared/tab";
+import Tabs from "../shared/tabs";
 import styles from "./style.module.scss";
 
 const CodeMirror = dynamic(() => import("../codeMirror"), {
@@ -25,14 +22,7 @@ export const JSONeditor = () => {
   return (
     <div className={styles.editor}>
       <div className={styles.editorCode}>
-        <section className={styles.tabs}>
-          <Tab name={file.name} href={config.ROUTE.HOME} active={false} />
-          <Tab name={name} active={true} />
-          <section className={styles.buttons}>
-            <ImportButton type="scenario" />
-            <ExportButton data={scenario} />
-          </section>
-        </section>
+        <Tabs fileName={file.name} scenarioName={name} scenario={scenario} />
         <div className={styles.editorContent}>
           <CodeMirror
             mode={"json"}

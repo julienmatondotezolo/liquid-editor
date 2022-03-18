@@ -31,6 +31,7 @@
     border-radius: 30px;
     box-shadow: $box-shadow;
     transition: all .4s ease-in-out;
+    z-index: 1;
 
     &:hover {
       color: white;

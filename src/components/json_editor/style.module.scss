@@ -12,16 +12,6 @@
   padding-top: $header-height;
   overflow: hidden;
 
-  .tabs {
-    display: flex;
-    width: 100%;
-  }
-
-  .buttons {
-    display: flex;
-    justify-content: space-between;
-  }
-
   .editorCode {
     width: 95%;
     height: 90%;

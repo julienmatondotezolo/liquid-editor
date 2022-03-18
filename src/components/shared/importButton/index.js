@@ -19,11 +19,11 @@ export const ImportButton = ({ type }) => {
   };
 
   return (
-    <div className={styles.button}>
+    <a className={styles.importButton}>
       <BiImport />
       <input type="file" accept=".html, .liquid, .json" onChange={(fileData) => importFile(fileData)} />
       {result && <Notification message={result.message} code={result.code} delay={config.NOTIFICATION.DELAY} />}
-    </div>
+    </a>
   );
 };
 

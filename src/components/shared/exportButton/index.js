@@ -5,9 +5,9 @@ import { downloadFile } from "../../../helpers";
 import styles from "./style.module.scss";
 
 const ExportButton = ({ data }) => (
-  <div className={styles.exportButton}>
+  <a className={styles.exportButton}>
     <BiExport onClick={() => downloadFile(data.content, data.name)} />
-  </div>
+  </a>
 );
 
 export default ExportButton;

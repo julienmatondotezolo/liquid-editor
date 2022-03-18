@@ -10,7 +10,7 @@
     transition: all .2s ease-in-out;
 
     &:hover {
-        font-weight: $font-weight--bold;
+        text-decoration: underline;
     }
 }
 

@@ -13,12 +13,7 @@ export const Sidebar = () => {
   const [open, setOpen] = useState(false);
 
   return (
-    <nav
-      className={styles.sidebar}
-      onMouseEnter={() => setOpen(!open)}
-      onMouseLeave={() => setOpen(!open)}
-      style={{ width: open ? "20%" : "2%" }}
-    >
+    <nav className={styles.sidebar} style={{ width: open ? "20%" : "2%" }}>
       <div
         className={styles.collapseIcon}
         onClick={() => setOpen(!open)}
