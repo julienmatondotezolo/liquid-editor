@@ -3,53 +3,47 @@
 
 .editor {
   display: flex;
-  flex-wrap: wrap;
+  flex-flow: column;
+  align-items: center;
   justify-content: center;
+  flex-shrink: 1;
   width: 100%;
-  height: calc(100% - $padding--md);
+  height: 100%;
+  box-sizing: border-box;
   padding-top: $header-height;
+  overflow: hidden;
 
-  .container {
+  .tabs {
     display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    width: 90%;
-    max-width: $screen-size--large;
-    padding: 2rem 0;
-
-    .buttons {
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-    }
+    width: 100%;
   }
 
-  .editorHeader {
+  .buttons {
+    float: right;
     display: flex;
-    flex-wrap: wrap;
-    width: 100%;
-    border-top: 2px solid $brand-color--primary-light;
-    overflow: hidden;
-
-    section {
-      width: 100%;
-    }
+    justify-content: space-between;
   }
 
   .editorCode {
-    display: flex;
-    flex-wrap: wrap;
-    width: 100%;
+    width: 95%;
     height: 80%;
 
-    .codeMirror,
-    > div {
+    .editorContent {
+      display: flex;
+      flex-wrap: wrap;
       height: 100%;
-      width: 100%;
-      border-top: 2px solid $brand-color--primary-light;
-      border-bottom: 2px solid $brand-color--primary-light;
+      background: white;
+      box-shadow: $box-shadow;
+
       > div {
+        width: 100%;
         height: calc(100% - $padding--md);
+        overflow: auto;
+        padding: $padding--md;
+  
+        > div {
+          height: fit-content;
+        }
       }
     }
   }

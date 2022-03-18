@@ -6,16 +6,15 @@
   top: $header-height;
   box-sizing: border-box;
   float: left;
-  // width: 20%;
+  width: auto;
   display: flex;
   flex-direction: column;
   flex-shrink: 1;
-  height: calc(100vh - $header-height);
+  height: calc(100% - $header-height);
   color: $brand-color--primary;
   background: white;
-  transition: all .2s ease-in-out;
+  transition: all .4s ease-in-out;
   box-shadow: $box-shadow;
-  z-index: 9;
 
   .collapseIcon {
     cursor: pointer;

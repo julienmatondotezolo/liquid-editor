@@ -26,10 +26,14 @@ export const Editor = () => {
       <div className={styles.editorCode}>
         <section className={styles.tabs}>
           <Link href={config.ROUTE.HOME} passHref>
-            <Tab name={"Index.html"} active={true} />
+            <a>
+              <Tab name={file.name} active={true} />
+            </a>
           </Link>
           <Link href={config.ROUTE.SCENARIO} passHref>
-            <Tab name={"belasting-scenario.json"} active={false} />
+            <a>
+              <Tab name={"belasting-scenario.json"} active={false} />
+            </a>
           </Link>
           <section className={styles.buttons}>
             <ImportButton type="file" />

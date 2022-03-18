@@ -16,7 +16,7 @@ const Sidebar = () => {
       className={styles.sidebar}
       // onMouseEnter={() => setOpen(!open)}
       // onMouseLeave={() => setOpen(!open)}
-      style={{ left: open ? "0" : "-10%" }}
+      style={{ width: open ? "20%" : "2%" }}
     >
       <div
         className={styles.collapseIcon}
