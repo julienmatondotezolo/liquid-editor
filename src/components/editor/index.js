@@ -1,10 +1,9 @@
 import dynamic from "next/dynamic";
-import Link from "next/link";
 import React from "react";
-import { useRecoilState } from "recoil";
+import { useRecoilState, useRecoilValue } from "recoil";
 
 import config from "../../config/config.json";
-import { fileAtom } from "../../recoil/atoms";
+import { fileAtom, scenarioAtomFamily, selectedScenarioState } from "../../recoil/atoms";
 import { Preview } from "../preview";
 import ExportButton from "../shared/exportButton";
 import ImportButton from "../shared/importButton";
@@ -17,6 +16,9 @@ const CodeMirror = dynamic(() => import("../codeMirror"), {
 
 export const Editor = () => {
   const [file, setFile] = useRecoilState(fileAtom);
+  const selectedScenarioId = useRecoilValue(selectedScenarioState);
+  const scenario = useRecoilValue(scenarioAtomFamily(selectedScenarioId));
+  const { name } = scenario;
   const changeFileContent = (editor, data, value) => {
     setFile({ ...file, content: value });
   };
@@ -25,16 +27,8 @@ export const Editor = () => {
     <div className={styles.editor}>
       <div className={styles.editorCode}>
         <section className={styles.tabs}>
-          <Link href={config.ROUTE.HOME} passHref>
-            <a>
-              <Tab name={file.name} active={true} />
-            </a>
-          </Link>
-          <Link href={config.ROUTE.SCENARIO} passHref>
-            <a>
-              <Tab name={"belasting-scenario.json"} active={false} />
-            </a>
-          </Link>
+          <Tab name={file.name} href={config.ROUTE.HOME} active={true} />
+          <Tab name={name} active={false} />
           <section className={styles.buttons}>
             <ImportButton type="file" />
             <ExportButton data={file} />

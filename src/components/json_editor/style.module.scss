@@ -5,7 +5,6 @@
   display: flex;
   flex-flow: column;
   align-items: center;
-  justify-content: center;
   flex-shrink: 1;
   width: 100%;
   height: 100%;
@@ -19,14 +18,13 @@
   }
 
   .buttons {
-    float: right;
     display: flex;
     justify-content: space-between;
   }
 
   .editorCode {
     width: 95%;
-    height: 80%;
+    height: 90%;
 
     .editorContent {
       display: flex;

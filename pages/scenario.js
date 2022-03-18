@@ -1,14 +1,13 @@
 import React from "react";
 
 import { JSONeditor } from "../src/components/json_editor";
-import Header from "../src/components/shared/header";
-import Sidebar from "../src/components/shared/Sidebar";
+import { Header, Sidebar } from "../src/components/shared/";
 
 export default function Scenario() {
   return (
     <>
       <Header />
-      <div style={{ display: "flex", height: "100%" }}>
+      <div className="container">
         <Sidebar />
         <JSONeditor />
       </div>

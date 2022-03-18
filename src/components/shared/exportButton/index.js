@@ -1,12 +1,12 @@
 import React from "react";
-import { FaFileExport } from "react-icons/fa";
+import { BiExport } from "react-icons/bi";
 
 import { downloadFile } from "../../../helpers";
 import styles from "./style.module.scss";
 
 const ExportButton = ({ data }) => (
   <div className={styles.exportButton}>
-    <FaFileExport onClick={() => downloadFile(data.content, data.name)} />
+    <BiExport onClick={() => downloadFile(data.content, data.name)} />
   </div>
 );
 

@@ -30,6 +30,11 @@ a {
   padding: 0;
 }
 
+.container {
+  display: flex;
+  height: 100%;
+}
+
 ::-webkit-scrollbar {
   width: 5px;
 }

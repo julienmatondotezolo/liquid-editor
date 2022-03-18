@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { FaFileImport } from "react-icons/fa";
+import { BiImport } from "react-icons/bi";
 import { useRecoilValue, useSetRecoilState } from "recoil";
 
 import config from "../../../config/config.json";
@@ -20,7 +20,7 @@ export const ImportButton = ({ type }) => {
 
   return (
     <div className={styles.button}>
-      <FaFileImport />
+      <BiImport />
       <input type="file" accept=".html, .liquid, .json" onChange={(fileData) => importFile(fileData)} />
       {result && <Notification message={result.message} code={result.code} delay={config.NOTIFICATION.DELAY} />}
     </div>

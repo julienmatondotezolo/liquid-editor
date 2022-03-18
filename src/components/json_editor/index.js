@@ -1,5 +1,4 @@
 import dynamic from "next/dynamic";
-import Link from "next/link";
 import React from "react";
 import { useRecoilState, useRecoilValue } from "recoil";
 
@@ -27,19 +26,11 @@ export const JSONeditor = () => {
     <div className={styles.editor}>
       <div className={styles.editorCode}>
         <section className={styles.tabs}>
-          <Link href={config.ROUTE.HOME} passHref>
-            <a>
-              <Tab name={file.name} active={false} />
-            </a>
-          </Link>
-          <Link href={config.ROUTE.SCENARIO} passHref>
-            <a>
-              <Tab name={name} active={true} />
-            </a>
-          </Link>
+          <Tab name={file.name} href={config.ROUTE.HOME} active={false} />
+          <Tab name={name} active={true} />
           <section className={styles.buttons}>
-            <ImportButton type="file" />
-            <ExportButton data={file} />
+            <ImportButton type="scenario" />
+            <ExportButton data={scenario} />
           </section>
         </section>
         <div className={styles.editorContent}>
