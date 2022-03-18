@@ -4,6 +4,7 @@ import { useRecoilValue } from "recoil";
 
 import { scenariosAtom } from "../../../recoil/atoms";
 import { AddScenarioButton } from "../addScenarioButton";
+import { DeleteScenarioButton } from "../deleteScenarioButton";
 import ListScenario from "../listScenario ";
 import styles from "./style.module.scss";
 
@@ -32,6 +33,7 @@ const Sidebar = () => {
           <ListScenario id={id} key={id} />
         ))}
       </ul>
+      <DeleteScenarioButton />
     </nav>
   );
 };

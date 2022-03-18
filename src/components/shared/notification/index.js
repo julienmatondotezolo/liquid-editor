@@ -12,9 +12,7 @@ export const Notification = ({ message, code, delay }) => {
   }, [delay]);
 
   return visible ? (
-    <div
-      className={`${styles.notification} ${code != 200 ? styles.bgRed : ""}`}
-    >
+    <div className={`${styles.notification} ${code != 200 ? styles.bgRed : ""}`}>
       <p>{message}</p>
     </div>
   ) : (

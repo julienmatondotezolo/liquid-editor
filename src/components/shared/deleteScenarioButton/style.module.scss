@@ -1,14 +1,16 @@
 @import "../../../assets/styles/colors.scss";
 @import "../../../assets/styles/variables.scss";
 
-.btn {
+.button {
   display: flex;
   font-weight: $font-weight--bold;
-  color: $brand-color--success;
+  text-transform: uppercase;
+  color: $brand-color--error;
   width: 100%;
   cursor: pointer;
   border: none;
   padding: $padding--md $padding--lg;
+  background: white;
 
   section {
     margin: auto;
@@ -23,6 +25,6 @@
   }
 
   &:hover {
-    background: $brand-color--success-opaque;
+    background: $brand-color--error-opaque;
   }
 }
