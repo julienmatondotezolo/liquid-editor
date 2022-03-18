@@ -1,5 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700&display=swap");
 @import "colors";
+@import "variables";
 
 html,
 body {
@@ -27,4 +28,13 @@ a {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+}
+
+::-webkit-scrollbar {
+  width: 3px;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: $border-radius--medium;
+  background: $brand-color--primary-light; 
 }
