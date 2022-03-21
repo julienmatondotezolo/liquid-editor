@@ -1,15 +1,10 @@
 import dynamic from "next/dynamic";
 import React from "react";
-import { useRecoilState } from "recoil";
+import { useRecoilState, useRecoilValue } from "recoil";
 
-import config from "../../config/config.json";
-import { fileAtom } from "../../recoil/atoms";
-import { FileExtensionName } from "../fileExtensionName";
+import { fileAtom, scenarioAtomFamily, selectedScenarioState } from "../../recoil/atoms";
 import { Preview } from "../preview";
-import { ScenarioPreviewPicker } from "../scenarioPreviewPicker";
-import ExportButton from "../shared/exportButton";
-import { FileName } from "../shared/fileName";
-import ImportButton from "../shared/importButton";
+import Tabs from "../shared/tabs";
 import styles from "./style.module.scss";
 
 const CodeMirror = dynamic(() => import("../codeMirror"), {
@@ -18,37 +13,26 @@ const CodeMirror = dynamic(() => import("../codeMirror"), {
 
 export const Editor = () => {
   const [file, setFile] = useRecoilState(fileAtom);
+  const selectedScenarioId = useRecoilValue(selectedScenarioState);
+  const scenario = useRecoilValue(scenarioAtomFamily(selectedScenarioId));
+  const { name } = scenario;
   const changeFileContent = (editor, data, value) => {
     setFile({ ...file, content: value });
   };
 
   return (
     <div className={styles.editor}>
-      <section className={styles.container}>
-        <FileName />
-        <section className={styles.buttons}>
-          <ImportButton type="file" />
-          <ExportButton data={file} />
-        </section>
-      </section>
-      <div className={styles.editorHeader}>
-        <FileExtensionName
-          extension={"liquid"}
-          url={config.EXTERNAL.DOC.LIQUID}
-          mode={"html"}
-          content={file?.content || ""}
-          onChange={changeFileContent}
-        />
-        <ScenarioPreviewPicker />
-      </div>
       <div className={styles.editorCode}>
-        <CodeMirror
-          mode={"html"}
-          content={file?.content || ""}
-          onChange={changeFileContent}
-          className={styles.codeMirror}
-        />
-        <Preview className={styles.codePreview} />
+        <Tabs fileName={file.name} scenarioName={name} file={file} />
+        <div className={styles.editorContent}>
+          <CodeMirror
+            mode={"html"}
+            content={file?.content || ""}
+            onChange={changeFileContent}
+            className={styles.codeMirror}
+          />
+          <Preview className={styles.codePreview} />
+        </div>
       </div>
     </div>
   );

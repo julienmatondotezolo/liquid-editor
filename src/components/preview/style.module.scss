@@ -2,11 +2,29 @@
 @import "../../assets/styles/variables.scss";
 
 .preview {
+  position: relative;
   width: 50%;
   padding: $padding--md;
   box-sizing: border-box;
-  border-top: 2px solid $brand-color--primary-light;
-  border-bottom: 2px solid $brand-color--primary-light;
-  height: calc(100% - $padding--md);
-  overflow: scroll;
+  border-left: 4px solid $brand-color--light-opaque;
+  height: 100%;
+
+  .previewHeader {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    background: white;
+    border-bottom: 1px solid $brand-color--light-opaque;
+  }
+
+  .previewContent {
+    padding-top: $padding--lg;
+    height: 100%;
+    width: 100%;
+    overflow-x: hidden;
+  }
 }

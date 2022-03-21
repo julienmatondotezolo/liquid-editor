@@ -6,6 +6,7 @@
   text-align: center;
   font-weight: $font-weight--semi-bold;
   padding: $padding--md $padding--lg;
+  border-right: 3px solid $brand-color--opaque;
   border-bottom: 1px solid $brand-color--opaque;
   transition: all .2s ease-in-out;
 

@@ -7,7 +7,7 @@ import config from "../../../config/config.json";
 import { scenarioAtomFamily, scenariosAtom, selectedScenarioState } from "../../../recoil/atoms";
 import styles from "./style.module.scss";
 
-export const DeleteScenarioButton = () => {
+export const DeleteScenarioButton = ({ customButtonStyle }) => {
   const [scenarios, setScenarios] = useRecoilState(scenariosAtom);
   const [selectedScenario, setSelectedScenario] = useRecoilState(selectedScenarioState);
   const resetAtom = useResetRecoilState(scenarioAtomFamily(selectedScenario));
@@ -27,7 +27,7 @@ export const DeleteScenarioButton = () => {
   };
 
   return (
-    <button className={styles.button} onClick={deleteScenario}>
+    <button style={customButtonStyle} className={styles.button} onClick={deleteScenario}>
       <section>
         <MdDelete />
         <p>Delete scenario</p>

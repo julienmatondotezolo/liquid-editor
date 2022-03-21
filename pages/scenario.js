@@ -1,13 +1,16 @@
 import React from "react";
 
 import { JSONeditor } from "../src/components/json_editor";
-import Header from "../src/components/shared/header";
+import { Header, Sidebar } from "../src/components/shared/";
 
 export default function Scenario() {
   return (
     <>
       <Header />
-      <JSONeditor />
+      <div className="container">
+        <Sidebar />
+        <JSONeditor />
+      </div>
     </>
   );
 }

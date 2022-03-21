@@ -9,6 +9,7 @@
   cursor: pointer;
   border: none;
   padding: $padding--md $padding--lg;
+  transition: all 0.2s ease-in-out;
 
   section {
     margin: auto;

@@ -7,7 +7,7 @@ import config from "../../../config/config.json";
 import { scenariosAtom, selectedScenarioState } from "../../../recoil/atoms";
 import styles from "./style.module.scss";
 
-export const AddScenarioButton = () => {
+export const AddScenarioButton = ({ customButtonStyle }) => {
   const [scenarios, setScenarios] = useRecoilState(scenariosAtom);
   const setSelectedScenario = useSetRecoilState(selectedScenarioState);
   const router = useRouter();
@@ -19,7 +19,7 @@ export const AddScenarioButton = () => {
   };
 
   return (
-    <button className={styles.btn} onClick={createNewScenario}>
+    <button style={customButtonStyle} className={styles.btn} onClick={createNewScenario}>
       <section>
         <IoMdAddCircleOutline />
         <p>Add new scenario</p>

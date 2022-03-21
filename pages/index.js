@@ -1,13 +1,16 @@
 import React from "react";
 
 import { Editor } from "../src/components/editor";
-import Header from "../src/components/shared/header";
+import { Header, Sidebar } from "../src/components/shared/";
 
 export default function Home() {
   return (
     <>
       <Header />
-      <Editor />
+      <div className="container">
+        <Sidebar />
+        <Editor />
+      </div>
     </>
   );
 }

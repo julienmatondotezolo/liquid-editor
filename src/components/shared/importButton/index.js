@@ -1,14 +1,10 @@
 import React, { useState } from "react";
-import { FaFileImport } from "react-icons/fa";
+import { BiImport } from "react-icons/bi";
 import { useRecoilValue, useSetRecoilState } from "recoil";
 
 import config from "../../../config/config.json";
 import { getFileData } from "../../../helpers";
-import {
-  fileAtom,
-  scenarioAtomFamily,
-  selectedScenarioState,
-} from "../../../recoil/atoms";
+import { fileAtom, scenarioAtomFamily, selectedScenarioState } from "../../../recoil/atoms";
 import { Notification } from "../../shared/notification";
 import styles from "./style.module.scss";
 
@@ -23,22 +19,11 @@ export const ImportButton = ({ type }) => {
   };
 
   return (
-    <div className={styles.button}>
-      <FaFileImport />
-      <p>Import file</p>
-      <input
-        type="file"
-        accept=".html, .liquid, .json"
-        onChange={(fileData) => importFile(fileData)}
-      />
-      {result && (
-        <Notification
-          message={result.message}
-          code={result.code}
-          delay={config.NOTIFICATION.DELAY}
-        />
-      )}
-    </div>
+    <button className={styles.importButton}>
+      <BiImport />
+      <input type="file" accept=".html, .liquid, .json" onChange={(fileData) => importFile(fileData)} />
+      {result && <Notification message={result.message} code={result.code} delay={config.NOTIFICATION.DELAY} />}
+    </button>
   );
 };
 

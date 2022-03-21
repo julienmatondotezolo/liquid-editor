@@ -2,19 +2,24 @@
 @import "../../../assets/styles/variables.scss";
 
 .exportButton {
+  cursor: pointer;
   display: flex;
   align-items: center;
-  cursor: pointer;
+  position: relative;
+  color: $brand-color--light;
+  height: $padding--lg;
+  width: $padding--lg;
+  padding: $padding--sm;
+  border: none;
+  border-radius: $border-radius--normal;
+  background: $brand-color--light-opaque;
+  box-shadow: $box-shadow;
 
-  &hover {
-    color: $brand-color--light;
+  &:hover {
+    color: $brand-color--primary;
   }
 
-  button {
-    margin: 0 0 0 $margin--sm;
-    padding: 0;
-    border: none;
-    font: unset;
-    background: none;
+  svg {
+    transform: scale(1.5);
   }
 }

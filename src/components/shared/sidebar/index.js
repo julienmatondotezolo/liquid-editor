@@ -5,20 +5,15 @@ import { useRecoilValue } from "recoil";
 import { scenariosAtom } from "../../../recoil/atoms";
 import { AddScenarioButton } from "../addScenarioButton";
 import { DeleteScenarioButton } from "../deleteScenarioButton";
-import ListScenario from "../listScenario ";
+import ListScenario from "../listScenario";
 import styles from "./style.module.scss";
 
-const Sidebar = () => {
+export const Sidebar = () => {
   const scenarios = useRecoilValue(scenariosAtom);
   const [open, setOpen] = useState(false);
 
   return (
-    <nav
-      className={styles.sidebar}
-      onMouseEnter={() => setOpen(!open)}
-      onMouseLeave={() => setOpen(!open)}
-      style={{ left: open ? "0" : "-18%" }}
-    >
+    <nav className={styles.sidebar} style={{ width: open ? "20%" : "2%" }}>
       <div
         className={styles.collapseIcon}
         onClick={() => setOpen(!open)}
@@ -27,15 +22,13 @@ const Sidebar = () => {
       >
         <IoIosArrowBack />
       </div>
-      <AddScenarioButton />
-      <ul style={{ display: open ? "block" : "none" }}>
+      <AddScenarioButton customButtonStyle={{ opacity: open ? "1.0" : "0" }} />
+      <ul style={{ width: open ? "100%" : "0", opacity: open ? "1.0" : "0" }}>
         {scenarios.map((id) => (
           <ListScenario id={id} key={id} />
         ))}
       </ul>
-      <DeleteScenarioButton />
+      <DeleteScenarioButton customButtonStyle={{ opacity: open ? "1.0" : "0" }} />
     </nav>
   );
 };
-
-export default Sidebar;
