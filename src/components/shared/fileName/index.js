@@ -11,7 +11,6 @@ export const FileName = ({ name }) => {
 
   return (
     <article className={styles.documentName}>
-      <p>Document name</p>
       {name ? (
         <input
           type="text"
