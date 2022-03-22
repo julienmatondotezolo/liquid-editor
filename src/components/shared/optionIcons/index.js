@@ -12,7 +12,7 @@ export const OptionIcons = ({ name, content, onChange, mode }) => {
     <section className={styles.iconBox}>
       <FaExpand onClick={() => setOpen(!open)} />
       <AiOutlineInfoCircle />
-      {open && <Modal setOpen={setOpen} name={name} mode={mode} content={content} onChange={onChange} />}
+      {open && <Modal setOpen={setOpen} name={name} mode={mode} content={content} preview={true} onChange={onChange} />}
     </section>
   );
 };

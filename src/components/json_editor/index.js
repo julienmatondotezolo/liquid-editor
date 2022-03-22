@@ -26,6 +26,7 @@ export const JSONeditor = () => {
         <div className={styles.editorContent}>
           <CodeMirror
             mode={"json"}
+            name={name}
             content={JSON.stringify(content, null, 2)}
             onChange={changeScenarioContent}
             className={styles.codeMirror}

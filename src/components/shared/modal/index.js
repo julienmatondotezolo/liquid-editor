@@ -9,13 +9,13 @@ const CodeMirror = dynamic(() => import("../codeMirror"), {
   ssr: false,
 });
 
-const Modal = ({ setOpen, name, mode, content, onChange }) => (
+const Modal = ({ setOpen, name, mode, content, onChange, preview }) => (
   <div className={styles.modal}>
     <div className={styles.modalBackground}></div>
     <FileName name={name} />
     <BiCollapse onClick={() => setOpen(false)} />
     <div className={styles.modalContent}>
-      <CodeMirror mode={mode} content={content} onChange={onChange} className={styles.codeMirror} />
+      <CodeMirror mode={mode} content={content} onChange={onChange} preview={preview} className={styles.codeMirror} />
     </div>
   </div>
 );

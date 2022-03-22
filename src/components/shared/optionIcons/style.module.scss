@@ -11,9 +11,11 @@
 
   > svg {
     cursor: pointer;
+    color: $brand-color--light;
     height: $padding--lg;
     width: $padding--lg;
     padding: $padding--sm;
+    margin-bottom: $margin--md;
     border-radius: $border-radius--normal;
     background: $brand-color--light-opaque;
     box-shadow: $box-shadow;
@@ -21,8 +23,8 @@
     transform-origin: center;
 
     &:hover {
-      color: $brand-color--light;
-      transform: scale(1.5);
+      color: $brand-color--primary;
+      transform: scale(1.2);
     }
   }
 }

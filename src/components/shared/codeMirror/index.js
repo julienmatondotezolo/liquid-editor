@@ -13,12 +13,12 @@ import { UnControlled } from "react-codemirror2-react-17";
 import { OptionIcons } from "../optionIcons";
 import styles from "./style.module.scss";
 
-const CodeMirror = ({ mode, content, onChange }) => {
+const CodeMirror = ({ name, mode, content, onChange, preview }) => {
   window.jsonlint = jsonlint;
 
   return (
     <div className={styles.codeMirror}>
-      <OptionIcons />
+      {preview ?? <OptionIcons name={name} mode={mode} content={content} onChange={onChange} />}
       <UnControlled
         value={content ?? ""}
         options={{
