@@ -25,13 +25,6 @@
 
       > div {
         width: 50%;
-        height: calc(100% - $padding--md);
-        overflow: auto;
-        padding: $padding--md;
-  
-        > div {
-          height: fit-content;
-        }
       }
     }
   }

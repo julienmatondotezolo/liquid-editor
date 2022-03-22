@@ -22,17 +22,6 @@
       height: 100%;
       background: white;
       box-shadow: $box-shadow;
-
-      > div {
-        width: 100%;
-        height: calc(100% - $padding--md);
-        overflow: auto;
-        padding: $padding--md;
-  
-        > div {
-          height: fit-content;
-        }
-      }
     }
   }
 }

@@ -7,7 +7,7 @@ import { Preview } from "../preview";
 import Tabs from "../shared/tabs";
 import styles from "./style.module.scss";
 
-const CodeMirror = dynamic(() => import("../codeMirror"), {
+const CodeMirror = dynamic(() => import("../shared/codeMirror"), {
   ssr: false,
 });
 

@@ -10,23 +10,29 @@ import jsonlint from "jsonlint-mod";
 import React from "react";
 import { UnControlled } from "react-codemirror2-react-17";
 
+import { OptionIcons } from "../optionIcons";
+import styles from "./style.module.scss";
+
 const CodeMirror = ({ mode, content, onChange }) => {
   window.jsonlint = jsonlint;
 
   return (
-    <UnControlled
-      value={content ?? ""}
-      options={{
-        mode: mode == "json" ? "application/ld+json" : "text/html",
-        lint: true,
-        autoCloseBrackets: true,
-        lineWrapping: true,
-        lineNumbers: true,
-        gutters: ["CodeMirror-lint-markers"],
-      }}
-      autoCursor={false}
-      onChange={onChange}
-    />
+    <div className={styles.codeMirror}>
+      <OptionIcons />
+      <UnControlled
+        value={content ?? ""}
+        options={{
+          mode: mode == "json" ? "application/ld+json" : "text/html",
+          lint: true,
+          autoCloseBrackets: true,
+          lineWrapping: true,
+          lineNumbers: true,
+          gutters: ["CodeMirror-lint-markers"],
+        }}
+        autoCursor={false}
+        onChange={onChange}
+      />
+    </div>
   );
 };
 
