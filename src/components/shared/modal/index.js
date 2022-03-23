@@ -5,7 +5,7 @@ import { BiCollapse } from "react-icons/bi";
 import { FileName } from "../fileName";
 import styles from "./style.module.scss";
 
-const CodeMirror = dynamic(() => import("../../codeMirror"), {
+const CodeMirror = dynamic(() => import("../codeMirror"), {
   ssr: false,
 });
 
@@ -15,12 +15,7 @@ const Modal = ({ setOpen, name, mode, content, onChange }) => (
     <FileName name={name} />
     <BiCollapse onClick={() => setOpen(false)} />
     <div className={styles.modalContent}>
-      <CodeMirror
-        mode={mode}
-        content={content}
-        onChange={onChange}
-        className={styles.codeMirror}
-      />
+      <CodeMirror mode={mode} content={content} onChange={onChange} className={styles.codeMirror} />
     </div>
   </div>
 );

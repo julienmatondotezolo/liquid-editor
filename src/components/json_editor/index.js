@@ -3,10 +3,11 @@ import React from "react";
 import { useRecoilState, useRecoilValue } from "recoil";
 
 import { fileAtom, scenarioAtomFamily, selectedScenarioState } from "../../recoil/atoms";
+import { OptionIcons } from "../shared/optionIcons";
 import Tabs from "../shared/tabs";
 import styles from "./style.module.scss";
 
-const CodeMirror = dynamic(() => import("../codeMirror"), {
+const CodeMirror = dynamic(() => import("../shared/codeMirror"), {
   ssr: false,
 });
 
@@ -26,10 +27,18 @@ export const JSONeditor = () => {
         <div className={styles.editorContent}>
           <CodeMirror
             mode={"json"}
+            name={name}
             content={JSON.stringify(content, null, 2)}
             onChange={changeScenarioContent}
             className={styles.codeMirror}
-          />
+          >
+            <OptionIcons
+              name={name}
+              mode={"json"}
+              content={JSON.stringify(content, null, 2)}
+              onChange={changeScenarioContent}
+            />
+          </CodeMirror>
         </div>
       </div>
     </div>
