@@ -10,15 +10,14 @@ import jsonlint from "jsonlint-mod";
 import React from "react";
 import { UnControlled } from "react-codemirror2-react-17";
 
-import { OptionIcons } from "../optionIcons";
 import styles from "./style.module.scss";
 
-const CodeMirror = ({ name, mode, content, onChange, preview }) => {
+const CodeMirror = ({ mode, content, onChange, children }) => {
   window.jsonlint = jsonlint;
 
   return (
     <div className={styles.codeMirror}>
-      {preview ?? <OptionIcons name={name} mode={mode} content={content} onChange={onChange} />}
+      {children}
       <UnControlled
         value={content ?? ""}
         options={{

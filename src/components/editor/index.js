@@ -4,6 +4,7 @@ import { useRecoilState, useRecoilValue } from "recoil";
 
 import { fileAtom, scenarioAtomFamily, selectedScenarioState } from "../../recoil/atoms";
 import { Preview } from "../preview";
+import { OptionIcons } from "../shared/optionIcons";
 import Tabs from "../shared/tabs";
 import styles from "./style.module.scss";
 
@@ -30,7 +31,9 @@ export const Editor = () => {
             content={file?.content || ""}
             onChange={changeFileContent}
             className={styles.codeMirror}
-          />
+          >
+            <OptionIcons name={name} mode={"html"} content={file?.content || ""} onChange={changeFileContent} />
+          </CodeMirror>
           <Preview className={styles.codePreview} />
         </div>
       </div>
