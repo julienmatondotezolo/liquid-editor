@@ -9,10 +9,7 @@ export const ScenarioListPreviewPicker = ({ id }) => {
   const [selectedScenario, setSelectedScenario] = useRecoilState(selectedScenarioState);
 
   return (
-    <button
-      className={`${styles.scenarioListItems} ${selectedScenario === id ? styles.activeList : ""}`}
-      onClick={() => setSelectedScenario(id)}
-    >
+    <button className={`${styles.scenarioListItems}`} onClick={() => setSelectedScenario(id)}>
       {name}
     </button>
   );
