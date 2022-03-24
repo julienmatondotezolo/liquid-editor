@@ -21,15 +21,13 @@ export const JSONeditor = () => {
   const [result, setResult] = useState({});
 
   const changeScenarioContent = (editor, data, value) => {
-    if (value) {
-      try {
-        const parsedValue = JSON.parse(value);
+    try {
+      const parsedValue = JSON.parse(value);
 
-        setResult({});
-        setScenario({ ...scenario, content: parsedValue });
-      } catch (error) {
-        setResult({ ...result, code: 406, message: "Write valid JSON" });
-      }
+      setResult({});
+      setScenario({ ...scenario, content: parsedValue });
+    } catch (error) {
+      setResult({ ...result, code: 406, message: "Write a valid JSON" });
     }
   };
 
@@ -54,11 +52,7 @@ export const JSONeditor = () => {
           </CodeMirror>
         </div>
       </div>
-      {Object.keys(result).length === 0 ? (
-        ""
-      ) : (
-        <Notification message={result.message} code={result.code} delay={config.NOTIFICATION.DELAY} />
-      )}
+      {result.code && <Notification message={result.message} code={result.code} delay={config.NOTIFICATION.DELAY} />}
     </div>
   );
 };
