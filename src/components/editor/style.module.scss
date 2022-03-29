@@ -22,6 +22,10 @@
       height: 100%;
       background: white;
       box-shadow: $box-shadow;
+      border-top-right-radius: $border-radius--medium;
+      border-bottom-left-radius: $border-radius--medium;
+      border-bottom-right-radius: $border-radius--medium;
+      overflow: hidden;
 
       > div {
         width: 50%;
