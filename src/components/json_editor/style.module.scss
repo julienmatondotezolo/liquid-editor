@@ -22,6 +22,9 @@
       height: 100%;
       background: white;
       box-shadow: $box-shadow;
+      border-radius: $border-radius--medium;
+      border-top-left-radius: 0;
+      overflow: hidden;
     }
   }
 }
