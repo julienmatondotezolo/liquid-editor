@@ -23,9 +23,7 @@
       background: white;
       box-shadow: $box-shadow;
       border-radius: $border-radius--medium;
-      border-top-right-radius: 0;
-      border-bottom-left-radius: 0;
-      border-bottom-right-radius: 0;
+      border-top-left-radius: 0;
       overflow: hidden;
 
       > div {
