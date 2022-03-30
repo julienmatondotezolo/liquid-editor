@@ -1,37 +1,34 @@
 import { useRouter } from "next/router";
 import React from "react";
 import { MdDelete } from "react-icons/md";
-import { useRecoilState, useResetRecoilState } from "recoil";
+import { useRecoilState, useResetRecoilState, useSetRecoilState } from "recoil";
 
 import config from "../../../config/config.json";
 import { scenarioAtomFamily, scenariosAtom, selectedScenarioState } from "../../../recoil/atoms";
 import styles from "./style.module.scss";
 
-export const DeleteScenarioButton = ({ customButtonStyle }) => {
+export const DeleteScenarioButton = ({ customButtonStyle, scenarioId }) => {
   const [scenarios, setScenarios] = useRecoilState(scenariosAtom);
-  const [selectedScenario, setSelectedScenario] = useRecoilState(selectedScenarioState);
-  const resetAtom = useResetRecoilState(scenarioAtomFamily(selectedScenario));
+  const setSelectedScenario = useSetRecoilState(selectedScenarioState);
+  const resetAtom = useResetRecoilState(scenarioAtomFamily(scenarioId));
 
   const router = useRouter();
 
-  const deleteScenario = () => {
-    const newScenarios = scenarios.filter(function (scenarioId) {
-      return scenarioId !== selectedScenario;
+  const deleteScenario = async () => {
+    const newScenarios = scenarios.filter(function (newScenarioId) {
+      return newScenarioId !== scenarioId;
     });
 
     setScenarios(newScenarios);
     resetAtom();
-    setSelectedScenario(0);
+    setSelectedScenario(scenarios[1]);
 
     router.push(config.ROUTE.HOME);
   };
 
   return (
     <button style={customButtonStyle} className={styles.button} onClick={deleteScenario}>
-      <section>
-        <MdDelete />
-        <p>Delete scenario</p>
-      </section>
+      <MdDelete />
     </button>
   );
 };
