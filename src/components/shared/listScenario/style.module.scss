@@ -8,7 +8,6 @@
   font-weight: $font-weight--semi-bold;
   border-right: 3px solid $brand-color--opaque;
   border-bottom: 1px solid $brand-color--opaque;
-  transition: all .2s ease-in-out;
 
   div {
     width: 100%;
@@ -27,6 +26,8 @@
     top: 50%;
     right: 0;
     transform: translate(-5%, -50%);
+    opacity: 0;
+    transition: all .2s ease-in-out;
   }
 
   &:hover {
@@ -34,6 +35,10 @@
     border-right: 3px solid $brand-color--light;
     background: $brand-color--light-opaque;
   }
+}
+
+.listItem:hover button {
+  opacity: 1.0;
 }
 
 .active {
