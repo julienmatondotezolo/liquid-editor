@@ -6,26 +6,17 @@
   font-weight: $font-weight--bold;
   text-transform: uppercase;
   color: $brand-color--error;
-  width: 100%;
   cursor: pointer;
   border: none;
-  padding: $padding--md $padding--lg;
-  background: white;
-  transition: all 0.2s ease-in-out;
-
-  section {
-    margin: auto;
-    display: flex;
-    align-items: center;
+  background: none;
+  transition: all 0.4s ease-in-out;
 
     svg {
       font-size: $font-size--medium;
-      margin-right: $margin--sm;
       transition: all 0.2s ease-in-out;
-    }
-  }
 
-  &:hover {
-    background: $brand-color--error-opaque;
-  }
+      &:hover {
+        transform: scale(1.2);
+      }
+    }
 }

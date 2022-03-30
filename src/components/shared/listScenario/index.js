@@ -4,6 +4,7 @@ import { useRecoilState, useRecoilValue } from "recoil";
 
 import config from "../../../config/config.json";
 import { scenarioAtomFamily, selectedScenarioState } from "../../../recoil/atoms";
+import { DeleteScenarioButton } from "../deleteScenarioButton";
 import styles from "./style.module.scss";
 
 export const ListScenario = ({ id }) => {
@@ -27,6 +28,7 @@ export const ListScenario = ({ id }) => {
         >
           <p>{name}</p>
         </div>
+        <DeleteScenarioButton scenarioId={id} />
       </li>
     </Link>
   );
