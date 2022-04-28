@@ -1,0 +1,24 @@
+@import "../../assets/styles/colors.scss";
+@import "../../assets/styles/variables.scss";
+
+.scenarioListItems {
+  cursor: pointer;
+  width: 100%;
+  text-align: center;
+  padding: $padding--md;
+  transition: all 0.2s ease-in-out;
+  border: none;
+  background: $brand-color--white-light;
+
+  &:hover {
+    color: white;
+    font-weight: $font-weight--bold;
+    background: $brand-color--light;
+  }
+}
+
+.activeList {
+  color: $brand-color--light;
+  border-bottom: 2px solid $brand-color--light;
+  font-weight: $font-weight--bold;
+}

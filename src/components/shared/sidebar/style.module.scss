@@ -1,0 +1,47 @@
+@import "../../../assets/styles/colors.scss";
+@import "../../../assets/styles/variables.scss";
+
+.sidebar {
+  position: relative;
+  top: $header-height;
+  box-sizing: border-box;
+  float: left;
+  width: auto;
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 1;
+  height: calc(100% - $header-height);
+  color: $brand-color--primary;
+  background: white;
+  transition: all .4s ease-in-out;
+  box-shadow: $box-shadow;
+
+  .collapseIcon {
+    cursor: pointer;
+    position: absolute;
+    top: 10px;
+    right: - $padding--md;
+    color: $brand-color--light;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    background: white;
+    border-radius: 30px;
+    box-shadow: $box-shadow;
+    transition: all .4s ease-in-out;
+    z-index: 1;
+
+    &:hover {
+      color: white;
+      background: $brand-color--light;
+    }
+  }
+
+  ul {
+    width: 100%;
+    float: left;
+    transition: all .4s ease-in-out;
+  }
+}

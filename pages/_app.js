@@ -1,7 +1,17 @@
-import '../styles/globals.css'
+import "../src/assets/styles/globals.scss";
+
+import { RecoilRoot } from "recoil";
+
+import Layout from "../src/components/layout";
 
 function MyApp({ Component, pageProps }) {
-  return <Component {...pageProps} />
+  return (
+    <RecoilRoot>
+      <Layout>
+        <Component {...pageProps} />
+      </Layout>
+    </RecoilRoot>
+  );
 }
 
-export default MyApp
+export default MyApp;

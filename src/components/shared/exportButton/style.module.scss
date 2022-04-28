@@ -1,0 +1,25 @@
+@import "../../../assets/styles/colors.scss";
+@import "../../../assets/styles/variables.scss";
+
+.exportButton {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  position: relative;
+  color: $brand-color--light;
+  height: $padding--lg;
+  width: $padding--lg;
+  padding: $padding--sm;
+  border: none;
+  border-radius: $border-radius--normal;
+  background: $brand-color--light-opaque;
+  box-shadow: $box-shadow;
+
+  &:hover {
+    color: $brand-color--primary;
+  }
+
+  svg {
+    transform: scale(1.5);
+  }
+}

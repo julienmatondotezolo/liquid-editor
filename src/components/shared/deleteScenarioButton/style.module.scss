@@ -1,0 +1,22 @@
+@import "../../../assets/styles/colors.scss";
+@import "../../../assets/styles/variables.scss";
+
+.button {
+  display: flex;
+  font-weight: $font-weight--bold;
+  text-transform: uppercase;
+  color: $brand-color--error;
+  cursor: pointer;
+  border: none;
+  background: none;
+  transition: all 0.4s ease-in-out;
+
+    svg {
+      font-size: $font-size--medium;
+      transition: all 0.2s ease-in-out;
+
+      &:hover {
+        transform: scale(1.2);
+      }
+    }
+}

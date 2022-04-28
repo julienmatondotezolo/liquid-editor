@@ -1,0 +1,34 @@
+@import "../../assets/styles/colors.scss";
+@import "../../assets/styles/variables.scss";
+
+.editor {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  flex-shrink: 1;
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  padding-top: $header-height;
+  overflow: hidden;
+
+  .editorCode {
+    width: 95%;
+    height: 90%;
+
+    .editorContent {
+      display: flex;
+      flex-wrap: wrap;
+      height: 100%;
+      background: white;
+      box-shadow: $box-shadow;
+      border-radius: $border-radius--medium;
+      border-top-left-radius: 0;
+      overflow: hidden;
+
+      > div {
+        width: 50%;
+      }
+    }
+  }
+}

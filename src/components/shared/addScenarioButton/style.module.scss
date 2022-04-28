@@ -1,0 +1,29 @@
+@import "../../../assets/styles/colors.scss";
+@import "../../../assets/styles/variables.scss";
+
+.btn {
+  display: flex;
+  font-weight: $font-weight--bold;
+  color: $brand-color--success;
+  width: 100%;
+  cursor: pointer;
+  border: none;
+  padding: $padding--md $padding--lg;
+  transition: all 0.2s ease-in-out;
+
+  section {
+    margin: auto;
+    display: flex;
+    align-items: center;
+
+    svg {
+      font-size: $font-size--medium;
+      margin-right: $margin--sm;
+      transition: all 0.2s ease-in-out;
+    }
+  }
+
+  &:hover {
+    background: $brand-color--success-opaque;
+  }
+}

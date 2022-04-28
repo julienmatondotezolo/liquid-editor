@@ -1,0 +1,15 @@
+{
+    "ROUTE": {
+        "HOME": "/",
+        "SCENARIO": "/scenario"
+    },
+    "EXTERNAL": {
+        "DOC": {
+            "LIQUID": "https://shopify.github.io/liquid/"
+        }
+    },
+    "NOTIFICATION": {
+        "DELAY": "5000"
+    }
+}
+  

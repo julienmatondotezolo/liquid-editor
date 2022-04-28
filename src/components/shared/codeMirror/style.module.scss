@@ -1,0 +1,17 @@
+@import "../../../assets/styles/colors.scss";
+@import "../../../assets/styles/variables.scss";
+
+.codeMirror {
+  position: relative;
+  height: 100%;
+  width: 100%;
+
+  > div {
+    height: 100%;
+    overflow: scroll;
+
+    > div {
+      height: fit-content;
+    }
+  }
+}

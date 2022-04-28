@@ -1,0 +1,30 @@
+@import "../../../assets/styles/colors.scss";
+@import "../../../assets/styles/variables.scss";
+
+.iconBox {
+  position: absolute;
+  top: $padding--md;
+  right: $padding--md;
+  display: flex;
+  flex-direction: column;
+  z-index: 1;
+
+  > svg {
+    cursor: pointer;
+    color: $brand-color--light;
+    height: $padding--lg;
+    width: $padding--lg;
+    padding: $padding--sm;
+    margin-bottom: $margin--md;
+    border-radius: $border-radius--normal;
+    background: $brand-color--light-opaque;
+    box-shadow: $box-shadow;
+    transition: all 0.2s ease-in-out;
+    transform-origin: center;
+
+    &:hover {
+      color: $brand-color--primary;
+      transform: scale(1.2);
+    }
+  }
+}

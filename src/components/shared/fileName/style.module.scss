@@ -1,0 +1,21 @@
+@import "../../../assets/styles/colors.scss";
+@import "../../../assets/styles/variables.scss";
+
+.documentName {
+  display: flex;
+  width: 50%;
+
+  input[type="text"] {
+    display: block;
+    width: 100%;
+    color: $brand-color--primary;
+    margin: 0;
+    padding: 0 $padding--md;
+    border: none;
+    text-transform: uppercase;
+
+    &:focus {
+      outline: none;
+    }
+  }
+}

@@ -1,0 +1,33 @@
+@import "../../assets/styles/colors.scss";
+@import "../../assets/styles/variables.scss";
+
+.scenarioDropdown {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+  font-size: $font-size--small;
+
+  &:hover .scenarioDropdownContent {
+    display: block;
+  }
+
+  .scenarioPicker {
+    display: flex;
+    align-items: center;
+    text-transform: uppercase;
+    padding: $padding--md $padding--xl;
+    background: $brand-color--light-opaque;
+
+    svg {
+      font-size: $font-size--medium;
+    }
+  }
+}
+
+.scenarioDropdownContent {
+  display: none;
+  position: absolute;
+  width: 100%;
+  background-color: $brand-color--white-light;
+  z-index: 1;
+}
