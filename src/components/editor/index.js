@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-max-props-per-line */
 import dynamic from "next/dynamic";
 import React from "react";
 import { useRecoilState, useRecoilValue } from "recoil";

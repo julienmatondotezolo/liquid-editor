@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-max-props-per-line */
 import React, { useState } from "react";
 import { AiOutlineInfoCircle } from "react-icons/ai";
 import { FaExpand } from "react-icons/fa";
