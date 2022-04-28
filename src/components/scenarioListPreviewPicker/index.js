@@ -6,7 +6,7 @@ import styles from "./style.module.scss";
 
 export const ScenarioListPreviewPicker = ({ id }) => {
   const { name } = useRecoilValue(scenarioAtomFamily(id));
-  const [selectedScenario, setSelectedScenario] = useRecoilState(selectedScenarioState);
+  const [, setSelectedScenario] = useRecoilState(selectedScenarioState);
 
   return (
     <button className={`${styles.scenarioListItems}`} onClick={() => setSelectedScenario(id)}>
