@@ -21,7 +21,6 @@ export const OptionIcons = ({ name, content, onChange, mode }) => {
           <AiOutlineInfoCircle />
         </a>
       </Link>
-
       {open && <Modal setOpen={setOpen} name={name} mode={mode} content={content} onChange={onChange} />}
     </section>
   );
