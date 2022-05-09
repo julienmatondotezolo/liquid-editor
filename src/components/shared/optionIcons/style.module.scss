@@ -9,11 +9,10 @@
   flex-direction: column;
   z-index: 1;
 
-  > svg {
+    &__icon {
+    all: unset;
     cursor: pointer;
     color: $brand-color--light;
-    height: $padding--lg;
-    width: $padding--lg;
     padding: $padding--sm;
     margin-bottom: $margin--md;
     border-radius: $border-radius--normal;
