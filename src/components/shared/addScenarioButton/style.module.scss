@@ -8,7 +8,7 @@
   width: 100%;
   cursor: pointer;
   border: none;
-  padding: $padding--md $padding--lg;
+  padding: $whitespace--md $whitespace--lg;
   transition: all 0.2s ease-in-out;
 
   section {
@@ -18,7 +18,7 @@
 
     svg {
       font-size: $font-size--medium;
-      margin-right: $margin--sm;
+      margin-right: $whitespace--sm;
       transition: all 0.2s ease-in-out;
     }
   }

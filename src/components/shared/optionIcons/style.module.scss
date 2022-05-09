@@ -3,8 +3,8 @@
 
 .iconBox {
   position: absolute;
-  top: $padding--md;
-  right: $padding--md;
+  top: $whitespace--md;
+  right: $whitespace--md;
   display: flex;
   flex-direction: column;
   z-index: 1;
@@ -13,8 +13,8 @@
     all: unset;
     cursor: pointer;
     color: $brand-color--light;
-    padding: $padding--sm;
-    margin-bottom: $margin--md;
+    padding: $whitespace--sm;
+    margin-bottom: $whitespace--md;
     border-radius: $border-radius--normal;
     background: $brand-color--light-opaque;
     box-shadow: $box-shadow;

@@ -10,15 +10,42 @@
   height: $header-height;
   background: $brand-color--primary;
   color: white;
+  padding: 0 $whitespace--md;
   z-index: 1;
 }
 
+.poweredByContent{
+  font-size: xx-small;
+  display: flex;
+  align-items: center;
+  gap: $whitespace--xs;
+}
+
+.linkContainer{
+  display: flex;
+  gap: 1rem;
+  text-transform: uppercase;
+  font-size: small;
+}
+
+.link{
+  color: $brand-color--dark;
+  background: $brand-color--secondary;
+  border-radius: $border-radius--large;
+  padding: $whitespace--xs $whitespace--sm;
+  font-weight: $font-weight--bold;
+}
+
 .nav {
-  width: 90%;
+  width: 100%;
   max-width: $screen-size--large;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
+
+  > h1{
+    font-size: large;
+  }
 }
 
 .hamburger {
@@ -27,7 +54,7 @@
   width: 30px;
   height: 30px;
   cursor: pointer;
-  margin-right: 2rem;
+  margin-right: $whitespace--lg;
 
   span {
     width: 100%;

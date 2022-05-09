@@ -3,8 +3,8 @@
 
 .tab {
     display: inline-block;
-    padding: $padding--md $padding--lg;
-    margin-right: $margin--md;
+    padding: $whitespace--md $whitespace--lg;
+    margin-right: $whitespace--md;
     cursor: pointer;
     background: $brand-color--light-opaque;
     transition: all .2s ease-in-out;

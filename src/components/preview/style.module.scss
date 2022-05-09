@@ -4,7 +4,7 @@
 .preview {
   position: relative;
   width: 50%;
-  padding: $padding--md;
+  padding: $whitespace--md;
   box-sizing: border-box;
   border-left: 4px solid $brand-color--light-opaque;
   height: 100%;
@@ -22,7 +22,7 @@
   }
 
   .previewContent {
-    padding-top: $padding--lg;
+    padding-top: $whitespace--lg;
     height: 100%;
     width: 100%;
     overflow-x: hidden;
