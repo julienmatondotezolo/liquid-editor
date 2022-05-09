@@ -43,3 +43,7 @@ a {
   border-radius: $border-radius--medium;
   background: $brand-color--primary-light; 
 }
+
+button, input{
+  font-family: $font-family;
+}
