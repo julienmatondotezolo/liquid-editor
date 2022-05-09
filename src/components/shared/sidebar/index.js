@@ -36,15 +36,6 @@ export const Sidebar = () => {
         </ul>
         <div className={styles.linkContainer}>
           <div>
-            <div className={styles.links}>
-              <Link href={config.BOTHIVE.SALES_PAGE}>
-                <a className={styles.link}>site</a>
-              </Link>
-              <Link href={config.BOTHIVE.APP}>
-                <a className={styles.link}>app</a>
-              </Link>
-            </div>
-
             <Link href={config.BOTHIVE.SALES_PAGE}>
               <a target="_blank">
                 <span className={styles.poweredByContent}>
