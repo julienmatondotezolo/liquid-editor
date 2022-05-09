@@ -4,22 +4,20 @@
 .preview {
   position: relative;
   width: 50%;
-  padding: $whitespace--md;
+  padding: $whitespace--md 0 $whitespace--md $whitespace--md;
   box-sizing: border-box;
   border-left: 4px solid $brand-color--light-opaque;
   height: 100%;
 
   .previewHeader {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
+    width: calc(100% + $whitespace--md);
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
     background: white;
     border-bottom: 1px solid $brand-color--light-opaque;
-  }
+    margin: (-$whitespace--md) (-$whitespace--md) 0 (-$whitespace--md);
+   }
 
   .previewContent {
     padding-top: $whitespace--lg;

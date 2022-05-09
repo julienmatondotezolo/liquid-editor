@@ -23,7 +23,7 @@ export const Editor = () => {
   };
 
   return (
-    <div className={styles.editor} >
+    <div className={styles.editor}>
       <div className={styles.editorCode}>
         <Tabs fileName={file.name} scenarioName={name} file={file} />
         <div className={styles.editorContent}>
