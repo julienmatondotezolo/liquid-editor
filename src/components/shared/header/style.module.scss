@@ -14,37 +14,18 @@
   z-index: 1;
 }
 
-.poweredByContent{
-  font-size: xx-small;
-  display: flex;
-  align-items: center;
-  gap: $whitespace--xs;
-}
-
-.linkContainer{
-  display: flex;
-  gap: 1rem;
-  text-transform: uppercase;
-  font-size: small;
-}
-
-.link{
-  color: $brand-color--dark;
-  background: $brand-color--secondary;
-  border-radius: $border-radius--large;
-  padding: $whitespace--xs $whitespace--sm;
-  font-weight: $font-weight--bold;
-}
-
 .nav {
   width: 100%;
   max-width: $screen-size--large;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
 
   > h1{
     font-size: large;
+    display: flex;
+    align-items: center;
+    gap: $whitespace--sm;
   }
 }
 

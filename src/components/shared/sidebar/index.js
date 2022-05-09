@@ -1,7 +1,10 @@
+import Image from "next/image";
+import Link from "next/link";
 import React, { useState } from "react";
 import { IoIosArrowBack } from "react-icons/io";
 import { useRecoilValue } from "recoil";
 
+import config from "../../../config/config.json";
 import { scenariosAtom } from "../../../recoil/atoms";
 import { AddScenarioButton } from "../addScenarioButton";
 import ListScenario from "../listScenario";
@@ -27,6 +30,27 @@ export const Sidebar = () => {
           <ListScenario id={id} key={id} />
         ))}
       </ul>
+      <div className={styles.linkContainer}>
+        <div>
+          <div className={styles.links}>
+            <Link href={config.BOTHIVE.SALES_PAGE}>
+              <a className={styles.link}>site</a>
+            </Link>
+            <Link href={config.BOTHIVE.APP}>
+              <a className={styles.link}>app</a>
+            </Link>
+          </div>
+
+          <Link href={config.BOTHIVE.SALES_PAGE}>
+            <a target="_blank">
+              <span className={styles.poweredByContent}>
+                Powered by Bothive <Image src="/bothive_logo.svg" width={16} height={16}
+alt="Bothive logo"></Image>
+              </span>
+            </a>
+          </Link>
+        </div>
+      </div>
     </nav>
   );
 };

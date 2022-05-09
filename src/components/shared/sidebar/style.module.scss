@@ -9,7 +9,7 @@
   width: auto;
   display: flex;
   flex-direction: column;
-  flex-shrink: 1;
+  flex-wrap: 1;
   height: calc(100% - $header-height);
   color: $brand-color--primary;
   background: white;
@@ -37,6 +37,42 @@
       color: white;
       background: $brand-color--light;
     }
+  }
+
+  .linkContainer{
+    display: flex;
+    height: 100%;
+    justify-content: center;
+    align-items: flex-end;
+    padding: $whitespace--lg $whitespace--md;
+
+    .links{
+      display: flex;
+      gap: $whitespace--sm;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: $whitespace--sm;
+    };
+  }
+
+  .link{
+    text-decoration: underline;
+    text-transform: capitalize;
+    font-size: small;
+    color: $brand-color--light;
+    font-weight: $font-weight--bold;
+  }
+
+  .poweredByContent{
+    width: 100%;
+    font-size: small;
+    display: flex;
+    align-items: center;
+    gap: $whitespace--xs;
+    text-align: center;
+    justify-content: center;
+    font-weight: $font-weight--bold;
+    color: $brand-color--dark
   }
 
   ul {
