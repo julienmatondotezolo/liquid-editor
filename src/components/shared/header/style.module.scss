@@ -10,15 +10,23 @@
   height: $header-height;
   background: $brand-color--primary;
   color: white;
+  padding: 0 $whitespace--md;
   z-index: 1;
 }
 
 .nav {
-  width: 90%;
+  width: 100%;
   max-width: $screen-size--large;
   display: flex;
   align-items: center;
   justify-content: center;
+
+  > h1{
+    font-size: large;
+    display: flex;
+    align-items: center;
+    gap: $whitespace--sm;
+  }
 }
 
 .hamburger {
@@ -27,7 +35,7 @@
   width: 30px;
   height: 30px;
   cursor: pointer;
-  margin-right: 2rem;
+  margin-right: $whitespace--lg;
 
   span {
     width: 100%;

@@ -10,6 +10,10 @@
     },
     "NOTIFICATION": {
         "DELAY": "5000"
-    }
+    },
+    "BOTHIVE": {
+        "SALES_PAGE": "https://bothive.be",
+        "APP": "https://bothive.app"
+    } 
 }
   
