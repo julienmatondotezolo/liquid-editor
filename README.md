@@ -1,7 +1,7 @@
 # Liquid Editor (Internship)
 <h3>Play, Enjoy, Make friends or catch feelings for our A.I.</h3>
 
-<img src="[https://firebasestorage.googleapis.com/v0/b/play-paino.appspot.com/o/paino-images.jpg?alt=media&token=f802e76f-edfa-4449-b5a5-52e95a2093ce](https://storage.googleapis.com/bothive_strapi_development_staging_349js93q/logo_f9c09d74b7/logo_f9c09d74b7.svg)" alt="drawing" width="300" style="background: #202020; padding: 0 2em"/>
+<img src="https://storage.googleapis.com/bothive_strapi_development_staging_349js93q/logo_f9c09d74b7/logo_f9c09d74b7.svg" alt="drawing" width="300" style="background: #202020; padding: 0 2em"/>
 </br>
 
 [Liquid Editor](https://liquid-editor2.vercel.app/) is an online liquid code editor working with html & json. This editor was created during my internship at Bothive. With this web app you can create liquid templates. You also have the possibility to export or import them.
