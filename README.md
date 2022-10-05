@@ -1,7 +1,7 @@
 # Liquid Editor (Internship)
-<h3>Play, Enjoy, Make friends or catch feelings for our A.I.</h3>
+<h3>Create, edit, export our import Liquid templates with thi liquid editor.</h3>
 
-<img src="https://storage.googleapis.com/bothive_strapi_development_staging_349js93q/logo_f9c09d74b7/logo_f9c09d74b7.svg" alt="drawing" width="300" style="background: #202020; padding: 0 2em"/>
+<img src="https://res.cloudinary.com/hc92io71a/image/upload/v1664807818/Screenshot_2021_12_21_at_09_16_34_8a39f04a1a_ea6297133a.png" alt="drawing" width="300" style="background: #202020; padding: 0 2em"/>
 </br>
 
 [Liquid Editor](https://liquid-editor2.vercel.app/) is an online liquid code editor working with html & json. This editor was created during my internship at Bothive. With this web app you can create liquid templates. You also have the possibility to export or import them.
