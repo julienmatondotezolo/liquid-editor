@@ -1,5 +1,5 @@
 # Liquid Editor (Internship)
-<h3>Create, edit, export our import Liquid templates with thi liquid editor.</h3>
+<h3>Create, edit, export our import Liquid templates with this liquid editor.</h3>
 
 <img src="https://res.cloudinary.com/hc92io71a/image/upload/v1664807818/Screenshot_2021_12_21_at_09_16_34_8a39f04a1a_ea6297133a.png" alt="drawing" width="300" style="background: #202020; padding: 0 2em"/>
 </br>
